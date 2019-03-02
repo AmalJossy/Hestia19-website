@@ -35,10 +35,13 @@ class Migration_Add_Event extends CI_Migration {
                             'type' => 'text',
                             'null' => FALSE,
                         ),
-                        'poster' => array(
+                        'venue' => array(
                             'type' => 'VARCHAR',
-                            'constraint' => '100',
-                            'null' => FALSE,
+                            'constraint' => '255',
+                        ),
+                        'prize' => array(
+                            'type' => 'VARCHAR',
+                            'constraint' => '10',
                         ),
                         'co1_name' => array(
                             'type' => 'VARCHAR',
@@ -47,7 +50,7 @@ class Migration_Add_Event extends CI_Migration {
                         ),
                         'co1_no' => array(
                             'type' => 'VARCHAR',
-                            'constraint' => '100',
+                            'constraint' => '20',
                             'null' => FALSE,
                         ),
                         'co2_name' => array(
@@ -57,8 +60,18 @@ class Migration_Add_Event extends CI_Migration {
                         ),
                         'co2_no' => array(
                             'type' => 'VARCHAR',
-                            'constraint' => '100',
+                            'constraint' => '20',
                             'null' => FALSE,
+                        ),
+                        'seats' => array(
+                            'type' => 'INT',
+                            'constraint' => '10',
+                        ),
+                        'reg_start' => array(
+                            'type' => 'DATETIME',
+                        ),
+                        'reg_end' => array(
+                            'type' => 'DATETIME',
                         ),
                         'username' => array(
                             'type' => 'VARCHAR',
