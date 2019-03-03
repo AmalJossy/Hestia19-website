@@ -3,31 +3,18 @@ require(APPPATH.'libraries/REST_Controller.php');
 use Restserver\Libraries\REST_Controller;
 
 class Admin extends REST_Controller {
+
     function login_post(){
-        $username=$this->get('username');
-        $password=$this->get('password');
+        $username=$this->post('username');
+        $password=$this->post('password');
     }
-    function user_get()
-    {
-        $data = array('returned: '. $this->get('id'),"CI 3.10");
+    function category_post(){
+        $this->load->model('category_model');
+        $data['cat_id']=$this->post('cat_id');
+        $data['cat_name']=$this->post('cat_name');
+        $data['username']=$this->post('username');
+        $data['pswd']=$this->post('password');
+        $this->category_model->create($data);
         $this->response($data);
     }
-     
-    function user_post()
-    {       
-        $data = array('returned: '. $this->post('id'));
-        $this->response($data);
-    }
- 
-    function user_put()
-    {       
-        $data = array('returned: '. $this->put('id'));
-        $this->response($data);
-    }
- 
-    function user_delete()
-    {
-        $data = array('returned: '. $this->delete('id'));
-        $this->response($data);
-}
 }
