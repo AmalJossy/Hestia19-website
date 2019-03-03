@@ -8,9 +8,13 @@ class Admin extends REST_Controller {
         $username=$this->post('username');
         $password=$this->post('password');
     }
+    function status_get(){
+        $data['status']='online';
+        $data['version']='3.10';
+        $this->response($data);
+    }
     function category_post(){
         $this->load->model('category_model');
-        $data['cat_id']=$this->post('cat_id');
         $data['cat_name']=$this->post('cat_name');
         $data['username']=$this->post('username');
         $data['pswd']=$this->post('password');
