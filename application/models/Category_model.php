@@ -1,25 +1,17 @@
 <?php
 class Category_model extends CI_Model {
-    public $cat_id;
-    public $cat_name;
-    public $username;
-    private $pswd;
     public function create($data){
-        $this->cat_id=$data['cat_id'];
-        $this->cat_name=$data['cat_name'];
-        $this->username=$data['username'];
-        $this->pswd=password_hash($data['cat_id'],PASSWORD_BCRYPT);
-        $this->db->insert('categories', $this);
+        $data['pswd']=password_hash($data['pswd'],PASSWORD_BCRYPT);
+        $this->db->insert('categories', $data);
     }
-    public function modify($data){
-        if(isset($data['cat_name'])){
-            $this->db->set('cat_name', $data['cat_name']);
-        }
-        if(isset($data['username'])){
-            $this->db->set('username', $data['username']);
-        }
-        if(isset($data['pswd'])){
-            $this->db->set('pswd',password_hash($data['cat_id'],PASSWORD_BCRYPT));
+    public function modify($id,$data){
+        foreach($data as $attribute => $value){
+            if( $value != NULL ){
+                $this->db->set($attribute, $value);
+            }
+            if( $key == 'pswd' ){
+                $this->db->set($key,password_hash($value,PASSWORD_BCRYPT));
+            }
         }
         $this->db->where('cat_id', $data['cat_id']);
         $this->db->update('categories');
