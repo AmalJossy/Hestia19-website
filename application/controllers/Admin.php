@@ -3,9 +3,13 @@ require(APPPATH.'libraries/REST_Controller.php');
 use Restserver\Libraries\REST_Controller;
 
 class Admin extends REST_Controller {
+    function login_post(){
+        $username=$this->get('username');
+        $password=$this->get('password');
+    }
     function user_get()
     {
-        $data = array('returned: '. $this->get('id'));
+        $data = array('returned: '. $this->get('id'),"CI 3.10");
         $this->response($data);
     }
      
