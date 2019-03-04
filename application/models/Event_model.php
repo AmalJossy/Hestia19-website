@@ -26,7 +26,8 @@ class Event_model extends CI_Model {
         $this->db->insert('events', $data);
         return 201;
     }
-    public function modify($id,$cat_id,$data){
+    public function modify($id,$data){
+        $cat_id= $this->db->query("SELECT cat_id FROM events WHERE event_id=='".$id."';")->result_array()['cat_id'];
         if( $this->session->type != 'super' && $this->session->event_id != $id && $this->session->cat_id != $cat_id ){
             return 401;
         }
@@ -44,8 +45,8 @@ class Event_model extends CI_Model {
         $this->db->update('events');
         return 200;
     }
-    public function delete($id,$cat_id){
-        // $cat_id= $this->db->query("SELECT cat_id FROM events WHERE event_id=='".$id."';")->result_array()['cat_id'];
+    public function delete($id){
+        $cat_id= $this->db->query("SELECT cat_id FROM events WHERE event_id=='".$id."';")->result_array()['cat_id'];
         if( $this->session->type != 'super' && $this->session->event_id != $id && $this->session->cat_id != $cat_id ){
             return 401;
         }
