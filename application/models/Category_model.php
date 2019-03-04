@@ -52,13 +52,21 @@ class Category_model extends CI_Model {
                     'cat_id' => $row->cat_id,
                     'cat_name' => $row->cat_name,
                     'username' => $row->username,
-                    'validated' => true
+                    'validated' => TRUE
                 );
                 $this->session->set_userdata($data);
-                return true;
+                return TRUE;
             }
         }
-        return false;
+        $this->config->load('super');
+        $username=$this->config->item('super_user');
+        $hash=$this->config->item('super_pass');
+        if(password_verify($pswd,$hash)){
+            $data = array('type' => 'super', 'username' => $username , 'validated' => TRUE);
+            $this->session->set_userdata($data);
+            return TRUE;
+        }
+        return FALSE;
     }
 }
 ?>
