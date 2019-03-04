@@ -50,4 +50,57 @@ class Admin_API extends REST_Controller {
         $status =  $this->category_model->delete($id);
         $this->response($id,$status);
     }
+
+
+    function event_get($id = NULL){
+        $this->load->model('event_model');
+        $events = $this->event_model->get_events($id);
+        $this->response($events);
+    }
+    function event_post(){
+        $this->load->model('event_model');
+        $data['title']=$this->post('title');
+        $data['cat_id']=$this->post('cat_id');
+        $data['short_desc']=$this->post('short_desc');
+        $data['details']=$this->post('details');
+        $data['venue']=$this->post('venue');
+        $data['prize']=$this->post('prize');
+        $data['co1_name']=$this->post('co1_name');
+        $data['co1_no']=$this->post('co1_no');
+        $data['co2_name']=$this->post('co2_name');
+        $data['co2_no']=$this->post('co2_no');
+        $data['seats']=$this->post('seats');
+        $data['reg_start']=$this->post('reg_start');
+        $data['reg_end']=$this->post('reg_end');
+        $data['username']=$this->put('username');
+        $data['pswd']=$this->put('password');
+        $status = $this->event_model->create($data);
+        $this->response($data,$status);
+    }
+    function event_put(){
+        $this->load->model('event_model');
+        $id=$this->put('cat_id');
+        $data['title']=$this->post('title');
+        $data['cat_id']=$this->post('cat_id');
+        $data['short_desc']=$this->post('short_desc');
+        $data['details']=$this->post('details');
+        $data['venue']=$this->post('venue');
+        $data['prize']=$this->post('prize');
+        $data['co1_name']=$this->post('co1_name');
+        $data['co1_no']=$this->post('co1_no');
+        $data['co2_name']=$this->post('co2_name');
+        $data['co2_no']=$this->post('co2_no');
+        $data['seats']=$this->post('seats');
+        $data['reg_start']=$this->post('reg_start');
+        $data['reg_end']=$this->post('reg_end');
+        $data['username']=$this->put('username');
+        $data['pswd']=$this->put('password');
+        $status =  $this->event_model->modify($id,$data);
+        $this->response($data,$status);
+    }
+    function event_delete( $id = NULL ){
+        $this->load->model('event_model');
+        $status =  $this->event_model->delete($id);
+        $this->response($id,$status);
+    }
 }
