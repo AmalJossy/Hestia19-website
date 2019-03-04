@@ -34,6 +34,12 @@ class Migration_Add_User extends CI_Migration {
                             'null' => FALSE,
                             'unique' => TRUE,
                         ),
+                        'client_id' => array(
+                            'type' => 'CHAR',
+                            'constraint' => '60',
+                            'null' => FALSE,
+                            'unique' => TRUE,
+                        ),
                         'phone' => array(
                             'type' => 'VARCHAR',
                             'constraint' => '20',
