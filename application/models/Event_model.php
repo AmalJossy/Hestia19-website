@@ -67,7 +67,7 @@ class Event_model extends CI_Model {
                     'validated' => TRUE
                 );
                 $this->session->set_userdata($data);
-                return TRUE;
+                return $data;
             }
         }
         return FALSE;

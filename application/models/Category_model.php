@@ -55,7 +55,7 @@ class Category_model extends CI_Model {
                     'validated' => TRUE
                 );
                 $this->session->set_userdata($data);
-                return TRUE;
+                return $data;
             }
         }
         $this->config->load('super');
@@ -64,7 +64,7 @@ class Category_model extends CI_Model {
         if(password_verify($pswd,$hash)){
             $data = array('type' => 'super', 'username' => $username , 'validated' => TRUE);
             $this->session->set_userdata($data);
-            return TRUE;
+            return $data;
         }
         return FALSE;
     }

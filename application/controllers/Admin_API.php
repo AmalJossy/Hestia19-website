@@ -6,9 +6,13 @@ class Admin_API extends REST_Controller {
 
     function login_post(){
         $this->load->model('category_model');
+        $this->load->model('event_model');
         $username=$this->post('username');
         $password=$this->post('password');
         $data = $this->category_model->validate($username,$password);
+        if( $data == FALSE ){
+            $data = $this->event_model->validate($username,$password);
+        }
         $this->response($data);
     }
     function login_delete(){
