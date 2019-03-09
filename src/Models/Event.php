@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model{
-    protected $table = 'Events';
+    protected $table = 'events';
     public $timestamps = false;
     protected $primaryKey = 'event_id';
     /**
