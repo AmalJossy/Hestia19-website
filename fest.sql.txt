@@ -47,8 +47,13 @@ CREATE TABLE `events` (
   `title` varchar(50) NOT NULL,
   `short_desc` varchar(100) NOT NULL,
   `details` text NOT NULL,
+  `min_memb` int(9),
+  `max_memb` int(9),
   `venue` varchar(255) NOT NULL,
+  `reg_fee` int(10),
   `prize` varchar(10) NOT NULL,
+  `file1` varchar(15),
+  `file2` varchar(15),
   `co1_name` varchar(100) NOT NULL,
   `co1_no` varchar(20) NOT NULL,
   `co2_name` varchar(100) NOT NULL,
@@ -70,7 +75,9 @@ CREATE TABLE `registration` (
   `reg_id` int(9) UNSIGNED NOT NULL,
   `event_id` int(9) UNSIGNED NOT NULL,
   `reg_email` varchar(20) NOT NULL,
-  `member_email` varchar(20) NOT NULL
+  `member_email` varchar(20) NOT NULL,
+  `file1` varchar(150),
+  `file2` varchar(150)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -84,6 +91,18 @@ CREATE TABLE `time` (
   `start_time` datetime NOT NULL,
   `end_time` datetime NOT NULL,
   `label` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `result`
+--
+
+CREATE TABLE `result` (
+  `event_id` int(9) UNSIGNED NOT NULL,
+  `label` varchar(10) NOT NULL,
+  `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -140,6 +159,12 @@ ALTER TABLE `time`
   ADD KEY `event_id` (`event_id`);
 
 --
+-- Indexes for table `result`
+--
+ALTER TABLE `result`
+  ADD KEY `event_id` (`event_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -184,6 +209,13 @@ ALTER TABLE `events`
 --
 ALTER TABLE `time`
   ADD CONSTRAINT `time_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`);
+COMMIT;
+
+--
+-- Constraints for table `result`
+--
+ALTER TABLE `result`
+  ADD CONSTRAINT `result_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
