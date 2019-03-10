@@ -19,6 +19,7 @@ class Event extends Model{
         'short_desc' ,
         'details' ,
         'venue' ,
+        'reg_fee' ,
         'prize' ,
         'co1_name' ,
         'co1_no' ,

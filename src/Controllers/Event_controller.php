@@ -39,6 +39,7 @@ class Event_controller {
             'short_desc' => $data['short_desc'],
             'details' => $data['details'],
             'venue' => $data['venue'],
+            'reg_fee' => $data['reg_fee'],
             'prize' => $data['prize'],
             'co1_name' => $data['co1_name'],
             'co1_no' => $data['co1_no'],
