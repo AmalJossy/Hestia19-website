@@ -23,8 +23,8 @@ class Page_controller {
     }
     public function index(Request $request, Response $response, $args)
     {
-        $users = $this->table->get();
-        
+        // $users = $this->table->get();
+        $users=['Alice','Bob','Carol','Dan','Eve'];
         $this->view->render($response, 'home.twig',['users'=>$users]);
 
         return $response;
