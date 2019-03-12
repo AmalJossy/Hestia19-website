@@ -151,13 +151,13 @@ padding-right:10vh;
               gathering. Experience the explosion of joy and colors, for dance is art in motion.</p>
               <a href="<?=base_url("events/cultural-dance")?>" class="details">MORE&nbsp;DETAILS</a>
             </div>
-    <div class="col-12 listing1" style="padding-bottom: 20px;">
+    <!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">FILM & DRAMA</p>
       <p class="event-desc">Camera is like an eye in the head of a poet, and film accumulate those frames captured by it. 
       A wide horizons of talents collectively build a film or a play. Hestia’19 provides a platform to exhibit,appreciate and 
       adore these valuable gifts.</p>
       <a href="<?=base_url("events/cultural-film")?>" class="details">MORE&nbsp;DETAILS</a>
-    </div>
+    </div> -->
     <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;">MUSIC</p>
       <p class="event-desc">Rhythm and words combine to express feelings, to heal, to start from what is left off, 
