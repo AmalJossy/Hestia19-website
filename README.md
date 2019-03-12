@@ -1,7 +1,7 @@
 # Hestia Web app
 
 
-
+#!Do not commit personal development configurations as it could override those of other
 
 ## Installation
 
@@ -15,6 +15,8 @@
 	- super.php : super admin credentials
 5. start apache and MySQL servers
 6.  goto your_domain/migrate/index to migrate database
+7.  place the google-api-client folder in thir_party folder
+8.  insert google api credentials in google_api.php in config/<environement> folder
 
 ## API
 ### login
