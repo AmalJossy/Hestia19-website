@@ -12,6 +12,7 @@
 <section>
 <?php if(isset($_SESSION['name'])){?>
     <img class="activator" src="<?=$_SESSION['profile_pic']?>"><br />
+    <?= $_SESSION['profile_pic'] ?>
     <p><?=$_SESSION['name']?></p><br />
     <p><?=$_SESSION['email']?></p>
 <?php }?>

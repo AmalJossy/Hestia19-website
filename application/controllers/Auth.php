@@ -10,6 +10,11 @@ class Auth extends CI_Controller {
 		redirect(base_url());
 	}
 
+	public function login(){
+		$data['google_login_url']=$this->google->get_login_url();
+		$this->load->view('pages/home',$data);
+	}
+
 	public function oauth2callback(){
 		$google_data=$this->google->validate();
 		$session_data=array(
