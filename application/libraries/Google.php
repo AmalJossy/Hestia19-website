@@ -40,7 +40,7 @@ class Google {
 			$info['email']=$person['emails'][0]['value'];
 			$info['name']=$person['displayName'];
 			$info['link']=$person['url'];
-			$info['profile_pic']=substr($person['image']['url'],0,strpos($person['image']['url'],"?sz=50")) . '?sz=800';
+			$info['profile_pic']=$person['image']['url'];
 
 		   return  $info;
 		}
