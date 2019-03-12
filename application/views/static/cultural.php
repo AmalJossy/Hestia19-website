@@ -146,34 +146,46 @@ padding-right:10vh;
     <div class="row event_listing_div"  style="text-align:left;padding-top: 10vh;">
     <div class="col-12 listing1" style="padding-bottom: 20px;">
               <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;">DANCE</p>
-              <p class="event-desc">Dance Description</p>
-              <a href="#" class="details">MORE&nbsp;DETAILS</a>
+              <p class="event-desc">An exquisite blend of body gestures and expressions, exhibited with utmost perfectness, 
+              reinvigorates every crowd. The sundry dance events of Hestia’19 are sure to provide a visual and audial treat for the 
+              gathering. Experience the explosion of joy and colors, for dance is art in motion.</p>
+              <a href="<?=base_url("events/cultural-dance")?>" class="details">MORE&nbsp;DETAILS</a>
             </div>
     <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">FILM & DRAMA</p>
-      <p class="event-desc">Film & Drama Description</p>
-      <a href="#" class="details">MORE&nbsp;DETAILS</a>
+      <p class="event-desc">Camera is like an eye in the head of a poet, and film accumulate those frames captured by it. 
+      A wide horizons of talents collectively build a film or a play. Hestia’19 provides a platform to exhibit,appreciate and 
+      adore these valuable gifts.</p>
+      <a href="<?=base_url("events/cultural-film")?>" class="details">MORE&nbsp;DETAILS</a>
     </div>
     <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;">MUSIC</p>
-      <p class="event-desc">Music Description</p>
-      <a href="#" class="details">MORE&nbsp;DETAILS</a>
+      <p class="event-desc">Rhythm and words combine to express feelings, to heal, to start from what is left off, 
+      to replenish. Hestia’19 becomes the stage for this experience, to witness how heart beats with the rhythm of music, 
+      as, “Music is moonlight in the gloomy night of life”.</p>
+      <a href="<?=base_url("events/cultural-music")?>" class="details">MORE&nbsp;DETAILS</a>
     </div>
-<div class="col-12 listing1" style="padding-bottom: 20px;">
+<!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
 <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">FINE ARTS</p>
-<p class="event-desc">Fine Arts Description</p>
-<a href="#" class="details">MORE&nbsp;DETAILS</a>
+<p class="event-desc">Fine Art is knowledge made visible. The perfect coordination of hand, head and heart to create 
+something invincible, to build a masterpiece , to express. Showcase these appreciable abilities through a variety of 
+competitions hosted by Hestia’19.</p>
+<a href="<?=base_url("events/cultural-finearts")?>" class="details">MORE&nbsp;DETAILS</a>
 </div>
 <div class="col-12 listing1" style="padding-bottom: 20px;">
 <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">SPORTS</p>
-<p class="event-desc">Sports Description</p>
-<a href="#" class="details">MORE&nbsp;DETAILS</a>
+<p class="event-desc">“Kill them with success and bury them with a smile”, Usain Bolt has said it all. The true competition that 
+need to be handled with zest and strategies, sports is a promise that the body accomplishes what the heart presumes. Participate 
+with gusto in the sports events of Hestia’19 , while the crowd cheers your victory.</p>
+<a href="<?=base_url("events/cultural-sports")?>" class="details">MORE&nbsp;DETAILS</a>
 </div>
 <div class="col-12 listing1" style="padding-bottom: 20px;">
 <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">LITERARY</p>
-<p class="event-desc">Literary Description</p>
-<a href="#" class="details">MORE&nbsp;DETAILS</a>
-</div>
+<p class="event-desc">Books replaced by movies, letters replaced by chats, newspaper replaced by online news capsules, 
+literature replaced by no literature. Hestia’19 brings back the spirit of literature, for “words are, in my not-so-humble 
+opinion, our most inexhaustible source of magic”.</p>
+<a href="<?=base_url("events/cultural-literary")?>" class="details">MORE&nbsp;DETAILS</a>
+</div> -->
 </div>
 </div>
 
@@ -186,7 +198,7 @@ padding-right:10vh;
     <div class="owl-carousel owl-theme slide-in-bottom" id="carousel">
       <a href="<?=base_url("technical")?>">
       <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/technical_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-        data-hash="technical">
+        data-hash="">
         <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
         <h1 class="title  event-name" style="">Technical</h1>
         </div>
@@ -194,31 +206,23 @@ padding-right:10vh;
       </a>
         <a href="<?=base_url("cultural")?>">
       <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/cultural_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-        data-hash="cultural">
+        data-hash="">
         <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
           <h1 class="title  event-name" style="">Cultural</h1>
         </div>
       </div>
       </a>
-        <a href="<?=base_url("cultural")?>">
-            <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/cultural_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-                 data-hash="cultural">
-                <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
-                    <h1 class="title  event-name" style="">Cultural</h1>
-                </div>
-            </div>
-        </a>
-        <a href="<?=base_url("events/workshops")?>">
+        <!-- <a href="<?=base_url("events/workshops")?>">
             <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/workshop_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-                 data-hash="workshops">
+                 data-hash="">
                 <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
                     <h1 class="title  event-name " style="">Workshops</h1>
                 </div>
             </div>
-        </a>
+        </a> -->
         <a href="<?=base_url("events/online")?>">
             <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/online_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-                 data-hash="online">
+                 data-hash="">
                 <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
                     <h1 class="title  event-name" style="">Online</h1>
                 </div>
@@ -226,7 +230,7 @@ padding-right:10vh;
         </a>
         <a href="<?=base_url("events/general")?>">
             <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/general_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-                 data-hash="general">
+                 data-hash="">
                 <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
                     <h1 class="title  event-name" style="">General</h1>
                 </div>

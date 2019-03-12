@@ -321,6 +321,10 @@
 
 ?> <h4>Registration Fee : ₹<?=$event->reg_fee?></h4>
                         <?php
+                        }else if($event->reg_fee == 0){
+                        ?>
+                        <h4>Registration Fee : Free</h4>
+                        <?php
                         }
                         ?>
 

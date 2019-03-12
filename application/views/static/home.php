@@ -70,7 +70,7 @@
 
         </div>
         <div class="collapse navbar-collapse">
-          <ul class="navbar-nav">
+          <!-- <ul class="navbar-nav">
             <li class="nav-item ">
               &nbsp;&nbsp;
               &nbsp;&nbsp;
@@ -79,7 +79,7 @@
               &nbsp;&nbsp;
               &nbsp;&nbsp;
             </li>
-          </ul>
+          </ul> -->
           <ul class="navbar-nav mx-auto">
             <li class="nav-item fade-in">
               <a href="#" class="nav-link event-click " id="events">
@@ -106,7 +106,7 @@
               </a>
             </li>
           </ul>
-          <ul class="navbar-nav">
+          <!-- <ul class="navbar-nav">
 <?php
 $islogged=false;
   if($islogged==false){
@@ -144,7 +144,7 @@ $islogged=false;
 
 
 
-          </ul>
+          </ul> -->
         </div>
       </div>
     </nav>
@@ -159,7 +159,7 @@ $islogged=false;
     <div class="owl-carousel owl-theme slide-in-bottom" id="carousel">
       <a href="<?=base_url("technical")?>">
       <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/technical_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-        data-hash="technical">
+        data-hash="">
         <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
         <h1 class="title  event-name" style="">Technical</h1>
         </div>
@@ -167,23 +167,23 @@ $islogged=false;
       </a>
       <a href="<?=base_url("cultural")?>">
       <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/cultural_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-        data-hash="cultural">
+        data-hash="">
         <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
           <h1 class="title  event-name" style="">Cultural</h1>
         </div>
       </div>
       </a>
-      <a href="<?=base_url("events/workshops")?>">
+      <!-- <a href="<?=base_url("events/workshops")?>">
       <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/workshop_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-        data-hash="workshops">
+        data-hash="">
         <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
           <h1 class="title  event-name " style="">Workshops</h1>
         </div>
       </div>
-      </a>
+      </a> -->
       <a href="<?=base_url("events/online")?>">
       <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/online_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-        data-hash="online">
+        data-hash="">
         <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
           <h1 class="title  event-name" style="">Online</h1>
         </div>
@@ -191,7 +191,7 @@ $islogged=false;
       </a>
       <a href="<?=base_url("events/general")?>">
       <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/general_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-      data-hash="general">
+      data-hash="">
       <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
         <h1 class="title  event-name" style="">General</h1>
       </div>

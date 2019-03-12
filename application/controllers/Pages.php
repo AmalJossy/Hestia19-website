@@ -28,7 +28,7 @@ class Pages extends CI_Controller {
         $cnt=$this->report_model->get_event_reg_count($eid);
         if (($today >= $startdate) && ($today <= $enddate)){
 
-            if($cnt<$data['event']->seats){
+            if($cnt<$data['event']->seats || $data['event']->seats == 0){
                 $btn="<a href='#' class='btn btn-custom btn-primary'>BUY TICKET&nbsp;<i class='fas fa-shopping-cart'></i></a>";
             }else{
                 $btn="<a href='#' class='btn btn-custom btn-danger disabled'>Sold Out&nbsp;<i class='fas fa-shopping-cart'></i></a>";

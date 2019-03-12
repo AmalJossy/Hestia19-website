@@ -36,8 +36,8 @@
     font-family: 'Hestia-Regular', sans-serif;
   }
   .listing1{
-      word-wrap:break-word;
-      word-break: break-all;
+      /* word-wrap:break-word;
+      word-break: break-all; */
       background-size: cover;
       border-bottom: 0.5px solid gray;
       padding-top:25px;
@@ -59,8 +59,7 @@
       color: white;
       margin-top: 3vh;
       margin-bottom: 4vh;
-
-
+      text-align: justify;
   }
   .details{
 
@@ -144,48 +143,71 @@ padding-right:10vh;
     </nav>
     <div class="container" style="z-index:10;position:absolute;top:0px;">
     <div class="row event_listing_div"  style="text-align:left;padding-top: 10vh;">
-    <div class="col-12 listing1" style="padding-bottom: 20px;">
-              <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;">BIG - O</p>
-              <p class="event-desc">Department of Computer Science</p>
+    <!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
+              <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;">BIG - O | CSE</p>
+              <p class="event-desc">The future is computing. And there's no stopping it. Big-O is the next-gen techfest, with workshops, 
+              competitions and a plethora of technical events, all geared towards the future. The future is here, this is how we get ready 
+              to own it!</p>
               <a href="<?=base_url("events/technical-cs")?>" class="details">MORE&nbsp;DETAILS</a>
             </div>
     <div class="col-12 listing1" style="padding-bottom: 20px;">
-      <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;">NEGATIVE</p>
-      <p class="event-desc">Department of Electrical and Electronics</p>
-      <a href="#" class="details">MORE&nbsp;DETAILS</a>
+      <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;">NEGATIVE | EEE</p>
+      <p class="event-desc">If flowing current interests you, if faulty connections make your heart ache, then Negative is where you 
+      should be. Negative has competitions and workshops the likes of which you’ve never seen before. Your time is here, take up your 
+      stead, race to the win.</p>
+      <a href="<?=base_url("events/technical-eee")?>" class="details">MORE&nbsp;DETAILS</a>
     </div>
       <div class="col-12 listing1" style="padding-bottom: 20px;">
-      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">HIWAGA</p>
-      <p class="event-desc">Department of Architecture</p>
-      <a href="#" class="details">MORE&nbsp;DETAILS</a>
-      </div>
+      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">HIWAGA | ARCHITECTURE</p>
+      <p class="event-desc">Hiwaga is an architectural and cultural revelry that embarks to push the boundaries of art, architecture, 
+      music and photography. It is a wonderful mystery, which unwinds a glimpse into the ethereal and and skilful life of architects. 
+      It's here to sprint your minds over the manifold perspectives and the passion that desires to unearth one's creative potential.</p>
+      <a href="<?=base_url("events/technical-arch")?>" class="details">MORE&nbsp;DETAILS</a>
+      </div> -->
       <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">ROBOTICS</p>
-      <p class="event-desc">Robotics</p>
-      <a href="#" class="details">MORE&nbsp;DETAILS</a>
+      <p class="event-desc">Artificial Intelligence, the pinnacle of all that the human brain has endeavoured into. Robotics, the 
+      masterpiece of steel and circuits the human hand has showed it's mastery on. There's a reason why robotics is the talk of the 
+      hour, come, discover it, be a part of it.</p>
+      <a href="<?=base_url("events/technical-robotics")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
       <div class="col-12 listing1" style="padding-bottom: 20px;">
-      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">RAASA</p>
-      <p class="event-desc">Chemical Engineering</p>
-      <a href="#" class="details">MORE&nbsp;DETAILS</a>
+      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">RAASA | CHEMICAL</p>
+      <p class="event-desc">This is where you find out the perfect chemical reaction, the perfect balance of all the 
+      solutions that can create the elixir of magic. 
+      Be a part of the solution, not the precipitate.</p>
+      <a href="<?=base_url("events/technical-chem")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
 
-      <div class="col-12 listing1" style="padding-bottom: 20px;">
-      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">ESTELLA</p>
-      <p class="event-desc">Electronics and Communication Engineering</p>
-      <a href="#" class="details">MORE&nbsp;DETAILS</a>
+      <!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
+      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">ESTELLA | EC</p>
+      <p class="event-desc">Drawn by those green shiny circuit boards? Don't cook up those fixed recipes , rather create your own 
+      realities here at Hestia '19. Estella is to make you perceive and learn new routes of technology, right from designing to 
+      debugging. Step up your game.</p>
+      <a href="<?=base_url("events/technical-ec")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
       <div class="col-12 listing1" style="padding-bottom: 20px;">
-      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">MECHANICAL & PRODUCTION</p>
-      <p class="event-desc">Mechanical Engineering</p>
-      <a href="#" class="details">MORE&nbsp;DETAILS</a>
+      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">MEXYSM | MECHANICAL</p>
+      <p class="event-desc">Workshops that break down the innovative discoveries of the present to their basics, competitions 
+      that test your ingenuity, events that push you to your limits, the arena is designed just for you. If thinking machines 
+      moves the gears and engines inside you, this is where you should be.</p>
+      <a href="<?=base_url("events/technical-mech")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
 
     <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">CIVIL ENGINEERING</p>
-      <p class="event-desc">Civil Engineering</p>
-      <a href="#" class="details">MORE&nbsp;DETAILS</a>
-    </div>
+      <p class="event-desc">Every work is a series of experiments, a sequence of judicious applications of the results of previous 
+      experiences, a result of well laid out engineering organisation. Join us at Hestia '19, let's plan, build and create.</p>
+      <a href="<?=base_url("events/technical-civil")?>" class="details">MORE&nbsp;DETAILS</a>
+    </div> 
+    
+    <div class="col-12 listing1" style="padding-bottom: 20px;">
+      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">COMCADRE | MCA</p>
+      <p class="event-desc">For those who love to walk through each and every line of code, for those who've mastered the art of 
+      coding and decoding logic through signals, for those who know the keywords that your fingers can just slide through the 
+      keyboard, this is for you. Come, for you, are the most extraordinary computer of all.</p>
+      <a href="<?=base_url("events/technical-mca")?>" class="details">MORE&nbsp;DETAILS</a>
+    </div>-->
 </div>
 </div>
 
@@ -198,7 +220,7 @@ padding-right:10vh;
     <div class="owl-carousel owl-theme slide-in-bottom" id="carousel">
       <a href="<?=base_url("technical")?>">
       <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/technical_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-        data-hash="technical">
+        data-hash="">
         <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
         <h1 class="title  event-name" style="">Technical</h1>
         </div>
@@ -206,31 +228,23 @@ padding-right:10vh;
       </a>
       <a href="<?=base_url("cultural")?>">
       <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/cultural_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-        data-hash="cultural">
+        data-hash="">
         <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
           <h1 class="title  event-name" style="">Cultural</h1>
         </div>
       </div>
       </a>
-      <a href="<?=base_url("cultural")?>">
-        <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/cultural_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-             data-hash="cultural">
-          <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
-            <h1 class="title  event-name" style="">Cultural</h1>
-          </div>
-        </div>
-      </a>
-      <a href="<?=base_url("events/workshops")?>">
+      <!-- <a href="<?=base_url("events/workshops")?>">
         <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/workshop_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-             data-hash="workshops">
+             data-hash="">
           <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
             <h1 class="title  event-name " style="">Workshops</h1>
           </div>
         </div>
-      </a>
+      </a> -->
       <a href="<?=base_url("events/online")?>">
         <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/online_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-             data-hash="online">
+             data-hash="">
           <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
             <h1 class="title  event-name" style="">Online</h1>
           </div>
@@ -238,7 +252,7 @@ padding-right:10vh;
       </a>
       <a href="<?=base_url("events/general")?>">
         <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/general_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
-             data-hash="general">
+             data-hash="">
           <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
             <h1 class="title  event-name" style="">General</h1>
           </div>
