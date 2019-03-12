@@ -52,6 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'pages/index';
 //$route['(:any)'] = 'pages/view/$1';
 // $route['admin/(.+)'] = 'admin_api/$1';
+
+
+$route['eventbooking'] = 'Pages/BookTicket';
 $route['events/(.+)'] = 'Pages/Event/$1';
 $route['event/(.+)'] = 'Pages/SingleEvent/$1';
 $route['process/(.+)'] = 'Pages/ProcessUserRequest/$1';

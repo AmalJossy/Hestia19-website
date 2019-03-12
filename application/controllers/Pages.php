@@ -6,9 +6,14 @@ class Pages extends CI_Controller {
 //        $this->load->library('Google');
     }
     function index(){
+      
+ 
         $this->load->view('static/home');
     }
     function view($page){
+        if ( ! file_exists(APPPATH.'views/static/'.$page.'.php')){
+            show_404();
+        }
         $this->load->view('static/'.$page);
     }
     function Event($cat){
@@ -17,10 +22,22 @@ class Pages extends CI_Controller {
         $data['events']=$this->report_model->get_events($cat_name);
         $this->load->view('static/event_listing',$data);
     }
+    
+    function BookTicket(){
+      echo $this->input->post('event_id');
+      echo $this->input->post('txt_emails');
+      
+
+      
+    }
     function SingleEvent($elink){
         $elink1=$this->security->xss_clean($elink);
        $data['event']=$this->report_model->get_single_event($elink1);
-        $eid=$data['event']->event_id;
+        if($data['event']==""){
+            show_404();
+            return;
+        }
+       $eid=$data['event']->event_id;
         $data['parent']=$this->report_model->get_event_cat_details($eid)->cat_name;
         $today = date('Y-m-d');
         $startdate=date('Y-m-d', strtotime($data['event']->reg_start));

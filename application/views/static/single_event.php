@@ -220,8 +220,8 @@
             <div class="modal-body">
 
 
-                <form id="team_form" name="team_form" style="display: none;">
-
+                <form id="team_form" method="post" action="<?=base_url("eventbooking")?>" name="team_form" id="team_form" style="display: none;">
+                    <input type="hidden" name="event_id" value="<?=$event->event_id?>">
                     <input class="form-control" type="email" name="email0" placeholder="Email" readonly><br>
                     <div id="team_form_members">
 
@@ -237,34 +237,43 @@
                             <div><a id="member_2_close" class="close-href btn btn-xs btn-danger text-white" style="margin-bottom: 3px; padding-top: 2px; padding-bottom: 2px; padding-left: 6px; padding-right: 6px;">Close</a></div>
                             <input class="form-control" type="email" name="email5" placeholder="Email 5">
                         </div>
+                        <input type="hidden" name="txt_emails" id="txt_emails" name="txt_emails" />
 
                     </div>
                     <div>
                         <button type="button" class="btn btn-warning my-2 " name="addMoreMembers" id="addmoreMembersBtn">Add Member&nbsp;<i class="fas fa-plus-square"></i></button><br>
-<input type="submit" id="team_form_hid_btn" hidden/>
+                    <input type="submit" id="team_form_hid_btn" hidden/>
 
                         <div class="row ">
                             <div class="col-xs-6 ml-3 mt-3">
-                                <div class="form-check chk_team" style="display: none;">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox" value="">Accommodate for
-
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-xs-6">
+                                
+                            <div class="form-check chk_team" style="display: none;">
                                 <div class="form-group">
-                                    <label for="exampleFormControlSelect1"></label>
-                                    <select class="form-control ml-2 p-0" id="exampleFormControlSelect1">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-
-                                    </select>
-
+                                    <label class="form-check-label" style="padding-left:25px;">
+                                        <input class="form-check-input chk_main" type="checkbox" value="">Members need Accommodation for the days
+                                    </label>
+                                    </div>
+                                    
+                                   
+                                    <div class="form-group" style="" > 
+                                    <label class="form-check-label" style="margin-left:30px;">
+                                        <input class="form-check-input chk_item" disabled type="checkbox" value="">1
+                                    </label>
+                                    <label class="form-check-label" style="margin-left:30px;">
+                                        <input class="form-check-input chk_item" disabled type="checkbox" value="">2
+                                    </label>
+                                    <label class="form-check-label" style="margin-left:30px;">
+                                        <input class="form-check-input chk_item" disabled type="checkbox" value="" >3
+                                    </label>
+                                    <label class="form-check-label" style="margin-left:30px;">
+                                        <input class="form-check-input chk_item" disabled type="checkbox" value="">4
+                                    </label>
+                                    </div>
+                                   
                                 </div>
+
                             </div>
+                            
                         </div>
 
 
@@ -460,13 +469,20 @@
         $("#addmoreMembersBtn").prop("disabled",false);
     }
     function team_form_sumbit(){
+        str = "";
+        $('#team_form input[type=email]').each(function (){
+        str+=$(this).val() + "$";
+        });
 
-
-        $('#team_form_hid_btn').click();
+        $('#txt_emails').val(str);
+           $('#team_form_hid_btn').click();
 
 
     }
 
+    $('.chk_main').on('change', function(){ 
+        $(".chk_item").prop("disabled",!this.checked);
+    });
 
 
 
