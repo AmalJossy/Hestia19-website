@@ -1,27 +1,85 @@
-# Slim Framework 3 Skeleton Application
+# Hestia Web app
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
 
-## Install the Application
 
-Run this command from the directory in which you want to install your new Slim Framework application.
+## Installation
 
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
+1. clone files
+2. setup virtual hosts in xampp, make hosts file point a domain( example hestialocal.live) to localhost
+3. create folder development or production in application/config folder
+4. create configurations
+	- config.php : basic codeigniter config
+	- database.php : database config
+	- google_api.php : google auth api keys
+	- super.php : super admin credentials
+5. start apache and MySQL servers
+6.  goto your_domain/migrate/index to migrate database
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
+## API
+### login
 
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
+```
+OkHttpClient client = new OkHttpClient();
 
-To run the application in development, you can run these commands 
+MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+RequestBody body = RequestBody.create(mediaType, "username=<username>&password=<password>");
+Request request = new Request.Builder()
+  .url("http://hestialocal.live/admin/login")
+  .post(body)
+  .addHeader("Content-Type", "application/x-www-form-urlencoded")
+  .build();
 
-	cd [my-app-name]
-	php composer.phar start
+Response response = client.newCall(request).execute();
+```
 
-Run this command in the application directory to run the test suite
+### get category
+```
+OkHttpClient client = new OkHttpClient();
 
-	php composer.phar test
+Request request = new Request.Builder()
+  .url("http://hestialocal.live/admin/category[/<id>]")
+  .get()
+  .build();
 
-That's it! Now go build something cool.
+Response response = client.newCall(request).execute();
+```
+### add category
+```
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+RequestBody body = RequestBody.create(mediaType, "cat_name=&username=&password=");
+Request request = new Request.Builder()
+  .url("http://hestialocal.live/admin/category")
+  .post(body)
+  .addHeader("Content-Type", "application/x-www-form-urlencoded")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+### edit category
+```
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+RequestBody body = RequestBody.create(mediaType, "cat_id=&cat_name=&username=&pswd=");
+Request request = new Request.Builder()
+  .url("http://hestialocal.live/admin/category")
+  .put(body)
+  .addHeader("Content-Type", "application/x-www-form-urlencoded")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+### delete category
+```
+OkHttpClient client = new OkHttpClient();
+
+Request request = new Request.Builder()
+  .url("http://hestialocal.live/admin/category/<id>")
+  .delete(null)
+  .build();
+
+Response response = client.newCall(request).execute();
+```
