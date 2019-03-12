@@ -26,6 +26,8 @@ class Pages extends CI_Controller {
         $startdate=date('Y-m-d', strtotime($data['event']->reg_start));
         $enddate = date('Y-m-d', strtotime($data['event']->reg_end));
         $cnt=$this->report_model->get_event_reg_count($eid);
+        $reg_fee=$data['event']->reg_fee;
+        if($reg_fee){
         if (($today >= $startdate) && ($today <= $enddate)){
 
             if($cnt<$data['event']->seats || $data['event']->seats == 0){
@@ -46,6 +48,9 @@ class Pages extends CI_Controller {
 
             }
         }
+    }else{
+        $btn = "";
+    }
 
        $data['islogged']=false; //#TODO
        $data['btn']=$btn;

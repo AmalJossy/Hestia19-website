@@ -171,7 +171,7 @@ padding-right:10vh;
       hour, come, discover it, be a part of it.</p>
       <a href="<?=base_url("events/technical-robotics")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
-      <div class="col-12 listing1" style="padding-bottom: 20px;">
+      <!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">RAASA | CHEMICAL</p>
       <p class="event-desc">This is where you find out the perfect chemical reaction, the perfect balance of all the 
       solutions that can create the elixir of magic. 
@@ -179,7 +179,7 @@ padding-right:10vh;
       <a href="<?=base_url("events/technical-chem")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
 
-      <!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
+      <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">ESTELLA | EC</p>
       <p class="event-desc">Drawn by those green shiny circuit boards? Don't cook up those fixed recipes , rather create your own 
       realities here at Hestia '19. Estella is to make you perceive and learn new routes of technology, right from designing to 
