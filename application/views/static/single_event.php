@@ -319,7 +319,7 @@
                         <?php
                         if($event->reg_fee && $event->reg_fee>0){
 
-?> <h4>Registration Fee : ₹<?=$event->reg_fee?></h4>
+?> <h4>Registration Fee : ₹<?=$event->reg_fee?> per <?=$event->fee_type?></h4>
                         <?php
                         }else if($event->reg_fee == 0){
                         ?>
