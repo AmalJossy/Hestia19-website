@@ -144,7 +144,7 @@ padding-right:10vh;
             </li>
             <li class="nav-item fade-in">
               <a href="../contact/" class="nav-link">
-                CONTACT US
+                CONTACT
               </a>
             </li>
           </ul>

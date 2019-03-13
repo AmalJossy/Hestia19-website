@@ -113,7 +113,7 @@
             </li>
             <li class="nav-item fade-in">
               <a href="<?=base_url()?>contact" class="nav-link">
-                CONTACT US
+                CONTACT
               </a>
             </li>
           </ul>
