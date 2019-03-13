@@ -22,6 +22,9 @@ class Admin_API extends REST_Controller {
     function status_get(){
         $data['status']='online';
         $data['version']='3.10';
+        $app_ver_file = fopen(__DIR__ . '/app_version.txt', "r");
+        $data['app_version']=rtrim(fgets($app_ver_file));
+        fclose($app_ver_file);
         if(isset($_SESSION['username'])){
             $data['username']=$_SESSION['username'];
         }
