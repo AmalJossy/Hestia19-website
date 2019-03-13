@@ -16,10 +16,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |  api_key           string   Developer key.
 |  scopes            string   Specify scopes
 */
-$config['google']['client_id']        = 'AIzaSyBZStX5F_zE9NphKMLsOMSdeGcvIdvUfmI';
-$config['google']['client_secret']    = '607530122184-snnptc90phk1221skq6mkme85h9a9rc3.apps.googleusercontent.com';
-$config['google']['redirect_uri']     = 'http://localhost';
-$config['google']['application_name'] = 'Login to Example.com';
+$config['google']['client_id']        = '75317617188-laanc98h20i5fuune0bf4hh7gpn926in.apps.googleusercontent.com';
+$config['google']['client_secret']    = 'VVWj_15tvjQzNNpFASUNcgwm';
+$config['google']['redirect_uri']     = 'http://hestialocal.live/Auth/oauth2callback';
+$config['google']['application_name'] = 'Hestia';
 $config['google']['api_key']          = '';
 $config['google']['scopes']           = array();
 

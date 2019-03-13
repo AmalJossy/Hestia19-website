@@ -81,16 +81,30 @@
 
         </div>
         <div class="collapse navbar-collapse">
-          <!-- <ul class="navbar-nav">
+          <ul class="navbar-nav">
             <li class="nav-item ">
+            &nbsp;&nbsp;
               &nbsp;&nbsp;
               &nbsp;&nbsp;
               &nbsp;&nbsp;
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-              &nbsp;&nbsp;
+            <?php
+  if($this->session->userdata('sess_logged_in')==0){
+    ?>
+    
+<?php
+  }else{
+?>
+ &nbsp; &nbsp; &nbsp;
+             
+    <?php
+  }
+?>
+
+             
             </li>
-          </ul> -->
+          </ul>
           <ul class="navbar-nav mx-auto">
             <li class="nav-item fade-in">
               <a href="#" class="nav-link event-click " id="events">EVENTS</a>
@@ -109,37 +123,40 @@
               <a href="<?=base_url()?>contact" class="nav-link">CONTACT</a>
             </li>
           </ul>
-          <!-- <ul class="navbar-nav">
+       <ul class="navbar-nav">
 <?php
-$islogged=false;
-  if($islogged==false){
+
+
+  if($this->session->userdata('sess_logged_in')==0){
 ?>
     <li class="nav-item ">
-      <a href="#" class="nav-link btn btn-outline-primary float-left " style="border-color:white; margin-left: 12%;">
+      <a href="<?=$google_login_url?>" class="nav-link btn btn-outline-primary float-left " style="border-color:white; margin-left: 12%;">
         LOGIN
       </a>
     </li>
 
   <?php
   }else{
+   if(isset($_SESSION['name'])){
     ?>
 
     <li class="dropdown nav-item">
       <a href="#pablo" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown">
         <div class="profile-photo-small" style="margin-right: 15px;">
-          <img src="./assets/img/faces/avatar.jpg" alt="DP" class="rounded-circle img-fluid">
+          <img src="<?=$_SESSION['profile_pic']?>" alt="DP" class="rounded-circle img-fluid">
         </div>
       </a>
       <div class="dropdown-menu dropdown-menu-right">
-        <h6 class="dropdown-header">Dropdown header</h6><!--        #TODO NAME-->
+        <h6 class="dropdown-header"><?=$_SESSION['name']?></h6>
 
         <a href="#" class="dropdown-item">My Events</a> <!--        #TODO -->
 
-        <a href="#" class="dropdown-item">Sign out</a><!--        #TODO -->
+        <a href="<?=base_url();?>auth/logout" class="dropdown-item">Sign out</a>
       </div>
     </li>
 
     <?php
+   }
   }
 ?>
 
@@ -147,7 +164,7 @@ $islogged=false;
 
 
 
-          </ul> -->
+          </ul> 
         </div>
       </div>
     </nav>

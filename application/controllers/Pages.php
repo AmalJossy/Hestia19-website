@@ -3,14 +3,15 @@ class Pages extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('report_model');
-//        $this->load->library('Google');
+        $this->load->library('Google');
     }
     function index(){
       
- 
-        $this->load->view('static/home');
+        $data['google_login_url']=$this->google->get_login_url();
+        $this->load->view('static/home',$data);
     }
     function view($page){
+        
         if ( ! file_exists(APPPATH.'views/static/'.$page.'.php')){
             show_404();
         }
@@ -38,6 +39,7 @@ class Pages extends CI_Controller {
             return;
         }
        $eid=$data['event']->event_id;
+       $isbooked=$this->report_model->get_book_status($eid);
         $data['parent']=$this->report_model->get_event_cat_details($eid)->cat_name;
         $today = date('Y-m-d');
         $startdate=date('Y-m-d', strtotime($data['event']->reg_start));
@@ -45,6 +47,12 @@ class Pages extends CI_Controller {
         $cnt=$this->report_model->get_event_reg_count($eid);
         $reg_fee=$data['event']->reg_fee;
         if($reg_fee){
+            if($isbooked>=1){
+
+                $btn="<a href='#' class='btn btn-warning btn-custom disabled'>Booked &nbsp;<i class='fas fa-ticket-alt'></i></a>";
+
+
+            }else{
         if (($today >= $startdate) && ($today <= $enddate)){
 
             if($cnt<$data['event']->seats || $data['event']->seats == 0){
@@ -65,6 +73,7 @@ class Pages extends CI_Controller {
 
             }
         }
+    }
     }else{
         $btn = "";
     }
@@ -90,6 +99,9 @@ class Pages extends CI_Controller {
             echo '[505,"Login Required","Please Login to continue"]';
         }
 
+    }
+    function ProcessBooking(){
+        echo $this->input->post('json_data');
     }
 
 //    public function view($page = 'home'){

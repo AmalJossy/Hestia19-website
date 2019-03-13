@@ -58,6 +58,10 @@ $route['eventbooking'] = 'Pages/BookTicket';
 $route['events/(.+)'] = 'Pages/Event/$1';
 $route['event/(.+)'] = 'Pages/SingleEvent/$1';
 $route['process/(.+)'] = 'Pages/ProcessUserRequest/$1';
+$route['bookticket'] = 'Pages/ProcessBooking';
+
+
+
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

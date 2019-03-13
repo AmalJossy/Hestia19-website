@@ -207,7 +207,33 @@
 
         left:10px;
     }
+    .chk_acommodation{
+        margin-top:5px;
+    }
+    .chk_ac_day{
+        margin-left:15px;
+    }
+        /* width */
+        ::-webkit-scrollbar {
+        width: 10px;
+        }
 
+        /* Track */
+        ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey; 
+        border-radius: 10px;
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+        background: #929292; 
+        border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+        background: #929292; 
+        }
 
     @media screen and (min-width: 767px) {
 
@@ -228,55 +254,57 @@
             </div>
 
             <!-- Modal body -->
-            <div class="modal-body">
+            <div class="modal-body" style="max-height: calc(100vh - 200px);overflow-y: auto;">
 
 
-                <form id="team_form" name="team_form" style="display: none;">
+                <form id="team_form" method="post" action="<?=base_url("bookticket")?>" name="team_form" style="display: none;">
 
-                    <input class="form-control" type="email" name="email0" placeholder="Email" readonly><br>
+                <input type="hidden" id="json_data" name="json_data" hidden/>
+                    <div class="row" style='margin-bottom:10px;'>
+                        <div class="col-md-8 col-sm-12"><input class="form-control" type="email" id="email0" placeholder="Email" value="<?php if(isset($_SESSION['email']))echo $_SESSION['email'];?>"; readonly></div>
+                        <div class="col-md-4 col-sm-12"><label class="checkbox-inline chk_acommodation">
+                                    <input type="checkbox" id="chk_acm0">&nbsp;&nbsp;Accommodation
+                                    </label></div>
+                    </div> 
                     <div id="team_form_members">
 
                     </div>
                     <div id="team_form_members_opt">
                     </div>
-                    <div>
-                        <div class="form-group-div form-group" style="display:none;" id="member_1">
-                            <div><a id="member_1_close" class="close-href btn btn-xs btn-danger text-white" style="margin-bottom: 3px; padding-top: 2px; padding-bottom: 2px; padding-left: 6px; padding-right: 6px;">Close</a></div>
-                            <input class="form-control" type="email" name="email4" placeholder="Email 4">
-                        </div>
-                        <div class="form-group-div form-group" style="display:none;" id="member_2">
-                            <div><a id="member_2_close" class="close-href btn btn-xs btn-danger text-white" style="margin-bottom: 3px; padding-top: 2px; padding-bottom: 2px; padding-left: 6px; padding-right: 6px;">Close</a></div>
-                            <input class="form-control" type="email" name="email5" placeholder="Email 5">
-                        </div>
-
-                    </div>
+                    
                     <div>
                         <button type="button" class="btn btn-warning my-2 " name="addMoreMembers" id="addmoreMembersBtn">Add Member&nbsp;<i class="fas fa-plus-square"></i></button><br>
 <input type="submit" id="team_form_hid_btn" hidden/>
 
                         <div class="row ">
                             <div class="col-xs-6 ml-3 mt-3">
-                                <div class="form-check chk_team" style="display: none;">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox" value="">Accommodate for
-
+                                
+                            
+                                <div class="center"> 
+                                <label class="form-check-label">
+                                        Accommodation for
+                                    </label>
+                                    <label class="checkbox-inline chk_ac_day">
+                                    <input type="checkbox" id="day_1" value="1">&nbsp;&nbsp;Day -1
+                                    </label>
+                                    <label class="checkbox-inline chk_ac_day">
+                                    <input type="checkbox" id="day_2" value="2">&nbsp;&nbsp;Day -2
+                                    </label>
+                                    <label class="checkbox-inline chk_ac_day">
+                                    <input type="checkbox" id="day_3" value="3">&nbsp;&nbsp;Day -3
+                                    </label>
+                                    <label class="checkbox-inline chk_ac_day">
+                                    <input type="checkbox" id="day_4" value="4">&nbsp;&nbsp;Day -4
                                     </label>
                                 </div>
+                               
                             </div>
-                            <div class="col-xs-6">
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1"></label>
-                                    <select class="form-control ml-2 p-0" id="exampleFormControlSelect1">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-
-                                    </select>
-
-                                </div>
-                            </div>
+                           
                         </div>
+                        <div class="row" style='margin-bottom:10px;'>
+                        <div class="col-md-12 col-sm-12"><input class="form-control" type="text" id="referralcode" placeholder="Referral Code" value=""; ></div>
+                       
+                    </div> 
 
 
 
@@ -413,7 +441,7 @@
                         var n=minmemb-1;
                         var html="";
                         while(n>0){
-                            html+="<input class='form-control' type='email' name='email"+(minmemb-n)+"' placeholder='Email' required><br>";
+                            html+=" <div class='row' style='margin-bottom:10px;'><div class='col-md-8 col-sm-12'><input class='form-control' type='email' id='email"+(minmemb-n)+"' placeholder='Email' required></div><div class='col-md-4 col-sm-12'><label class='checkbox-inline chk_acommodation'><input type='checkbox' id='chk_acm"+(minmemb-n)+"'>&nbsp;&nbsp;Accommodation</label></div></div>";
                             n--;
                         }
                         $('#team_form_members').html(html);
@@ -454,7 +482,7 @@
        // $('.close-href').show(); // Shows
          // hides
         if(cur_cnt<=rem_members){
-            var html="<div class='form-group-div form-group' style='' id='member_"+(minmemb+cur_cnt)+"'> <input class='form-control' type='email' name='email"+(minmemb+cur_cnt)+"' placeholder='Email' required> <a id='member_"+(minmemb+cur_cnt)+"_close' class='close-href btn btn-xs btn-danger text-white' style='border: 0;margin: 0; float:right;margin-top:-38px;' onclick='removeElement("+(minmemb+cur_cnt)+")'>X</a> </div>";
+            var html=" <div class='row' style='margin-bottom:10px;' id='member_"+(minmemb+cur_cnt)+"'><div class='col-md-8 col-sm-12'><input class='form-control' type='email' id='email"+(minmemb+cur_cnt)+"' placeholder='Email' required> <a id='member_"+(minmemb+cur_cnt)+"_close' class='close-href btn btn-xs btn-danger text-white' style='border: 0;margin: 0; float:right;margin-top:-38px;' onclick='removeElement("+(minmemb+cur_cnt)+")'>X</a></div><div class='col-md-4 col-sm-12'><label class='checkbox-inline chk_acommodation'><input type='checkbox' id='chk_acm"+(minmemb+cur_cnt)+"'>&nbsp;&nbsp;Accommodation</label></div></div>";
             $('#team_form_members_opt').html(old+html);
 
         }
@@ -472,7 +500,47 @@
     }
     function team_form_sumbit(){
 
+      
+        emails_josn = [];
+        $("input[type=email]").each(function() {
+            email = {};
+            email["email"] = $(this).val();
+            var chkid=$(this).attr('id');
+            chkid=chkid.replace("email","chk_acm");
+            if($("#"+chkid).is(":checked")==true){
+                email["accommodation"] = "Y";
+            }else{
+                email["accommodation"] = "N";
+            }
+            
+            emails_josn.push(email);
+        });
+        var days_cm="";
+        for(var i=1;i<=4;i++){
 
+            if($("#day_"+i).is(":checked")==true){
+                if(days_cm==""){
+                    days_cm=$("#day_"+i).val();
+                }else{
+                    days_cm=days_cm+","+$("#day_"+i).val();
+                }
+                
+            }
+        }
+        
+        
+
+       
+        jsonObj = [];
+        item = {};
+        item ["event_id"] =<?=$event->event_id?>;
+        item ["referral_code"] = $('#referralcode').val();
+        item ["accommodation_days"] = days_cm;
+        item ["emails"] = emails_josn;
+
+        jsonObj.push(item);
+        $('#json_data').val(JSON.stringify(jsonObj));
+        alert($('#json_data').val());
         $('#team_form_hid_btn').click();
 
 

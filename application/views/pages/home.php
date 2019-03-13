@@ -5,7 +5,7 @@
 	    <a href="<?=$google_login_url?>">login</a>
     <?php }
     else{?>
-        <a href="<?=base_url()?>auth/logout" > logout</a>
+        <a href="<?=base_url();?>auth/logout" > logout</a>
     <?php }
 ?>
 </section>

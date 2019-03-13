@@ -40,9 +40,27 @@ class User_model extends CI_Model {
         return FALSE;
     }
     public function complete_signin($data){
+
+        $this->load->library('encryption');
+        $config['encryption_key'] = 'Hestia 19 fgbhjasgdfh ayu';
+
+
         $data['email'] = $this->session->email;
         $data['fullname'] = $this->session->name;
+        $data['hashcode'] =$this->hashPassword($data['email'], $data['fullname']);
+        $this->load->library('encryption');
         $this->create($data);
+    }
+
+    function hashPassword($pass, $salt=FALSE) {
+      try {
+          if (!empty($salt))
+              $pass = $salt . implode($salt, str_split($pass, floor(strlen($pass) / 2))) . $salt;
+          return md5($pass);
+      }catch (Exception $ex){
+
+            return NULL;
+        }
     }
 }
 ?>
