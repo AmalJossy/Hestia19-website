@@ -21,7 +21,7 @@
 
 
   <title>
-    Cultural Events - Hestia19
+    Cultural Events - Hestia 19 - National Level TechnoCultural Fest of TKM
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
