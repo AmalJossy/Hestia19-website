@@ -1,19 +1,31 @@
 <?php
 class Event_model extends CI_Model {
     public function get_category_events($id){
-        $this->db->select('event_id, cat_id, title, short_desc, details, venue, prize, co1_name,
-                    co1_no, co2_name, co2_no, seats, reg_start, reg_end');
+        $this->db->select('event_id, cat_id, title, short_desc, details, min_memb, max_memb,
+                    venue, reg_fee, fee_type, prize, file1, file2, co1_name,
+                    co1_no, co2_name, co2_no, seats, reg_start, reg_end, link');
 
         $this->db->where('cat_id', $id );
 
         $query = $this->db->get('events');
         return $query->result_array();
     }
-    public function get_events($id){
-        $this->db->select('event_id, cat_id, title, short_desc, details, venue, prize, co1_name,
-                    co1_no, co2_name, co2_no, seats, reg_start, reg_end');
+    public function get_event($id){
+        $this->db->select('event_id, cat_id, title, short_desc, details, min_memb, max_memb,
+                    venue, reg_fee, fee_type, prize, file1, file2, co1_name,
+                    co1_no, co2_name, co2_no, seats, reg_start, reg_end, link');
         if( $id != NULL ){
             $this->db->where('event_id', $id );
+        }
+        $query = $this->db->get('events');
+        return $query->result_array();
+    }
+    public function get_event_by_link($link){
+        $this->db->select('event_id, cat_id, title, short_desc, details, min_memb, max_memb,
+                    venue, reg_fee, fee_type, prize, file1, file2, co1_name,
+                    co1_no, co2_name, co2_no, seats, reg_start, reg_end, link');
+        if( $id != NULL ){
+            $this->db->where('link', $link );
         }
         $query = $this->db->get('events');
         return $query->result_array();
@@ -62,7 +74,7 @@ class Event_model extends CI_Model {
                 $data = array(
                     'type' => 'event',
                     'event_id' => $row->event_id,
-                    'event_name' => $row->event_name,
+                    'title' => $row->title,
                     'username' => $row->username,
                     'validated' => TRUE
                 );
