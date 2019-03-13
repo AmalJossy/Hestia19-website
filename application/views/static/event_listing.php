@@ -7,6 +7,17 @@
   <link rel="icon" type="image/png" href="<?=base_url();?>assets/front/img/hestia-icon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="theme-color" content="#1a3840">
+  <meta name="description" content="Hestia 19 - National level Techno Cultural fest organized by TKM College of Engineering. March 28-31">
+<meta name="keywords" content="hestia,hestia19,tkmce,hestiatkm,hestiatkmce,conjura,fest,event,technical,cultural,technocultural">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135958084-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-135958084-1');
+</script>
 
 
   <title>
@@ -36,8 +47,8 @@
     font-family: 'Hestia-Regular', sans-serif;
   }
   .listing1{
-      word-wrap:break-word;
-      word-break: break-all;
+      /*word-wrap:break-word;*/
+      /*word-break: break-all;*/
       background-size: cover;
       border-bottom: 0.5px solid gray;
       padding-top:25px;
@@ -133,7 +144,7 @@ padding-right:10vh;
             </li>
             <li class="nav-item fade-in">
               <a href="../contact/" class="nav-link">
-                CONTACT
+                CONTACT US
               </a>
             </li>
           </ul>
