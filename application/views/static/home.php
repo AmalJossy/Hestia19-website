@@ -93,28 +93,20 @@
           </ul> -->
           <ul class="navbar-nav mx-auto">
             <li class="nav-item fade-in">
-              <a href="#" class="nav-link event-click " id="events">
-                EVENTS
-              </a>
+              <a href="#" class="nav-link event-click " id="events">EVENTS</a>
             </li>
             <li class="nav-item fade-in">
-              <a href="#" class="nav-link">
-                SPONSORS
-              </a>
+              <a href="#" class="nav-link">SPONSORS</a>
             </li>
             <li class="nav-item d-none d-lg-block">
               <a class="navbar-brand my-auto" href="#">
                 <img class="fade-in-top" id="loading" style="max-height: 75px;margin-top: -20px;" src="<?=base_url();?>assets/front/img/logo.png" /></a>
             </li>
             <li class="nav-item fade-in">
-              <a href="<?=base_url()?>about" class="nav-link">
-                ABOUT
-              </a>
+              <a href="<?=base_url()?>about" class="nav-link">ABOUT</a>
             </li>
             <li class="nav-item fade-in">
-              <a href="<?=base_url()?>contact" class="nav-link">
-                CONTACT
-              </a>
+              <a href="<?=base_url()?>contact" class="nav-link">CONTACT</a>
             </li>
           </ul>
           <!-- <ul class="navbar-nav">
