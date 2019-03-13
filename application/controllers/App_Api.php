@@ -5,7 +5,8 @@ class App_Api extends CI_Controller {
 		$this->load->model('appapi_Model');
     }
 		function LoginCheck(){
-			echo $this->appapi_Model->login_check();
+			$login_details = $this->appapi_Model->login_check();
+			$this->response($login_details);
 		}
 		function InsertNewUser(){
 			echo $this->appapi_Model->insert_user_details();

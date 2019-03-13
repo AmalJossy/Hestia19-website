@@ -11,7 +11,12 @@ class Appapi_Model extends CI_Model {
         $num_rows=$query->num_rows();
         if($num_rows == 1)
         {
-            return "true";
+            $this->db->select('email, fullname, phone, college, accommodation');
+            if( $gmailid != NULL ){
+                $this->db->where('email', $gmailid );
+            }
+            $query = $this->db->get('users');
+            return $query->result_array();
         }else{
             return "false";
         }
