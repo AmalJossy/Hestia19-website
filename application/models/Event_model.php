@@ -3,7 +3,7 @@ class Event_model extends CI_Model {
     public function get_category_events($id){
         $this->db->select('event_id, cat_id, title, short_desc, details, min_memb, max_memb,
                     venue, reg_fee, fee_type, prize, file1, file2, co1_name,
-                    co1_no, co2_name, co2_no, seats, reg_start, reg_end, username, link');
+                    co1_no, co2_name, co2_no, seats, reg_start, reg_end, link');
 
         $this->db->where('cat_id', $id );
 
@@ -13,7 +13,7 @@ class Event_model extends CI_Model {
     public function get_event($id){
         $this->db->select('event_id, cat_id, title, short_desc, details, min_memb, max_memb,
                     venue, reg_fee, fee_type, prize, file1, file2, co1_name,
-                    co1_no, co2_name, co2_no, seats, reg_start, reg_end, link');
+                    co1_no, co2_name, co2_no, seats, reg_start, reg_end, username, link');
         if( $id != NULL ){
             $this->db->where('event_id', $id );
         }
