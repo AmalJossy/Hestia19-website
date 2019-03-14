@@ -37,7 +37,7 @@ class Appapi_Model extends CI_Model {
     }
     public function get_reg_events(){
         $email=$this->security->xss_clean($this->input->post('email'));
-        $imgpath=base_url("assets/uploads/img/");
+        $imgpath=base_url("assets/uploads/event_images/");
         $query=$this->db->query("select event_id,concat('".$imgpath."',event_id,'.jpg') as img,title from events where event_id in (select event_id from registration where member_email='".$email."' )");
         return  json_encode($query->result());
 
