@@ -142,14 +142,14 @@
 
     <li class="dropdown nav-item">
       <a href="#pablo" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown">
-        <div class="profile-photo-small" style="margin-right: 15px;">
-          <img src="<?=$_SESSION['profile_pic']?>" alt="DP" class="rounded-circle img-fluid">
+        <div class="profile-photo-small" style="margin-right: 15px;margin-left:20px;">
+        <img src="<?=$_SESSION['profile_pic']?>" alt="DP" class="rounded-circle img-fluid">
         </div>
       </a>
       <div class="dropdown-menu dropdown-menu-right">
         <h6 class="dropdown-header"><?=$_SESSION['name']?></h6>
 
-        <a href="#" class="dropdown-item">My Events</a> <!--        #TODO -->
+        <!-- <a href="#" class="dropdown-item">My Events</a>   todo-->
 
         <a href="<?=base_url();?>auth/logout" class="dropdown-item">Sign out</a>
       </div>

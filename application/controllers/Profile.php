@@ -9,9 +9,7 @@ class Profile extends CI_Controller {
             redirect(base_url());
         }
         $data['title'] = ucfirst('Complete Profile');
-        $this->load->view('templates/header',$data);
         $this->load->view('dashboard/complete',$data);
-        $this->load->view('templates/footer');
         if( $this->input->post('college') != NULL && $this->input->post('phone') != NULL ){
             $user['college'] = $this->input->post('college');
             $user['phone'] = $this->input->post('phone');

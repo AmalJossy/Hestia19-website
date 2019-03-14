@@ -18,7 +18,7 @@
                     <div class="col-md-3 col-sm-12" style="background: #fff;width:90%;border: grey; border-radius:5px; padding: 20px; position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
                     <form id="team_form" method="post">
                      <input class="form-control" type="text" id="" placeholder="College Name" name="college"><br/>
-                     <input class="form-control" type="text" id="" placeholder="Phone Number" name="phone"><br/>
+                     <input class="form-control" type="phone" id="" placeholder="Phone Number" name="phone"><br/>
                      <button type="submit" class="btn btn-warning my-2 " name="save" id="">Save</button><br>
                     </form>
                     </div> 

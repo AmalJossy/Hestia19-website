@@ -242,7 +242,7 @@
         }
     }
 </style>
-<body>
+<body style="margin-top:-20px;">
 <div class="modal" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -42,12 +42,10 @@ class User_model extends CI_Model {
     public function complete_signin($data){
 
         $this->load->library('encryption');
-        $config['encryption_key'] = 'Hestia 19 fgbhjasgdfh ayu';
-
 
         $data['email'] = $this->session->email;
         $data['fullname'] = $this->session->name;
-        $data['hashcode'] =$this->password_hash($data['email'],PASSWORD_BCRYPT);
+        $data['hashcode'] =password_hash($data['email'],PASSWORD_BCRYPT);
         $this->create($data);
     }
 }
