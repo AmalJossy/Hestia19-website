@@ -105,7 +105,7 @@ padding-right:10vh;
 </style>
 </head>
 
-<body class="profile-page sidebar-collapse page-header" data-parallax="true" style="background: url('<?=base_url();?>assets/front/img/event_list_bg.jpg') no-repeat center center fixed; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 100%;min-height:100vh;overflow: scroll;">
+<body class="profile-page sidebar-collapse page-header" data-parallax="true" style="background: url('<?=base_url();?>assets/front/img/event_list_bg.jpg') no-repeat center center fixed; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 100%;min-height:100vh;overflow: scroll; background-color:#152428;">
   <div style="z-index:3;">
     <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
       <div class="container-fluid">
