@@ -74,6 +74,15 @@ class Admin_API extends REST_Controller {
         $events = $this->event_model->get_event($id);
         $this->response($events);
     }
+
+    
+    function event_registrations_get($id=NULL){
+        $this->load->model('event_model');
+        $events_reg = $this->event_model->get_registrations_event($id);
+        $this->response($events_reg);
+    }
+
+
     function event_post(){
         $this->load->model('event_model');
         $data['title']=$this->post('title');

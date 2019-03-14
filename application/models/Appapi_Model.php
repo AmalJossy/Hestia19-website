@@ -42,6 +42,5 @@ class Appapi_Model extends CI_Model {
 
     }
 
-
 }
 ?>
