@@ -25,8 +25,13 @@ class Admin_API extends REST_Controller {
         $app_ver_file = fopen(__DIR__ . '/app_version.txt', "r");
         $data['app_version']=rtrim(fgets($app_ver_file));
         fclose($app_ver_file);
-        if(isset($_SESSION['username'])){
+        if(isset($_SESSION['username']))
             $data['username']=$_SESSION['username'];
+        if(isset($_SESSION['type'])){
+            if($_SESSION['type'] == 'category')
+                $data['cat_id']=$_SESSION['cat_id'];
+            else
+                $data['event_id']=$_SESSION['event_id'];
         }
         $this->response($data);
     }
