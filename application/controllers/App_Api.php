@@ -15,6 +15,7 @@ class App_Api extends CI_Controller {
 		function GetUserEventsList(){
 			echo $this->appapi_Model->get_reg_events();
 		}
+		
 
 		
 	

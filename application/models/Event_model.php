@@ -20,6 +20,33 @@ class Event_model extends CI_Model {
         $query = $this->db->get('events');
         return $query->result_array();
     }
+    
+    public function get_registrations_event($eid){
+        if(!$eid){
+            $eid=0;
+        }
+        $query=$this->db->query("SELECT event_id,reg_email,member_email,fullname,phone,college,file1,file2 FROM registration a left join users b on  a.member_email=b.email  where   a.event_id=".$eid." and if(a.member_email=a.reg_email,1,0)=1 order by reg_id");
+        $data = array();
+        foreach($query->result() as $row1)
+        {
+    
+                $row = array();
+                $row['reg_email'] = $row1->reg_email;
+                $row['fullname'] = $row1->fullname;
+                $row['college'] = $row1->college;
+                $row['phone'] = $row1->phone;
+                $row['file1'] = $row1->file1;
+                $row['file2'] = $row1->file2;
+                $query_memb=$this->db->query("SELECT member_email,fullname,phone,college FROM registration a left join users b on  a.member_email=b.email  where   a.event_id=".$row1->event_id." and if(a.member_email=a.reg_email,1,0)=0 and a.reg_email='".$row1->reg_email."'  order by reg_id");
+                $row['members']=$query_memb->result_array();
+                $data[] = $row;
+
+        }
+
+        return  $data;
+
+    }
+    
     public function get_event_by_link($link){
         $this->db->select('event_id, cat_id, title, short_desc, details, min_memb, max_memb,
                     venue, reg_fee, fee_type, prize, file1, file2, co1_name,
