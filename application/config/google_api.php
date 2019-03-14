@@ -17,9 +17,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |  scopes            string   Specify scopes
 */
 // $config['google']['client_id']        = '75317617188-laanc98h20i5fuune0bf4hh7gpn926in.apps.googleusercontent.com';
-$config['google']['client_id']        = '880454166417-rbma92ale4sj7lt94nhepdsgumllps94.apps.googleusercontent.com';
+$config['google']['client_id']        = '917367370675-s4vebqfc42a9psh6244nncvq4ioolo1n.apps.googleusercontent.com';
 // $config['google']['client_secret']    = 'VVWj_15tvjQzNNpFASUNcgwm';
-$config['google']['client_secret']    = '_vM7iDvL7d8pz8A6pN9TBhZg';
+$config['google']['client_secret']    = 'wkHUe-RlNoCy41MboRhykh0s';
 // $config['google']['redirect_uri']     = 'http://hestialocal.live/Auth/oauth2callback';
 $config['google']['redirect_uri']     = 'https://www.hestia.live/Auth/oauth2callback';
 $config['google']['application_name'] = 'Hestia';
