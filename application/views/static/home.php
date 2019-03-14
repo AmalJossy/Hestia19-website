@@ -51,6 +51,17 @@
 }
    </script>
 
+
+<style>
+
+  @media only screen and (max-width: 1000px) {
+    .profile-photo-small {
+    margin-left:15px;
+    margin-rigt:15px;
+  }
+
+}
+</style>
 </head>
 <div id="preloader">
   <div id="status">&nbsp;</div>
@@ -141,11 +152,14 @@
     ?>
 
     <li class="dropdown nav-item">
-      <a href="#pablo" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown">
-        <div class="profile-photo-small" style="margin-right: 15px;margin-left:20px;">
-        <img src="<?=$_SESSION['profile_pic']?>" alt="DP" class="rounded-circle img-fluid">
+      <a href="#pablo" style="max-width:50px;" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown">
+        <div class="profile-photo-small" >
+        <img  src="<?=$_SESSION['profile_pic']?>" alt="DP" class="rounded-circle img-fluid">
+        <small  class="mobile-show" style="margin-top:-2rem;margin-left:50px;position:absolute;">Test</small>
         </div>
+       
       </a>
+     
       <div class="dropdown-menu dropdown-menu-right">
         <h6 class="dropdown-header"><?=$_SESSION['name']?></h6>
 

@@ -424,13 +424,30 @@
 
                 switch(array[0]){
                     case 505:{
-                        $('.modal-title').text(array[1]);
-                        $('.modal-body').html(array[2]);
-                        $('#myModal').show();
+                     
+                      window.location="<?=$google_login_url?>";
+                       
                         break;
                     }
                     case 200:{
-                        alert("Payment"); //#TODO
+                        $('.chk_team').css('display','inline');
+                        $('#team_form').css('display','block');
+                        $('.chk_acommodation').css('display','none');
+                        $('.modal-title').text("Details");
+                        $('#myModal').show();
+                            $("#addmoreMembersBtn").css({
+                                "display": "none"
+                            });
+                            var acc=array[2];
+                            for(var i=1;i<=4;i++){
+                                    if(acc.includes(i+"")){
+                                  
+                                        $("#day_"+i).prop('disabled','true');
+                                        $("#day_"+i).prop('checked','true');
+                                        
+                                    }
+                            }
+                        $('.modal-footer').html("<button type='button' class='btn btn-success' name='team_form_submit' class='team_form_submit' onclick='team_form_sumbit()' >Submit&nbsp;<i class='fas fa-check-circle'></i></button>");
                         break;
                     }
                     case 201:{
@@ -518,29 +535,23 @@
         var days_cm="";
         for(var i=1;i<=4;i++){
 
-            if($("#day_"+i).is(":checked")==true){
+            if($("#day_"+i).is(":checked")==true && $("#day_"+i).is(':enabled')){
                 if(days_cm==""){
                     days_cm=$("#day_"+i).val();
                 }else{
-                    days_cm=days_cm+","+$("#day_"+i).val();
+                    days_cm=days_cm+""+$("#day_"+i).val();
                 }
                 
             }
         }
-        
-        
-
-       
         jsonObj = [];
         item = {};
         item ["event_id"] =<?=$event->event_id?>;
         item ["referral_code"] = $('#referralcode').val();
         item ["accommodation_days"] = days_cm;
         item ["emails"] = emails_josn;
-
         jsonObj.push(item);
         $('#json_data').val(JSON.stringify(jsonObj));
-        alert($('#json_data').val());
         $('#team_form_hid_btn').click();
 
 

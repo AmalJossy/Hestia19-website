@@ -44,6 +44,11 @@ class Report_model extends CI_Model {
         $cnt=$this->db->query("SELECT min_memb,max_memb from events where event_id=".$eid);
         return $cnt->row();
     }
+    
+    public function get_user_accomodations($email){
+        $cnt=$this->db->query("SELECT accommodation from users where email='".$email."'");
+        return $cnt->row()->accommodation;
+    }
     public function get_book_status($eid){
         if(!isset($_SESSION['email']))return 0;
         $cnt=$this->db->query("SELECT count(*) As Cnt from registration where member_email='".$_SESSION['email']."' and event_id=".$eid);

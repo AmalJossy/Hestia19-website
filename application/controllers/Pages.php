@@ -4,11 +4,21 @@ class Pages extends CI_Controller {
         parent::__construct();
         $this->load->model('report_model');
         $this->load->library('Google');
+        $this->load->model('user_model');
+        $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 
+        "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .  
+        $_SERVER['REQUEST_URI']; 
+   
+        if(isset($_SESSION['name']) && $this->user_model->is_registered($_SESSION['email'])==FALSE){
+            $_SESSION['back_url']=$link;
+            redirect("Profile/complete");
+        }
     }
     function index(){
       
         $data['google_login_url']=$this->google->get_login_url();
-        $this->load->view('static/home',$data);
+  
+       $this->load->view('static/home',$data);
     }
     function view($page){
         
@@ -34,6 +44,7 @@ class Pages extends CI_Controller {
     function SingleEvent($elink){
         $elink1=$this->security->xss_clean($elink);
        $data['event']=$this->report_model->get_single_event($elink1);
+       $data['google_login_url']=$this->google->get_login_url();
         if($data['event']==""){
             show_404();
             return;
@@ -84,12 +95,17 @@ class Pages extends CI_Controller {
         $this->load->view('static/single_event',$data);
     }
     function ProcessUserRequest($eid){
-        $islogged=true; //#todo
+        $islogged=false;
+        if(isset($_SESSION['email'])){
+            $islogged=true;
+        }
+ 
         if($islogged==true){
                 $team_size=$this->report_model->get_team_size($eid);
 
                 if($team_size->min_memb==1  && $team_size->max_memb==1){
-                    echo '[200,"Success","Success"]';
+                    $acc=$this->report_model->get_user_accomodations($_SESSION['email']);
+                    echo '[200,"Success","'.$acc.'"]';
                 }else{
                     echo "[201,$team_size->min_memb,$team_size->max_memb]";
                 }
