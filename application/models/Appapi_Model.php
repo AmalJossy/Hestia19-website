@@ -27,8 +27,8 @@ class Appapi_Model extends CI_Model {
         $data['fullname']=$this->security->xss_clean($this->input->post('fullname'));
         $data['college']=$this->security->xss_clean($this->input->post('college'));
         $data['phone']=$this->security->xss_clean($this->input->post('phone'));
-        $data['hashcode']=password_hash($data['email'], PASSWORD_BCRYPT);
         if($data['email']){
+            $data['hashcode']=password_hash($data['email'], PASSWORD_BCRYPT);
             return $this->db->insert('users', $data);
         }else{
             return "0";
