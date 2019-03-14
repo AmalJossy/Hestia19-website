@@ -30,6 +30,11 @@ class Admin_API extends REST_Controller {
         }
         $this->response($data);
     }
+    function categoryevents_get($id){
+        $this->load->model('event_model');
+        $events = $this->event_model->get_category_events($id);
+        $this->response($events);
+    }
     function category_get($id = NULL){
         $this->load->model('category_model');
         $categories = $this->category_model->get_categories($id);
@@ -61,7 +66,7 @@ class Admin_API extends REST_Controller {
 
     function event_get($id = NULL){
         $this->load->model('event_model');
-        $events = $this->event_model->get_events($id);
+        $events = $this->event_model->get_event($id);
         $this->response($events);
     }
     function event_post(){

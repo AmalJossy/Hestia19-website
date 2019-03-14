@@ -45,6 +45,7 @@ class Report_model extends CI_Model {
         return $cnt->row();
     }
     public function get_book_status($eid){
+        if(!isset($_SESSION['email']))return 0;
         $cnt=$this->db->query("SELECT count(*) As Cnt from registration where member_email='".$_SESSION['email']."' and event_id=".$eid);
         return $cnt->row()->Cnt;
     }

@@ -2,7 +2,7 @@
 class Category_model extends CI_Model {
     public function get_categories($id){
         $this->db->select('cat_id, cat_name');
-        if( $id != NULL ){
+        if( $id != null ){
             $this->db->where('cat_id', $id );
         }
         $query = $this->db->get('categories');
