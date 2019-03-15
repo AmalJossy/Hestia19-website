@@ -611,6 +611,7 @@ function checkBoxValidate(){
         item = {};
         item ["event_id"] =<?=$event->event_id?>;
         item ["referral_code"] = $('#referralcode').val();
+        item ["reg_email"] = <?=$_SESSION['email']?>;
         item ["accommodation_days"] = days_cm;
         item ["emails"] = emails_josn;
         jsonObj.push(item);
