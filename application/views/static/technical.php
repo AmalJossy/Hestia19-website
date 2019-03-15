@@ -104,7 +104,7 @@ padding-right:10vh;
 </style>
 </head>
 
-<body class="profile-page sidebar-collapse page-header" data-parallax="true" style="background: url('<?=base_url();?>assets/front/img/event_list_bg.jpg') no-repeat center center fixed; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 100%;min-height:100vh;overflow: scroll;">
+<body class="profile-page sidebar-collapse page-header" data-parallax="true" style="background: url('<?=base_url();?>assets/front/img/event_list_bg.jpg') no-repeat center center fixed; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 100%;min-height:100vh;overflow: scroll;background-color:#152428;">
   <div style="z-index:3;">
     <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
       <div class="container-fluid">
@@ -182,7 +182,7 @@ padding-right:10vh;
       hour, come, discover it, be a part of it.</p>
       <a href="<?=base_url("events/technical-robotics")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
-      <!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
+      <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">RAASA | CHEMICAL</p>
       <p class="event-desc">This is where you find out the perfect chemical reaction, the perfect balance of all the 
       solutions that can create the elixir of magic. 
@@ -205,12 +205,12 @@ padding-right:10vh;
       <a href="<?=base_url("events/technical-mech")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
 
-    <div class="col-12 listing1" style="padding-bottom: 20px;">
+    <!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">CIVIL ENGINEERING</p>
       <p class="event-desc">Every work is a series of experiments, a sequence of judicious applications of the results of previous 
       experiences, a result of well laid out engineering organisation. Join us at Hestia '19, let's plan, build and create.</p>
       <a href="<?=base_url("events/technical-civil")?>" class="details">MORE&nbsp;DETAILS</a>
-    </div> 
+    </div>  -->
     
     <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">COMCADRE | MCA</p>
@@ -218,7 +218,7 @@ padding-right:10vh;
       coding and decoding logic through signals, for those who know the keywords that your fingers can just slide through the 
       keyboard, this is for you. Come, for you, are the most extraordinary computer of all.</p>
       <a href="<?=base_url("events/technical-mca")?>" class="details">MORE&nbsp;DETAILS</a>
-    </div>-->
+    </div>
 </div>
 </div>
 
