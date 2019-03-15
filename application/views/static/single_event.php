@@ -551,7 +551,7 @@ function checkBoxValidate(){
        // $('.close-href').show(); // Shows
          // hides
         if(cur_cnt<=rem_members){
-            var html=" <div class='row' style='margin-bottom:10px;' id='member_"+(minmemb+cur_cnt)+"'><div class='col-md-8 col-sm-12'><input class='form-control' type='email' id='email"+(minmemb+cur_cnt)+"' placeholder='Email' required> <a id='member_"+(minmemb+cur_cnt)+"_close' class='close-href btn btn-xs btn-danger text-white' style='border: 0;margin: 0; float:right;margin-top:-38px;' onclick='removeElement("+(minmemb+cur_cnt)+")'>X</a></div><div class='col-md-4 col-sm-12'><label class='checkbox-inline chk_acommodation'><input type='checkbox'   class='chk_acm' id='chk_acm"+(minmemb+cur_cnt)+"'>&nbsp;&nbsp;Accommodation</label></div></div>";
+            var html=" <div class='row' style='margin-bottom:10px;' id='member_"+(minmemb+cur_cnt)+"'><div class='col-md-8 col-sm-12'><input class='form-control' type='email' id='email"+(minmemb+cur_cnt)+"' placeholder='Email' required> </div><div class='col-md-4 col-sm-12'><a id='member_"+(minmemb+cur_cnt)+"_close' class='close-href text-white' style='border: 0;float:left;position:absolute;left:-50px;' onclick='removeElement("+(minmemb+cur_cnt)+")'><button  class='btn btn-xs btn-danger'>X</button></a><label class='checkbox-inline chk_acommodation'><input type='checkbox'   class='chk_acm' id='chk_acm"+(minmemb+cur_cnt)+"'>&nbsp;&nbsp;Accommodation</label></div></div>";
             $('#team_form_members_opt').html(old+html);
 
         }
@@ -611,7 +611,11 @@ function checkBoxValidate(){
         item = {};
         item ["event_id"] =<?=$event->event_id?>;
         item ["referral_code"] = $('#referralcode').val();
-        item ["reg_email"] = "<?=$_SESSION['email']?>";
+        item ["reg_email"] = "<?php
+        if(isset($_SESSION['email'])){
+            echo $_SESSION['email'];
+        }
+        ?>";
         item ["accommodation_days"] = days_cm;
         item ["emails"] = emails_josn;
         jsonObj.push(item);
