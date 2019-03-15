@@ -198,7 +198,7 @@ padding-right:10vh;
       <a href="<?=base_url("events/technical-ec")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
       <div class="col-12 listing1" style="padding-bottom: 20px;">
-      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">MEXYSM | MECHANICAL</p>
+      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">MEXSYM | MECHANICAL</p>
       <p class="event-desc">Workshops that break down the innovative discoveries of the present to their basics, competitions 
       that test your ingenuity, events that push you to your limits, the arena is designed just for you. If thinking machines 
       moves the gears and engines inside you, this is where you should be.</p>
