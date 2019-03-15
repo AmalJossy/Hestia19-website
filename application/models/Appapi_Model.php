@@ -43,5 +43,13 @@ class Appapi_Model extends CI_Model {
 
     }
 
+    public function get_event_details(){
+        $id=$this->security->xss_clean($this->input->post('id'));
+        $this->db->select('event_id, cat_id, title, short_desc, details, min_memb, max_memb, venue, reg_fee, fee_type, prize, file1, file2, co1_name, co1_no, co2_name, co2_no, seats, reg_start, reg_end, link');
+        $this->db->where('event_id', $id );
+        $query = $this->db->get('events');
+        return json_encode($query->result_array());
+    }
+
 }
 ?>
