@@ -15,15 +15,28 @@ class Report_model extends CI_Model {
         return $query->result();
     }
     
-    public function get_user_events($email){
-        $this->db->select ( '*' );
-        $this->db->from ( 'events' );
-        $this->db->join ( 'registration', 'events.event_id = registration.event_id' , 'inner' );
-        if( $email != NULL ){
-            $this->db->where ( 'registration.member_email',$email);
-        }
+    public function get_user_events($email=''){
+        $this->db->select ( 'e.*' );
+        $this->db->from ( 'events as e' );
+        $this->db->join ( 'registration  as r', 'r.event_id = e.event_id' , 'inner' );
+      $this->db->where ( 'r.member_email',$email);
+        
         $query = $this->db->get ();
-        return $query->result();
+        $data = array();
+        foreach($query->result() as $row1)
+        {
+                $row = array();
+                $row['file1'] = $row1->file1;
+                $row['title'] = $row1->title;
+                $row['venue'] = $row1->venue;
+                
+                $row['file2'] = $row1->file2;
+                $query_time=$this->db->query("SELECT * FROM time where event_id=".$row1->event_id."  order by start_time");
+                $row['time']=$query_time->result_array();
+                $data[] = $row;
+        }
+        return  $data;
+        
     }
     public function get_single_event($link){
         $this->db->select ( '*' );
