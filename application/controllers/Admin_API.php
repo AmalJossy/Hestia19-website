@@ -68,14 +68,33 @@ class Admin_API extends REST_Controller {
         $this->response($id,$status);
     }
 
-
+    // function upload_post(){
+    //     $config['upload_path']          = FCPATH . 'assets\uploads\\' ;
+    //     $config['allowed_types']        = 'gif|jpg|png';
+    //     $config['max_size']             = 100;
+    //     $config['max_width']            = 1024;
+    //     $config['max_height']           = 768;
+    //     $config['detect_mime']           = TRUE;
+    //     $config['file_name']           = "poster.png";
+    //
+    //     $this->load->library('upload', $config);
+    //
+    //     if ( ! $this->upload->do_upload('userfile')){
+    //         $error = array('error' => $this->upload->display_errors());
+    //         $this->response($error);
+    //     }
+    //     else{
+    //         $data = array('upload_data' => $this->upload->data());
+    //         $this->response("success");
+    //     }
+    // }
     function event_get($id = NULL){
         $this->load->model('event_model');
         $events = $this->event_model->get_event($id);
         $this->response($events);
     }
 
-    
+
     function event_registrations_get($id=NULL){
         $this->load->model('event_model');
         $events_reg = $this->event_model->get_registrations_event($id);
