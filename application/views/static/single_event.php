@@ -257,13 +257,13 @@
             <div class="modal-body" style="max-height: calc(100vh - 200px);overflow-y: auto;">
 
 
-                <form id="team_form" method="post" action="<?=base_url("bookticket")?>" name="team_form" style="display: none;">
+                <form id="team_form" method="post" action="https://www.hestia.live/payment/prepay.php" name="team_form" style="display: none;">
 
                 <input type="hidden" id="json_data" name="json_data" hidden/>
                     <div class="row" style='margin-bottom:10px;'>
-                        <div class="col-md-8 col-sm-12"><input class="form-control" type="email" id="email0" placeholder="Email" value="<?php if(isset($_SESSION['email']))echo $_SESSION['email'];?>"; readonly></div>
-                        <div class="col-md-4 col-sm-12"><label class="checkbox-inline chk_acommodation">
-                                    <input type="checkbox" id="chk_acm0">&nbsp;&nbsp;Accommodation
+                        <div class="col-md-8 col-sm-12" id="div_mail0"><input class="form-control" type="email" id="email0" placeholder="Email" value="<?php if(isset($_SESSION['email']))echo $_SESSION['email'];?>"; readonly></div>
+                        <div class="col-md-4 col-sm-12" id="div_acm0"><label class="checkbox-inline chk_acommodation">
+                                    <input type="checkbox" class="chk_acm"  id="chk_acm0">&nbsp;&nbsp;Accommodation
                                     </label></div>
                     </div> 
                     <div id="team_form_members">
@@ -285,16 +285,16 @@
                                         Accommodation for
                                     </label>
                                     <label class="checkbox-inline chk_ac_day">
-                                    <input type="checkbox" id="day_1" value="1">&nbsp;&nbsp;Day -1
+                                    <input type="checkbox" id="day_1" value="1" >&nbsp;&nbsp;Day -1
                                     </label>
                                     <label class="checkbox-inline chk_ac_day">
-                                    <input type="checkbox" id="day_2" value="2">&nbsp;&nbsp;Day -2
+                                    <input type="checkbox" id="day_2" value="2" >&nbsp;&nbsp;Day -2
                                     </label>
                                     <label class="checkbox-inline chk_ac_day">
-                                    <input type="checkbox" id="day_3" value="3">&nbsp;&nbsp;Day -3
+                                    <input type="checkbox" id="day_3" value="3" >&nbsp;&nbsp;Day -3
                                     </label>
                                     <label class="checkbox-inline chk_ac_day">
-                                    <input type="checkbox" id="day_4" value="4">&nbsp;&nbsp;Day -4
+                                    <input type="checkbox" id="day_4" value="4" >&nbsp;&nbsp;Day -4
                                     </label>
                                 </div>
                                
@@ -303,7 +303,7 @@
                         </div>
                         <div class="row" style='margin-bottom:10px;'>
                         <div class="col-md-12 col-sm-12"><input class="form-control" type="text" id="referralcode" placeholder="Referral Code" value=""; ></div>
-                       
+                        <div class="col-md-12 col-sm-12 mt-3"><p><span class="text-danger">Note:</span> Schedule may change and accommodation dates can be changed accordingly </p></div>
                     </div> 
 
 
@@ -402,6 +402,43 @@
     $('.modal-redirect').click(function(){
         window.location.href="<?=base_url();?>";
     });
+
+        jQuery('.modal-body').on('change','.chk_acm',
+    function(){ 
+      
+
+       
+        checkBoxValidate();
+        
+    });
+
+function checkBoxValidate(){
+
+    var flg=false;
+        $('.chk_acm').each(function(i, obj) {
+         
+            if($(obj).prop('checked')){
+                flg=true;
+             
+            }
+           
+            });
+            if(flg==true){
+                $("#day_1").prop('disabled',false);
+              $("#day_2").prop('disabled',false);
+              $("#day_3").prop('disabled',false);
+              $("#day_4").prop('disabled',false);
+            }else{
+                $("#day_1").prop('disabled',true);
+              $("#day_2").prop('disabled',true);
+              $("#day_3").prop('disabled',true);
+              $("#day_4").prop('disabled',true);
+              $("#day_1").prop('checked',false);
+              $("#day_2").prop('checked',false);
+              $("#day_3").prop('checked',false);
+              $("#day_4").prop('checked',false);
+            }
+}
     $('.btn-custom').click(function(){
 
         $.ajax({
@@ -432,7 +469,13 @@
                     case 200:{
                         $('.chk_team').css('display','inline');
                         $('#team_form').css('display','block');
+                        $('#chk_acm0').prop('checked','true');
                         $('.chk_acommodation').css('display','none');
+                        $('#div_acm0').css('display','none');
+
+                        $('#div_mail0').addClass('col-md-12').removeClass('col-md-8');
+
+                        
                         $('.modal-title').text("Details");
                         $('#myModal').show();
                             $("#addmoreMembersBtn").css({
@@ -444,7 +487,10 @@
                                   
                                         $("#day_"+i).prop('disabled','true');
                                         $("#day_"+i).prop('checked','true');
-                                        
+                                        $("#day_"+i).removeClass("chk_acm");
+                                    }else{
+
+
                                     }
                             }
                         $('.modal-footer').html("<button type='button' class='btn btn-success' name='team_form_submit' class='team_form_submit' onclick='team_form_sumbit()' >Submit&nbsp;<i class='fas fa-check-circle'></i></button>");
@@ -455,10 +501,14 @@
                         minmemb=array[1];
                         $('.chk_team').css('display','inline');
                         rem_members=maxmemb-minmemb-1;
+                        $("#day_1").prop('disabled',true);
+                        $("#day_2").prop('disabled',true);
+                        $("#day_3").prop('disabled',true);
+                        $("#day_4").prop('disabled',true);
                         var n=minmemb-1;
                         var html="";
                         while(n>0){
-                            html+=" <div class='row' style='margin-bottom:10px;'><div class='col-md-8 col-sm-12'><input class='form-control' type='email' id='email"+(minmemb-n)+"' placeholder='Email' required></div><div class='col-md-4 col-sm-12'><label class='checkbox-inline chk_acommodation'><input type='checkbox' id='chk_acm"+(minmemb-n)+"'>&nbsp;&nbsp;Accommodation</label></div></div>";
+                            html+=" <div class='row' style='margin-bottom:10px;'><div class='col-md-8 col-sm-12'><input class='form-control' type='email' id='email"+(minmemb-n)+"' placeholder='Email' required></div><div class='col-md-4 col-sm-12'><label class='checkbox-inline chk_acommodation'><input type='checkbox'  class='chk_acm'  id='chk_acm"+(minmemb-n)+"'>&nbsp;&nbsp;Accommodation</label></div></div>";
                             n--;
                         }
                         $('#team_form_members').html(html);
@@ -499,7 +549,7 @@
        // $('.close-href').show(); // Shows
          // hides
         if(cur_cnt<=rem_members){
-            var html=" <div class='row' style='margin-bottom:10px;' id='member_"+(minmemb+cur_cnt)+"'><div class='col-md-8 col-sm-12'><input class='form-control' type='email' id='email"+(minmemb+cur_cnt)+"' placeholder='Email' required> <a id='member_"+(minmemb+cur_cnt)+"_close' class='close-href btn btn-xs btn-danger text-white' style='border: 0;margin: 0; float:right;margin-top:-38px;' onclick='removeElement("+(minmemb+cur_cnt)+")'>X</a></div><div class='col-md-4 col-sm-12'><label class='checkbox-inline chk_acommodation'><input type='checkbox' id='chk_acm"+(minmemb+cur_cnt)+"'>&nbsp;&nbsp;Accommodation</label></div></div>";
+            var html=" <div class='row' style='margin-bottom:10px;' id='member_"+(minmemb+cur_cnt)+"'><div class='col-md-8 col-sm-12'><input class='form-control' type='email' id='email"+(minmemb+cur_cnt)+"' placeholder='Email' required> <a id='member_"+(minmemb+cur_cnt)+"_close' class='close-href btn btn-xs btn-danger text-white' style='border: 0;margin: 0; float:right;margin-top:-38px;' onclick='removeElement("+(minmemb+cur_cnt)+")'>X</a></div><div class='col-md-4 col-sm-12'><label class='checkbox-inline chk_acommodation'><input type='checkbox'   class='chk_acm' id='chk_acm"+(minmemb+cur_cnt)+"'>&nbsp;&nbsp;Accommodation</label></div></div>";
             $('#team_form_members_opt').html(old+html);
 
         }
@@ -514,6 +564,7 @@
         $("#member_"+(_id-1)+"_close").css('display','block');
 
         $("#addmoreMembersBtn").prop("disabled",false);
+        checkBoxValidate();
     }
     function team_form_sumbit(){
 
@@ -525,9 +576,9 @@
             var chkid=$(this).attr('id');
             chkid=chkid.replace("email","chk_acm");
             if($("#"+chkid).is(":checked")==true){
-                email["accommodation"] = "Y";
+                email["acc"] = "Y";
             }else{
-                email["accommodation"] = "N";
+                email["acc"] = "N";
             }
             
             emails_josn.push(email);
@@ -541,7 +592,7 @@
                 }else{
                     days_cm=days_cm+""+$("#day_"+i).val();
                 }
-                
+                email["acc"] = "Y";
             }
         }
         jsonObj = [];
@@ -551,7 +602,10 @@
         item ["accommodation_days"] = days_cm;
         item ["emails"] = emails_josn;
         jsonObj.push(item);
-        $('#json_data').val(JSON.stringify(jsonObj));
+        $('#json_data').val(JSON.stringify(item));
+
+
+        
         $('#team_form_hid_btn').click();
 
 

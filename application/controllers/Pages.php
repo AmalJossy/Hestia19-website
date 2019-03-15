@@ -34,6 +34,18 @@ class Pages extends CI_Controller {
         $this->load->view('static/event_listing',$data);
     }
     
+    function UserEvents(){
+
+    if(isset($_SESSION['email'])){
+        $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
+    }else{
+        $data['myevents']=array();
+
+    }
+        
+        $this->load->view('static/event_listing',$data);
+    }
+    
     function BookTicket(){
       echo $this->input->post('event_id');
       echo $this->input->post('txt_emails');
