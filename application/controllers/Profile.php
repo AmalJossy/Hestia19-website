@@ -14,7 +14,7 @@ class Profile extends CI_Controller {
             $user['college'] = $this->input->post('college');
             $user['phone'] = $this->input->post('phone');
             $this->user_model->complete_signin($user);
-            if(isset($_SESSION['back_url'])){
+            if(isset($_SESSION['back_url']) && strpos($_SESSION['back_url'], 'ico') == false){
                 $link=$_SESSION['back_url'];
                 unset($_SESSION['back_url']);
                 redirect($link);
