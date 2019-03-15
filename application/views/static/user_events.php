@@ -1,16 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>Confirm Payment</title>
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+  <title>Bootstrap Card</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link href="<?=base_url("assets/front/css/material.css")?>" rel="stylesheet" />
-  <style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
     body {
       background: url('<?=base_url();?>assets/front/img/about_us_bg.jpg') no-repeat center center fixed;
       -webkit-background-size: cover;
@@ -19,68 +17,79 @@
       background-size: cover;
       /* height: 100%;
       min-height: 100vh; */
-      overflow: scroll;
+      padding-top:30px;
+ 
 	  
     }
-    @media only screen and (min-width:768px) and (max-width:1366px){
-    .evnt_align{
-        display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items:center;
-    }
-}
-  </style>
+   
+    </style>
 </head>
 
-<body>
-
-  <div class="container">
-  <?php
+<body> 
+ 
+<div class="container">
+<?php
     $cntr=0;
      foreach($myevents as $row){
 if($cntr%3==0){
-echo '<div class="row evnt_align">';
+echo '<div class="card-deck" style="margin-top:15px;">';
 }
 ?>
 
-<div class="col-md-4 col-sm-12" style="margin-top: 30px;">
-            <div class=" card card-pricing">
-                    <div class="card-content">
-                      <!-- <h6 class="category ">EVENT NAME</h6> -->
-                      <h4 class="card-title" style="float : left"><?=$row->title?></h4>
-                      <form>
-                      <?php
-                        if($row->file1)
-
+    <div class="col-md-4 col-sm-12 card bg-default">
+      <div class="card-body text-center">
+        
+      <div class="card-content">
+                          <!-- <h6 class="category ">EVENT NAME</h6> -->
+                          <h4 class="card-title" style="float : left"><?=$row['title']?></h4>
+                          <?php
+                   
+                        if($row['file1']!=""){
+                                echo '<input type="text" class="form-control" id="fld1" a placeholder="'.$row['file1'].'"> ';
+                        }
+                        if($row['file2']!=""){
+                            echo '<input type="text" class="form-control" style="margin-top:10px;" id="fld2"  placeholder="'.$row['file2'].'"> ';
+                    }
                         ?>
-                              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Some Text"> 
-                          <p style="float: right; font-size: 0.8em; margin-right: 5px;">Updated</p>
-                          <input type="submit" placeholder="Submit" class="btn btn-primary btn-sm btn-round" style="float: left; padding-top: 8px; padding-bottom: 8px; ">       
-                      </form><br><br><br>
-                      <p style="float: left;"><strong>Label 1:</strong>&nbsp;From 12-03-2019 To 15-03-2019</p>
-                      <p style="float: left;"><strong>Label 2:</strong>&nbsp;From 12-03-2019 To 15-03-2019</p>
-                      <p style="float: left;"><strong>Venue:</strong>&nbsp;APJ Hall</p>
-          
-          
-                    </div> 
-    </div>
-  </div>
-
-
+                              
+                          <p style="float: right; font-size: 0.8em; margin-right: 5px;">Once submitted cannot be changed.</p>
+                          <input type="submit" style="margin-top:3px;margin-left:-2rem;" placeholder="Submit" class="btn btn-primary btn-sm btn-round" style="float: left; padding-top: 8px; padding-bottom: 8px; ">       
+                      </form>
+                      <br><br>
+                      <?php
+                    
+                    foreach($row['time'] as $timerow){
+                   
+?>
+                    <div style="float: left;"><strong><?=$timerow['label']?>:</strong>&nbsp;From <?=$timerow['start_time'];?></div>
 
 <?php
+                    }
+                    if($row['venue']){
+                        ?>
+                                        <div style="float: left;"><strong>Venue:</strong>&nbsp;<?=$row['venue'];?></div>
+
+                        <?php
+                    }
+                    ?>  
+
+                    </div>
+
+              
+              
+                        </div> 
+
+
+      </div>
+
+  <?php
      $cntr++;
-     if($cntr%3==2 || $cntr==count($myevents)){
-        echo '<div class="row evnt_align">';
+     if($cntr%3==0 || $cntr==count($myevents)){
+        echo '</div>';
         }
      }
       ?>
-   
-    </div>
-  </div>
+</div>
 
 </body>
-
-
 </html>

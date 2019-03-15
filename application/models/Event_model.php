@@ -29,7 +29,6 @@ class Event_model extends CI_Model {
         $data = array();
         foreach($query->result() as $row1)
         {
-    
                 $row = array();
                 $row['reg_email'] = $row1->reg_email;
                 $row['fullname'] = $row1->fullname;
@@ -40,11 +39,8 @@ class Event_model extends CI_Model {
                 $query_memb=$this->db->query("SELECT member_email,fullname,phone,college FROM registration a left join users b on  a.member_email=b.email  where   a.event_id=".$row1->event_id." and if(a.member_email=a.reg_email,1,0)=0 and a.reg_email='".$row1->reg_email."'  order by reg_id");
                 $row['members']=$query_memb->result_array();
                 $data[] = $row;
-
         }
-
         return  $data;
-
     }
     
     public function get_event_by_link($link){
