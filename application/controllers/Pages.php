@@ -43,7 +43,7 @@ class Pages extends CI_Controller {
 
     }
         
-        $this->load->view('static/event_listing',$data);
+        $this->load->view('static/user_events',$data);
     }
     
     function BookTicket(){

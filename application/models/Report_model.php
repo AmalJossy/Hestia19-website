@@ -18,9 +18,9 @@ class Report_model extends CI_Model {
     public function get_user_events($email){
         $this->db->select ( '*' );
         $this->db->from ( 'events' );
-        $this->db->join ( 'categories', 'categories.cat_id = events.cat_id' , 'inner' );
-        if( $id != NULL ){
-            $this->db->where ( 'categories.cat_name',$id);
+        $this->db->join ( 'registration', 'events.event_id = registration.event_id' , 'inner' );
+        if( $email != NULL ){
+            $this->db->where ( 'registration.member_email',$email);
         }
         $query = $this->db->get ();
         return $query->result();

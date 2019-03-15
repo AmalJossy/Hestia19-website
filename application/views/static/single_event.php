@@ -273,6 +273,8 @@
                     </div>
                     
                     <div>
+                    <div class="col-md-12 col-sm-12 mt-3" id="email_note"><p><span class="text-danger">Only gmail addresses are allowed</span></p></div>
+                  
                         <button type="button" class="btn btn-warning my-2 " name="addMoreMembers" id="addmoreMembersBtn">Add Member&nbsp;<i class="fas fa-plus-square"></i></button><br>
 <input type="submit" id="team_form_hid_btn" hidden/>
 
@@ -573,6 +575,16 @@ function checkBoxValidate(){
         $("input[type=email]").each(function() {
             email = {};
             email["email"] = $(this).val();
+
+            var email_regex = /^[a-zA-Z0-9._-]+@gmail.com$/i;
+            var mailid=$(this).val();
+            if(!email_regex.test(mailid)){
+          
+            e.preventDefault(); 
+            return false; 
+            }
+
+            
             var chkid=$(this).attr('id');
             chkid=chkid.replace("email","chk_acm");
             if($("#"+chkid).is(":checked")==true){
