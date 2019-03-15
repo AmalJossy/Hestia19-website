@@ -519,7 +519,7 @@ function checkBoxValidate(){
                         $('.modal-title').text("Add Members");
 
                         $('#myModal').show();
-                        if(rem_members<=0){
+                        if(rem_members<0){
                             $("#addmoreMembersBtn").css({
                                 "display": "none"
 
