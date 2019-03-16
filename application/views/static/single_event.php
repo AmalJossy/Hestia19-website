@@ -324,7 +324,7 @@
     </div>
 </div>
 <section>
-    <h1><a  class="back_btn" style="position:absolute;top:30px;text-decoration:none;color:black;z-index:99;" href="<?=base_url("events/".$parent)?>"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+    <h1><a  class="back_btn" style="position:absolute;top:30px;text-decoration:none;color:black;z-index:99;" href="#" onclick="javascript:history.back(-1);"><i class="fa fa-arrow-left" aria-hidden="true"></i>
         </a></h1>
 
     <div class="container-fluid p-0 m-0 py-lg-3 py-md-0 ">
