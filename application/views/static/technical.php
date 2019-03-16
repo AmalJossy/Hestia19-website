@@ -172,7 +172,7 @@ padding-right:10vh;
     </div>
 
       <div class="col-12 listing1" style="padding-bottom: 20px;">
-      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">ESTELLA | EC</p>
+      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">ESTELLA | ECE</p>
       <p class="event-desc">Drawn by those green shiny circuit boards? Don't cook up those fixed recipes , rather create your own 
       realities here at Hestia '19. Estella is to make you perceive and learn new routes of technology, right from designing to 
       debugging. Step up your game.</p>
