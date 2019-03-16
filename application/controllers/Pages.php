@@ -36,14 +36,26 @@ class Pages extends CI_Controller {
     
     function UserEvents(){
 
-    if(isset($_SESSION['email'])){
-        $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
-    }else{
-        $data['myevents']=array();
+    // if(isset($_SESSION['email'])){
+    //     $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
+    // }else{
+    //     $data['myevents']=array();
 
-    }
+    // }
         
-        $this->load->view('static/user_events',$data);
+    //     $this->load->view('static/user_events',$data);
+    
+    $row=['file1'=>"hint",
+    'u_file1'=> NULL,
+    'title'=>"title",
+    'venue'=>"venue",
+    'file2'=>NULL,
+    'u_file2'=>NULL,
+    'link'=>"khasflk",
+    'time'=> time()
+    ];
+    $data['myevents']=[$row];
+    $this->load->view('static/temp',$data);
     }
     
     function BookTicket(){

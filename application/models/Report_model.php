@@ -16,7 +16,7 @@ class Report_model extends CI_Model {
     }
     
     public function get_user_events($email=''){
-        $this->db->select ( 'e.*' );
+        $this->db->select ( 'e.*,r.file1 as u_file1, r.file2 as u_file2' );
         $this->db->from ( 'events as e' );
         $this->db->join ( 'registration  as r', 'r.event_id = e.event_id' , 'inner' );
       $this->db->where ( 'r.member_email',$email);
@@ -27,10 +27,12 @@ class Report_model extends CI_Model {
         {
                 $row = array();
                 $row['file1'] = $row1->file1;
+                $row['u_file1']=$row1->u_file1;
                 $row['title'] = $row1->title;
                 $row['venue'] = $row1->venue;
-                
+                $row['link'] = $row1->link;
                 $row['file2'] = $row1->file2;
+                $row['u_file2'] = $row1->u_file2;
                 $query_time=$this->db->query("SELECT * FROM time where event_id=".$row1->event_id."  order by start_time");
                 $row['time']=$query_time->result_array();
                 $data[] = $row;

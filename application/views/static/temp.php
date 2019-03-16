@@ -157,14 +157,23 @@ padding-right:10vh;
       <div class="container" style="z-index:10;position:absolute;top:0px;">
           <div class="row event_listing_div"  style="text-align:left;padding-top: 10vh;">
           <?php
-          foreach($events as $row){
+          // print_r($myevents[0]);
+          foreach($myevents as $row){
           ?>
 
-              <div class="col-12 listing1" style="padding-bottom: 20px;">
-                  <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;"><?=$row->title?></p>
-                  <p class="event-desc"><?=$row->short_desc?></p>
-                  <a href="<?=base_url("event/".$row->link)?>" class="details">MORE&nbsp;DETAILS</a>
-              </div>
+               <div class="col-12 listing1" style="padding-bottom: 20px;">
+                   <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;"><?=$row['title']?></p>
+                   <p class="event-desc"><?=$row['venue']?></p>
+                   <?php if ($row['file1'] != NULL && $row['u_file1'] == NULL ){
+                     echo "<form>";
+                     echo "<input type='text' placeholder=". $row['file1']." />";
+                     if ($row['file2'] != NULL && $row['u_file2'] == NULL ){
+                      echo "<input type='text' placeholder=". $row['file2']." />";
+                     }
+                     echo "<input type='submit' >";
+                    echo "</form>";
+                   }?>
+               </div>
 
 
       <?php

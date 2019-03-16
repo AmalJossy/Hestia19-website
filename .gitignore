@@ -35,4 +35,4 @@ application/config/production/
 application/config/development/
 third_party/
 
-assets/uploads/
+assets/uploads/*
