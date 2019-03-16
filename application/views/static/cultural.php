@@ -182,7 +182,7 @@ padding-right:10vh;
 <p class="event-desc">Fine Art is knowledge made visible. The perfect coordination of hand, head and heart to create 
 something invincible, to build a masterpiece , to express. Showcase these appreciable abilities through a variety of 
 competitions hosted by Hestia’19.</p>
-<a href="<?=base_url("events/cultural-finearts")?>" class="details">MORE&nbsp;DETAILS</a>
+<a href="<?=base_url("events/cultural-fine-arts")?>" class="details">MORE&nbsp;DETAILS</a>
 </div>
 <!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
 <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">SPORTS</p>
