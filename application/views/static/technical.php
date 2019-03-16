@@ -154,7 +154,7 @@ padding-right:10vh;
     </nav>
     <div class="container" style="z-index:10;position:absolute;top:0px;">
     <div class="row event_listing_div"  style="text-align:left;padding-top: 10vh;">
-    <!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
+    <div class="col-12 listing1" style="padding-bottom: 20px;">
               <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;">BIG - O | CSE</p>
               <p class="event-desc">The future is computing. And there's no stopping it. Big-O is the next-gen techfest, with workshops, 
               competitions and a plethora of technical events, all geared towards the future. The future is here, this is how we get ready 
@@ -168,7 +168,7 @@ padding-right:10vh;
       stead, race to the win.</p>
       <a href="<?=base_url("events/technical-eee")?>" class="details">MORE&nbsp;DETAILS</a>
     </div>
-      <div class="col-12 listing1" style="padding-bottom: 20px;">
+      <!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">HIWAGA | ARCHITECTURE</p>
       <p class="event-desc">Hiwaga is an architectural and cultural revelry that embarks to push the boundaries of art, architecture, 
       music and photography. It is a wonderful mystery, which unwinds a glimpse into the ethereal and and skilful life of architects. 

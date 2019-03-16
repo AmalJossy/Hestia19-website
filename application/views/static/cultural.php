@@ -177,14 +177,14 @@ padding-right:10vh;
       as, “Music is moonlight in the gloomy night of life”.</p>
       <a href="<?=base_url("events/cultural-music")?>" class="details">MORE&nbsp;DETAILS</a>
     </div>
-<!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
+<div class="col-12 listing1" style="padding-bottom: 20px;">
 <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">FINE ARTS</p>
 <p class="event-desc">Fine Art is knowledge made visible. The perfect coordination of hand, head and heart to create 
 something invincible, to build a masterpiece , to express. Showcase these appreciable abilities through a variety of 
 competitions hosted by Hestia’19.</p>
 <a href="<?=base_url("events/cultural-finearts")?>" class="details">MORE&nbsp;DETAILS</a>
 </div>
-<div class="col-12 listing1" style="padding-bottom: 20px;">
+<!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
 <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">SPORTS</p>
 <p class="event-desc">“Kill them with success and bury them with a smile”, Usain Bolt has said it all. The true competition that 
 need to be handled with zest and strategies, sports is a promise that the body accomplishes what the heart presumes. Participate 
