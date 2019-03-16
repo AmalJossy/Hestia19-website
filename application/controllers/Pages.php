@@ -36,26 +36,26 @@ class Pages extends CI_Controller {
     
     function UserEvents(){
 
-    // if(isset($_SESSION['email'])){
-    //     $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
-    // }else{
-    //     $data['myevents']=array();
+    if(isset($_SESSION['email'])){
+        $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
+    }else{
+        $data['myevents']=array();
 
-    // }
+    }
         
-    //     $this->load->view('static/user_events',$data);
-    
-    $row=['file1'=>"hint",
-    'u_file1'=> NULL,
-    'title'=>"title",
-    'venue'=>"venue",
-    'file2'=>NULL,
-    'u_file2'=>NULL,
-    'link'=>"khasflk",
-    'time'=> time()
-    ];
-    $data['myevents']=[$row];
-    $this->load->view('static/temp',$data);
+        $this->load->view('static/user_events',$data);
+       
+    // $row=['file1'=>"hint",
+    // 'u_file1'=> NULL,
+    // 'title'=>"title",
+    // 'venue'=>"venue",
+    // 'file2'=>NULL,
+    // 'u_file2'=>NULL,
+    // 'link'=>"khasflk",
+    // 'time'=> time()
+    // ];
+    // $data['myevents']=[$row];
+    // $this->load->view('static/temp',$data);
     }
     
     function BookTicket(){
@@ -81,40 +81,38 @@ class Pages extends CI_Controller {
         $enddate = date('Y-m-d', strtotime($data['event']->reg_end));
         $cnt=$this->report_model->get_event_reg_count($eid);
         $reg_fee=$data['event']->reg_fee;
-        if($reg_fee){
-            if($isbooked>=1){
-
+        $reg_end = '';
+        if($reg_fee !== NULL){
+            if($isbooked>=1) {
                 $btn="<a href='#' class='btn btn-warning btn-custom disabled'>Booked &nbsp;<i class='fas fa-ticket-alt'></i></a>";
+            } else {
+                if (($today >= $startdate) && ($today <= $enddate)){
 
+                    if($cnt<$data['event']->seats || $data['event']->seats == 0){
+                        $btn="<a href='#' class='btn btn-custom btn-primary'>BUY TICKET&nbsp;<i class='fas fa-shopping-cart'></i></a>";
+                        $reg_end = date('d-m-Y', strtotime($data['event']->reg_end));
+                    }else{
+                        $btn="<a href='#' class='btn btn-custom btn-danger disabled'>Sold Out&nbsp;<i class='fas fa-shopping-cart'></i></a>";
+                    }
+                }else{
+                    if(($startdate  > $today)){
+                        $dtstart = date_create($startdate);
+                        $btn="<a href='#' class='btn btn-warning btn-custom disabled'>Registration Starts on ".date_format($dtstart, 'd-m-Y')."&nbsp;<i class='fas fa-clock'></i></a>";
 
-            }else{
-        if (($today >= $startdate) && ($today <= $enddate)){
+                    }
+                    if(($today > $enddate)){
+                        $btn="<a href='#' class='btn btn-danger btn-custom disabled'>Registration Closed&nbsp;<i class='fas fa-shopping-cart'></i></a>";
 
-            if($cnt<$data['event']->seats || $data['event']->seats == 0){
-                $btn="<a href='#' class='btn btn-custom btn-primary'>BUY TICKET&nbsp;<i class='fas fa-shopping-cart'></i></a>";
-            }else{
-                $btn="<a href='#' class='btn btn-custom btn-danger disabled'>Sold Out&nbsp;<i class='fas fa-shopping-cart'></i></a>";
+                    }
+                }
             }
-
         }else{
-
-            if(($startdate  > $today)){
-                $dtstart = date_create($startdate);
-                $btn="<a href='#' class='btn btn-warning btn-custom disabled'>Registration Starts on ".date_format($dtstart, 'd-m-Y')."&nbsp;<i class='fas fa-clock'></i></a>";
-
-            }
-            if(($today > $enddate)){
-                $btn="<a href='#' class='btn btn-danger btn-custom disabled'>Registration Closed&nbsp;<i class='fas fa-shopping-cart'></i></a>";
-
-            }
+            $btn = "";
         }
-    }
-    }else{
-        $btn = "";
-    }
 
-       $data['islogged']=false; //#TODO
+        //$data['islogged']=false; //#TODO
        $data['btn']=$btn;
+       $data['reg_end']=$reg_end;
 
         $this->load->view('static/single_event',$data);
     }

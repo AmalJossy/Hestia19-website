@@ -355,22 +355,24 @@
                     }
                     ?>
 
-
-
                         <?php
-                        if($event->reg_fee && $event->reg_fee>0){
-
-?> <h4>Registration Fee : ₹<?=$event->reg_fee?> per <?=$event->fee_type?></h4>
-                        <?php
+                        if($event->reg_fee){
+                            ?>
+                            <h4>Registration Fee: ₹<?=$event->reg_fee?> per <?=$event->fee_type?></h4>
+                    
+                            <?php
                         }else if($event->reg_fee == 0){
-                        ?>
-                        <h4>Registration Fee : Free</h4>
-                        <?php
+                            ?>
+                            <h4>Registration Fee: Free</h4>
+                            <?php
+                        }
+                        if ($event->reg_fee !== NULL && $reg_end !== '') {
+                            ?>
+                            <h5>Registration closes on: <?=$reg_end?></h5>
+                    
+                            <?php
                         }
                         ?>
-
-
-
 
                     <br>
                         <h3>Coordinators</h3>
