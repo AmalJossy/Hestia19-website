@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Card</title>
+  <title>Hestia 19 - National Level Techno-Cultural Fest of TKM</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -18,15 +18,15 @@
       /* height: 100%;
       min-height: 100vh; */
       padding-top:30px;
- 
-	  
+
+
     }
-   
+
     </style>
 </head>
 
-<body> 
- 
+<body>
+
 <div class="container">
 <?php
     $cntr=0;
@@ -38,12 +38,12 @@ echo '<div class="card-deck" style="margin-top:15px;">';
 
     <div class="col-md-4 col-sm-12 card bg-default">
       <div class="card-body text-center">
-        
+
       <div class="card-content">
                           <!-- <h6 class="category ">EVENT NAME</h6> -->
                           <h4 class="card-title" style="float : left"><?=$row['title']?></h4>
                           <?php
-                   
+
                         if($row['file1']!=""){
                                 echo '<input type="text" class="form-control" id="fld1" a placeholder="'.$row['file1'].'"> ';
                         }
@@ -51,15 +51,15 @@ echo '<div class="card-deck" style="margin-top:15px;">';
                             echo '<input type="text" class="form-control" style="margin-top:10px;" id="fld2"  placeholder="'.$row['file2'].'"> ';
                     }
                         ?>
-                              
+
                           <p style="float: right; font-size: 0.8em; margin-right: 5px;">Once submitted cannot be changed.</p>
-                          <input type="submit" style="margin-top:3px;margin-left:-2rem;" placeholder="Submit" class="btn btn-primary btn-sm btn-round" style="float: left; padding-top: 8px; padding-bottom: 8px; ">       
+                          <input type="submit" style="margin-top:3px;margin-left:-2rem;" placeholder="Submit" class="btn btn-primary btn-sm btn-round" style="float: left; padding-top: 8px; padding-bottom: 8px; ">
                       </form>
                       <br><br>
                       <?php
-                    
+
                     foreach($row['time'] as $timerow){
-                   
+
 ?>
                     <div style="float: left;"><strong><?=$timerow['label']?>:</strong>&nbsp;From <?=$timerow['start_time'];?></div>
 
@@ -71,13 +71,13 @@ echo '<div class="card-deck" style="margin-top:15px;">';
 
                         <?php
                     }
-                    ?>  
+                    ?>
 
                     </div>
 
-              
-              
-                        </div> 
+
+
+                        </div>
 
 
       </div>
