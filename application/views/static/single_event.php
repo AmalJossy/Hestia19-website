@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Hestia 19 - National Level Techno-Cultural Fest of TKM</title>
+    <title><?=$event->title?> - Hestia 19 - National Level Techno-Cultural Fest of TKM</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Hestia 19 - National level Techno Cultural fest organized by TKM College of Engineering. March 28-31">
 <meta name="keywords" content="hestia,hestia19,tkmce,hestiatkm,hestiatkmce,conjura,fest,event,technical,cultural,technocultural">
@@ -372,25 +372,26 @@
                     
                             <?php
                         }
+                        // TODO this code segment is not working
                         try {
-                        if (count($schedule)>0) {
-                            ?>
-                            <br>
-                                <h3 style="display:none;">Schedule</h3>
-                            <?php 
-                                foreach($schedule as $timerow){ ?>
-                                <div style="padding-left: 15px; display:none;">
-                                 <h5>
-                                    <?php if ($timerow['label'] !== NULL) echo $timerow['label'].": "; ?>time from - to time</h5>
-                                </div>
-
-                                <?php
-                                }
+                            if (count($schedule)>0) {
+                                ?>
+                                <br>
+                                    <h3 style="display:none;">Schedule</h3>
+                                <?php 
+                                    foreach($schedule as $timerow){ ?>
+                                    <div style="padding-left: 15px; display:none;">
+                                     <h5>
+                                        <?php if ($timerow['label'] !== NULL) echo $timerow['label'].": "; ?>time from - to time</h5>
+                                    </div>
+    
+                                    <?php
+                                    }
+                            }
+                        } catch(Exception $e) {
+                            echo '<!--<script>'.$e->getMessage().'</script>-->';
                         }
-                    } catch(Exception $e) {
-                        echo '<!--<script>'.$e->getMessage().'</script>-->';
-                    }
-                        ?>
+                            ?>
                     <br>
                         <h3>Coordinators</h3>
                     <div style="padding-left: 15px;">
