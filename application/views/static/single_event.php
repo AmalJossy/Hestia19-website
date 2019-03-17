@@ -372,8 +372,25 @@
                     
                             <?php
                         }
-                        ?>
+                        try {
+                        if (count($schedule)>0) {
+                            ?>
+                            <br>
+                                <h3 style="display:none;">Schedule</h3>
+                            <?php 
+                                foreach($schedule as $timerow){ ?>
+                                <div style="padding-left: 15px; display:none;">
+                                 <h5>
+                                    <?php if ($timerow['label'] !== NULL) echo $timerow['label'].": "; ?>time from - to time</h5>
+                                </div>
 
+                                <?php
+                                }
+                        }
+                    } catch(Exception $e) {
+                        echo '<!--<script>'.$e->getMessage().'</script>-->';
+                    }
+                        ?>
                     <br>
                         <h3>Coordinators</h3>
                     <div style="padding-left: 15px;">
@@ -629,16 +646,6 @@ function checkBoxValidate(){
 
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 </script>

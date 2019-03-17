@@ -21,7 +21,7 @@
 
 
   <title>
-  Hestia 19 - National Level Techno-Cultural Fest of TKM
+ Events - Hestia 19 - National Level Techno-Cultural Fest of TKM
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -148,7 +148,6 @@ padding-right:10vh;
               </a>
             </li>
           </ul>
-
          
         </div>
       </div>
@@ -166,25 +165,15 @@ padding-right:10vh;
                   <a href="<?=base_url("event/".$row->link)?>" class="details">MORE&nbsp;DETAILS</a>
               </div>
 
-
       <?php
-
 
       }
 
       ?>
 
-
-
-
-
 </div>
 </div>
-
-
   </div>
-
-  
   <div class="container hider" style="padding-top: 115px;" id="overlay">
     <div class="overlay" id="darkbg"></div>
     <div class="owl-carousel owl-theme slide-in-bottom" id="carousel">
@@ -304,8 +293,6 @@ padding-right:10vh;
       });
     });
   </script>
-
-
 
 </body>
 
