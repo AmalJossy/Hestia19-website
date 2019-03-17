@@ -381,11 +381,11 @@
                                         $timerow = (array) $timerow; ?>
                                         <div style="padding-left: 15px;">
                                         <h5>
-                                            <?php if ($timerow['label'] !== NULL) echo $timerow['label'].": ";
+                                            <?php if ($timerow['label'] != NULL) echo $timerow['label'].": ";
                                             
-        $start_time=date('d-m-Y h:m', strtotime($timerow['start_time']));
-        $end_time=date('d-m-Y h:m', strtotime($timerow['end_time'])); ?>
-                                            <?=$start_time?> - <?=$end_time?></h5>
+        $start_time=date('d-m-Y h:i A', strtotime($timerow['start_time']));
+        $end_time=date('d-m-Y h:i A', strtotime($timerow['end_time'])); ?>
+                                            <?=$start_time?> to <?=$end_time?></h5>
                                         </div>
     
                                     <?php
