@@ -1,3 +1,12 @@
+<?php
+if(isset($_SESSION['preloginpg']))
+{
+    $redurl=$_SESSION['preloginpg'];
+    unset($_SESSION['preloginpg']);
+    header('Location: '.$redurl);
+    
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +18,15 @@
   <meta name="theme-color" content="#1a3840">
   <meta name="description" content="Hestia 19 - National level Techno Cultural fest organized by TKM College of Engineering. March 28-31">
 <meta name="keywords" content="hestia,hestia19,tkmce,hestiatkm,hestiatkmce,conjura,fest,event,technical,cultural,technocultural">
+<script>
+if (typeof(Storage) !== "undefined") {
+    if (localStorage.getItem("pre_login_url") !== null) {
+        var redir_url=localStorage.getItem("pre_login_url");
+        localStorage.removeItem("pre_login_url");
+        window.location.replace(redir_url);
+    }
+} 
+</script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135958084-1"></script>
 <script>
@@ -207,14 +225,14 @@
         </div>
       </div>
       </a>
-      <!-- <a href="<?=base_url("events/workshops")?>">
+      <a href="<?=base_url("events/workshops")?>">
       <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/workshop_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
         data-hash="">
         <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
           <h1 class="title  event-name " style="">Workshops</h1>
         </div>
       </div>
-      </a> -->
+      </a>
       <a href="<?=base_url("events/online")?>">
       <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/online_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
         data-hash="">

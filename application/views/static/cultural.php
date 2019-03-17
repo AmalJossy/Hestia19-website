@@ -224,14 +224,14 @@ opinion, our most inexhaustible source of magic”.</p>
         </div>
       </div>
       </a>
-        <!-- <a href="<?=base_url("events/workshops")?>">
+        <a href="<?=base_url("events/workshops")?>">
             <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/workshop_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
                  data-hash="">
                 <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
                     <h1 class="title  event-name " style="">Workshops</h1>
                 </div>
             </div>
-        </a> -->
+        </a>
         <a href="<?=base_url("events/online")?>">
             <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/online_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
                  data-hash="">

@@ -348,7 +348,7 @@
                     <h2 class="card-title" style="font-weight: 900; letter-spacing: 3px;max-height: 100vh;"><?=$event->title?></h2>
                     <p class="card-text text-justify text-muted space" style="font-size: 1.2em;" ><?=$event->details?>
                         <?php
-                        if($event->prize!="0"){
+                        if($event->prize!=NULL && $event->prize!="0"){
 
                         ?> <h3>Prizes Worth : <?=$event->prize?></h3>
                     <?php
@@ -382,9 +382,14 @@
                                         <div style="padding-left: 15px;">
                                         <h5>
                                             <?php if ($timerow['label'] != NULL) echo $timerow['label'].": ";
-                                            
-        $start_time=date('d-m-Y h:i A', strtotime($timerow['start_time']));
-        $end_time=date('d-m-Y h:i A', strtotime($timerow['end_time'])); ?>
+                                            $start_time=date('d-m h:i A', strtotime($timerow['start_time']));
+                                            $end_time=date('d-m h:i A', strtotime($timerow['end_time']));
+                                            $dt_start=substr($start_time, 0, 5);
+                                            $dt_end=substr($end_time, 0, 5);
+                                            if ($dt_start == $dt_end) {
+                                                $end_time=date('h:i A', strtotime($timerow['end_time']));
+                                            }
+                                            ?>
                                             <?=$start_time?> to <?=$end_time?></h5>
                                         </div>
     
@@ -483,7 +488,9 @@ function checkBoxValidate(){
 
                 switch(array[0]){
                     case 505:{
-                     
+                        if (typeof(Storage) !== "undefined") {
+                        localStorage.setItem("pre_login_url", window.location.href);
+                        }
                       window.location="<?=$google_login_url?>";
                        
                         break;

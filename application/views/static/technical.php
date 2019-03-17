@@ -156,8 +156,8 @@ padding-right:10vh;
     <div class="row event_listing_div"  style="text-align:left;padding-top: 10vh;">
 
     <div class="col-12 listing1" style="padding-bottom: 20px;">
-              <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;">BIG - O | CSE</p>
-              <p class="event-desc">The future is computing. And there's no stopping it. Big-O is the next-gen techfest, with workshops, 
+              <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;">BIG{O} | CSE</p>
+              <p class="event-desc">The future is computing. And there's no stopping it. Big{O} is the next-gen techfest, with workshops, 
               competitions and a plethora of technical events, all geared towards the future. The future is here, this is how we get ready 
               to own it!</p>
               <a href="<?=base_url("events/technical-cs")?>" class="details">MORE&nbsp;DETAILS</a>
@@ -252,14 +252,14 @@ padding-right:10vh;
         </div>
       </div>
       </a>
-      <!-- <a href="<?=base_url("events/workshops")?>">
+      <a href="<?=base_url("events/workshops")?>">
         <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/workshop_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
              data-hash="">
           <div class="container" style="padding: 10px;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
             <h1 class="title  event-name " style="">Workshops</h1>
           </div>
         </div>
-      </a> -->
+      </a>
       <a href="<?=base_url("events/online")?>">
         <div class="item auto-height" style="max-height:50vh;background-image: url('<?=base_url();?>assets/front/img/online_bg.jpg'); background-size: cover; background-position: top;box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);"
              data-hash="">
