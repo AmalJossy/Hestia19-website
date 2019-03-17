@@ -108,8 +108,15 @@ class Admin_API extends REST_Controller {
         $data['cat_id']=$this->post('cat_id');
         $data['short_desc']=$this->post('short_desc');
         $data['details']=$this->post('details');
+        $data['min_memb']=$this->post('min_memb');
+        $data['max_memb']=$this->post('max_memb');
         $data['venue']=$this->post('venue');
+        $data['reg_fee']=$this->post('reg_fee');
+        $data['fee_type']=$this->post('fee_type');
         $data['prize']=$this->post('prize');
+        $data['file1']=$this->post('file1');
+        $data['file2']=$this->post('file2');
+        $data['file_last_date']=$this->post('file_last_date');
         $data['co1_name']=$this->post('co1_name');
         $data['co1_no']=$this->post('co1_no');
         $data['co2_name']=$this->post('co2_name');
@@ -117,8 +124,9 @@ class Admin_API extends REST_Controller {
         $data['seats']=$this->post('seats');
         $data['reg_start']=$this->post('reg_start');
         $data['reg_end']=$this->post('reg_end');
-        $data['username']=$this->put('username');
-        $data['pswd']=$this->put('password');
+        $data['username']=$this->post('username');
+        $data['pswd']=$this->post('password');
+        $data['link']=$this->post('link');
         $status = $this->event_model->create($data);
         $this->response($data,$status);
     }
@@ -129,8 +137,15 @@ class Admin_API extends REST_Controller {
         $data['cat_id']=$this->put('cat_id');
         $data['short_desc']=$this->put('short_desc');
         $data['details']=$this->put('details');
+        $data['min_memb']=$this->put('min_memb');
+        $data['max_memb']=$this->put('max_memb');
         $data['venue']=$this->put('venue');
+        $data['reg_fee']=$this->put('reg_fee');
+        $data['fee_type']=$this->put('fee_type');
         $data['prize']=$this->put('prize');
+        $data['file1']=$this->put('file1');
+        $data['file2']=$this->put('file2');
+        $data['file_last_date']=$this->put('file_last_date');
         $data['co1_name']=$this->put('co1_name');
         $data['co1_no']=$this->put('co1_no');
         $data['co2_name']=$this->put('co2_name');
@@ -140,6 +155,7 @@ class Admin_API extends REST_Controller {
         $data['reg_end']=$this->put('reg_end');
         $data['username']=$this->put('username');
         $data['pswd']=$this->put('password');
+        $data['link']=$this->put('link');
         $status =  $this->event_model->modify($id,$data);
         $this->response($data,$status);
     }

@@ -77,6 +77,7 @@ class Pages extends CI_Controller {
        $isbooked=$this->report_model->get_book_status($eid);
         $data['parent']=$this->report_model->get_event_cat_details($eid)->cat_name;
         $today = date('Y-m-d');
+        $data['schedule']=$this->report_model->get_event_schedule($eid);
         $startdate=date('Y-m-d', strtotime($data['event']->reg_start));
         $enddate = date('Y-m-d', strtotime($data['event']->reg_end));
         $cnt=$this->report_model->get_event_reg_count($eid);

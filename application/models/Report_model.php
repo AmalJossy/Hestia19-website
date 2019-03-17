@@ -38,8 +38,17 @@ class Report_model extends CI_Model {
                 $data[] = $row;
         }
         return  $data;
-        
     }
+
+    public function get_event_schedule($eid) {
+        $this->db->select('*');
+        $this->db->from('time');
+        $this->db->order_by('start_time');
+        $this->db->where('event_id', $eid);
+        $query=$this->db->get();
+        return $query->result();
+    }
+
     public function get_single_event($link){
         $this->db->select ( '*' );
         $this->db->from ( 'events' );
