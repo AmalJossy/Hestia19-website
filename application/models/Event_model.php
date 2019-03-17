@@ -76,7 +76,9 @@ class Event_model extends CI_Model {
         return 201;
     }
     public function modify($id,$data){
-        $cat_id= $this->db->query("SELECT cat_id FROM events WHERE event_id=='".$id."';")->result_array()['cat_id'];
+        $this->db->select('cat_id');
+        $this->db->where('event_id',$id);
+        $cat_id=$this->db->get('events')->result_array()[0]['cat_id'];
         if( $this->session->type != 'super' && $this->session->event_id != $id && $this->session->cat_id != $cat_id ){
             return 401;
         }
