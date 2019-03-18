@@ -43,8 +43,9 @@ class Pages extends CI_Controller {
     }else{
         //htodo $data['myevents']=array();
        // header('Location: '.$data['google_login_url']);
-
-       exit('login first');//htodo
+               $data['google_login_url']=$this->google->get_login_url();
+header('Location: '.$data['google_login_url']);
+       exit('');//htodo
 
     }
         
