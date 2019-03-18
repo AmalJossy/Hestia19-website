@@ -188,6 +188,13 @@ padding-right:10vh;
       </div>
 
       <div class="col-12 listing1" style="padding-bottom: 20px;">
+        <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">Konstruct | CIVIL</p>
+        <p class="event-desc">Every work is a series of experiments, a sequence of judicious applications of the results of previous 
+        experiences, a result of well laid out engineering organisation. Join us at Hestia '19, let's plan, build and create.</p>
+        <a href="<?=base_url("events/technical-civil")?>" class="details">MORE&nbsp;DETAILS</a>
+      </div>
+
+      <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">MEXSYM | MECHANICAL</p>
       <p class="event-desc">Workshops that break down the innovative discoveries of the present to their basics, competitions 
       that test your ingenuity, events that push you to your limits, the arena is designed just for you. If thinking machines 
@@ -210,13 +217,6 @@ padding-right:10vh;
       Be a part of the solution, not the precipitate.</p>
       <a href="<?=base_url("events/technical-chem")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
-
-    <div class="col-12 listing1" style="padding-bottom: 20px;">
-      <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">CIVIL ENGINEERING</p>
-      <p class="event-desc">Every work is a series of experiments, a sequence of judicious applications of the results of previous 
-      experiences, a result of well laid out engineering organisation. Join us at Hestia '19, let's plan, build and create.</p>
-      <a href="<?=base_url("events/technical-civil")?>" class="details">MORE&nbsp;DETAILS</a>
-    </div> 
     
       <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">ROBOTICS</p>
