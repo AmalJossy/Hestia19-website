@@ -181,7 +181,7 @@ if (typeof(Storage) !== "undefined") {
       <div class="dropdown-menu dropdown-menu-right">
         <h6 class="dropdown-header"><?=$_SESSION['name']?></h6>
 
-        <!-- <a href="#" class="dropdown-item">My Events</a>   todo-->
+        <a href="<?=base_url();?>myevents" class="dropdown-item">My Events</a>
 
         <a href="<?=base_url();?>auth/logout" class="dropdown-item">Sign out</a>
       </div>
