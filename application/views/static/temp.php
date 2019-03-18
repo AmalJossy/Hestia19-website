@@ -205,20 +205,28 @@ padding-right:10vh;
                    
                    ?> 
                    <?php 
-                   $date_not_over=$this->report_model->check_files_lastdate($this->report_model->get_eid_by_link($row['link']));
+                      $date_not_over=$this->report_model->check_files_lastdate($this->report_model->get_eid_by_link($row['link']));
                    if ($row['file1'] != NULL && $row['u_file1'] == NULL && $date_not_over){
-                     echo "<form action='pages/url_submitted' method='post'>";
-                     echo "<input type='hidden' name='link' value=".$row['link'].'  disabled/>';
+                     echo "<form  class='form-inline row'  action='pages/url_submitted' method='post'>";
+                     echo "<input style='min-width:250px;' type='hidden' name='link' value=".$row['link'].'  disabled/>';
 
-                     echo "<input type='text' name='f1' placeholder='". $row['file1']."' />";
+                     echo "<div  class='form-group col-md-4 col-sm-12'><input  class='form-control'  style='min-width:250px;'  type='text' name='f1' placeholder='". $row['file1']."' /></div>";
 
                      if ($row['file2'] != NULL && $row['u_file2'] == NULL ){
-                      echo "<input type='text' name='f2' placeholder='". $row['file2']."' />";
+                      echo "<div style='min-width:250px;'  class='form-group col-md-4 col-sm-12 file2'><input  class='form-control'  style='min-width:250px;' style='' type='text' name='f2' placeholder='". $row['file2']."' /></div>";
                      }
                     
-                     echo "<input type='submit' >";
+                     echo "<div class='form-group col-md-4 col-sm-12'><button type='submit' style='margin-top:20px;' class='btn btn-default' >Submit</button></div>";
                     echo "</form>";
-                    echo "<p class=\"text-danger\">Fill in the links to all required files and click submit. File links cannot be edited after submission</p>";
+                
+                    echo "<p class=\"text-danger\">"?>
+                    <?php
+                    if($row['file_last_date']){
+                      echo "Last Date for submission is ".date('d-M', strtotime($row['file_last_date']))."<br>";
+                    }
+                    
+                    ?>
+                    <?php echo "Fill in the links to all required files and click submit. File links cannot be edited after submission</p>";
                    }
                    else
                    {
@@ -229,11 +237,11 @@ padding-right:10vh;
                      }
                      if($row['u_file1']!=NULL)
                      {
-                    echo "<form>";
-                    echo "<input type='text' value='". $row['u_file1']."' disabled/>";
+                    echo "<form  class='form-inline'>";
+                    echo " <div class='form-group col-md-6 col-sm-12' style='min-width:250px;'>    <label>". $row['file2']."</label>                    <input type='text' style='min-width:250px;padding: 1px;'   class='form-control'  value='". $row['u_file1']."' disabled/></div>";
                     if($row['u_file2']!=NULL)
                      {
-                    echo "<input type='text' value='". $row['u_file2']."' disabled/>";
+                    echo " <div style='min-width:250px;'  class='form-group file2 col-md-6 col-sm-12'><label>". $row['file2']."</label><input type='text' style='min-width:250px;padding: 1px;'  class='form-control'  value='". $row['u_file2']."' disabled/></div>";
                      }
                     echo "</form>";
                      }
