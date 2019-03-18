@@ -37,25 +37,22 @@ class Pages extends CI_Controller {
     function UserEvents(){
 
     if(isset($_SESSION['email'])){
+      //htodo  $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
         $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
+
     }else{
-        $data['myevents']=array();
+        //htodo $data['myevents']=array();
+       // header('Location: '.$data['google_login_url']);
+
+       exit('login first');//htodo
 
     }
         
-        $this->load->view('static/user_events',$data);
-       
-    // $row=['file1'=>"hint",
-    // 'u_file1'=> NULL,
-    // 'title'=>"title",
-    // 'venue'=>"venue",
-    // 'file2'=>NULL,
-    // 'u_file2'=>NULL,
-    // 'link'=>"khasflk",
-    // 'time'=> time()
-    // ];
+       // $this->load->view('static/user_events',$data);
+
+    // var_dump($data);//htodo
     // $data['myevents']=[$row];
-    // $this->load->view('static/temp',$data);
+     $this->load->view('static/temp',$data);
     }
     
     function BookTicket(){
@@ -65,6 +62,36 @@ class Pages extends CI_Controller {
 
       
     }
+    function url_submitted(){
+        $f1= $this->input->post('f1');
+        $f2= $this->input->post('f2');
+        $elink= $this->input->post('link');
+
+        $f1=$this->security->xss_clean($f1);
+        $f2=$this->security->xss_clean($f2);
+        $elink=$this->security->xss_clean($elink);
+
+        //$data['event']=$this->report_model->get_single_event($elink);
+        $eid=$this->report_model->get_eid_by_link($elink);
+        if($this->report_model->check_files_submit($eid))
+        {
+            if(strlen($f2)!=0)
+            {
+                $this->report_model->set_file_urls($f1,$eid,$f2);
+            }
+            else{
+                $this->report_model->set_file_urls($f1,$eid);
+            }
+        }
+        else
+        {
+            exit("File links cant be uploaded");
+        }
+
+
+        redirect(base_url()."myevents");
+        
+      }
     function SingleEvent($elink){
         $elink1=$this->security->xss_clean($elink);
        $data['event']=$this->report_model->get_single_event($elink1);
