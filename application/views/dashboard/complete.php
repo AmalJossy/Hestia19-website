@@ -14,8 +14,10 @@
 <div class="container">
     
                 <div class="row" style="padding:10px;">
+
                     <div class="col-md-5 col-sm-12"></div>
                     <div class="col-md-3 col-sm-12" style="background: #fff;width:90%;border: grey; border-radius:5px; padding: 20px; position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
+<h3 style="margin-bottom:30px">Complete your Profile</h3>
                     <form id="team_form" method="post">
                      <input class="form-control" type="text" id="" placeholder="College Name" name="college"><br/>
                      <input class="form-control" type="phone" id="" placeholder="Phone Number" name="phone"><br/>
