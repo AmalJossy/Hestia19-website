@@ -179,13 +179,13 @@ padding-right:10vh;
       <a href="<?=base_url("events/technical-ec")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
 
-      <!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
+      <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">HIWAGA | ARCHITECTURE</p>
       <p class="event-desc">Hiwaga is an architectural and cultural revelry that embarks to push the boundaries of art, architecture, 
       music and photography. It is a wonderful mystery, which unwinds a glimpse into the ethereal and and skilful life of architects. 
       It's here to sprint your minds over the manifold perspectives and the passion that desires to unearth one's creative potential.</p>
       <a href="<?=base_url("events/technical-arch")?>" class="details">MORE&nbsp;DETAILS</a>
-      </div> -->
+      </div>
 
       <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">MEXSYM | MECHANICAL</p>
@@ -211,12 +211,12 @@ padding-right:10vh;
       <a href="<?=base_url("events/technical-chem")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
 
-    <!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
+    <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">CIVIL ENGINEERING</p>
       <p class="event-desc">Every work is a series of experiments, a sequence of judicious applications of the results of previous 
       experiences, a result of well laid out engineering organisation. Join us at Hestia '19, let's plan, build and create.</p>
       <a href="<?=base_url("events/technical-civil")?>" class="details">MORE&nbsp;DETAILS</a>
-    </div>  -->
+    </div> 
     
       <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">ROBOTICS</p>

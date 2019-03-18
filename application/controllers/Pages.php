@@ -49,11 +49,10 @@ header('Location: '.$data['google_login_url']);
 
     }
         
-       // $this->load->view('static/user_events',$data);
+     $this->load->view('static/user_events',$data);
 
     // var_dump($data);//htodo
     // $data['myevents']=[$row];
-     $this->load->view('static/temp',$data);
     }
     
     function BookTicket(){
@@ -182,5 +181,5 @@ header('Location: '.$data['google_login_url']);
 //        $this->load->view('templates/header', $data);
 //        $this->load->view('pages/'.$page, $data);
 //        $this->load->view('templates/footer', $data);
-//    }
+//    } 
 }

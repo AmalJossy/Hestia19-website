@@ -1,4 +1,3 @@
-
 <?php
 class Report_model extends CI_Model {
     public function __construct()
@@ -106,6 +105,7 @@ class Report_model extends CI_Model {
                 $row['link'] = $row1->link;
                 $row['file2'] = $row1->file2;
                 $row['u_file2'] = $row1->u_file2;
+                $row['file_last_date'] = $row1->file_last_date;
                 $query_time=$this->db->query("SELECT * FROM time where event_id=".$row1->event_id."  order by start_time");
                 $row['time']=$query_time->result_array();
                 $data[] = $row;
@@ -168,4 +168,3 @@ class Report_model extends CI_Model {
 
 }
 ?>
-
