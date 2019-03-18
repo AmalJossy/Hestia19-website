@@ -24,7 +24,7 @@ class Report_model extends CI_Model {
       $this->db->where ( $array );
       $query = $this->db->get ();
 
-     return $query->result(){0}->reg_email;
+     return $query->result()[0]->reg_email;
     }
 
     public function check_files_submit($eid)
@@ -34,8 +34,8 @@ class Report_model extends CI_Model {
         $array = array('member_email' =>$_SESSION['email'] , 'event_id' => $eid);
         $this->db->where ( $array );
         $query = $this->db->get ();
-        $f1=$query->result(){0}->file1;
-        $f2=$query->result(){0}->file2;
+        $f1=$query->result()[0]->file1;
+        $f2=$query->result()[0]->file2;
         if($this->check_files_lastdate($eid) && $f1===NULL && $f2===NULL)
             return true;
         else
@@ -49,11 +49,11 @@ class Report_model extends CI_Model {
         $array = array( 'event_id' => $eid); 
         $this->db->where ( $array );
         $query = $this->db->get ();
-        if($query->result(){0}->file_last_date===NULL){
+        if($query->result()[0]->file_last_date===NULL){
 
             return true;
         }
-        $fld=$query->result(){0}->file_last_date;
+        $fld=$query->result()[0]->file_last_date;
         $now = time();
         $target = strtotime($fld. "+1 days");
         $diff = $now - $target;
