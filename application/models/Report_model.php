@@ -1,3 +1,6 @@
+
+application/x-httpd-php Report_model.php ( C++ source, ASCII text )
+
 <?php
 class Report_model extends CI_Model {
     public function __construct()
@@ -69,12 +72,11 @@ class Report_model extends CI_Model {
     {
         $this->db->set('file1', $f1);
         $reg_mail=$this->get_regmail_by_membmail($_SESSION['email'],$evid);
-        print_r($reg_mail);
-        //exit();
+    
         $array = array('reg_email' =>$reg_mail , 'event_id' => $evid); 
         $this->db->where($array);
         $this->db->update('registration');
-        if(f2!== NULL)
+        if($f2!== NULL)
         {
             $this->db->set('file2', $f2);
             $this->db->where($array);
@@ -168,3 +170,4 @@ class Report_model extends CI_Model {
 
 }
 ?>
+
