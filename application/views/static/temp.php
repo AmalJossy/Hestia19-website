@@ -155,29 +155,97 @@ padding-right:10vh;
     </nav>
 
       <div class="container" style="z-index:10;position:absolute;top:0px;">
-          <div class="row event_listing_div"  style="text-align:left;padding-top: 10vh;">
+          <div class="row event_listing_div"  style="text-align:left;padding-top: 5vh;">
           <?php
-          // print_r($myevents[0]);
+           //print_r($_SESSION['myev']);
+           //print_r($myevents[0]);
+           //print_r('hii222');
+           //print_r($myevents[0]['link']);
           foreach($myevents as $row){
           ?>
 
                <div class="col-12 listing1" style="padding-bottom: 20px;">
-                   <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;"><?=$row['title']?></p>
-                   <p class="event-desc"><?=$row['venue']?></p>
-                   <?php if ($row['file1'] != NULL && $row['u_file1'] == NULL ){
-                     echo "<form>";
-                     echo "<input type='text' placeholder=". $row['file1']." />";
+                   <p class="event-name-text text-light" onclick=<?php echo "'location.href =\"".base_url().'event/'.$row['link']."\"'"; ?> style="letter-spacing: 3px;color:white;text-align: left; cursor:pointer;"><?=$row['title']?></p>
+                   <p class="event-desc"><?php 
+                   if(strlen($row['venue'])!=0) 
+                   {echo 'Venue: '.$row['venue'];} 
+                   else
+                   {
+                    echo 'Check back later for more event details..';
+                   }
+                   ?></p>
+                   <?php //schedule
+                   
+                   if (count($row['time'])>0) {
+                    ?>
+                    <p class="event-desc">Schedule:</p>
+                    <?php 
+                        foreach($row['time'] as $timerow){
+                            $timerow = (array) $timerow; ?>
+                            <div style="padding-left: 15px;">
+                            <p class="event-desc">
+
+                                <?php if ($timerow['label'] != NULL) echo $timerow['label'].": ";
+                                $start_time=date('d-m h:i A', strtotime($timerow['start_time']));
+                                $end_time=date('d-m h:i A', strtotime($timerow['end_time']));
+                                $dt_start=substr($start_time, 0, 5);
+                                $dt_end=substr($end_time, 0, 5);
+                                if ($dt_start == $dt_end) {
+                                    $end_time=date('h:i A', strtotime($timerow['end_time']));
+                                }
+                                ?>
+                                <?=$start_time?> to <?=$end_time?>
+                                </p>
+                            </div>
+
+                        <?php
+                        }
+                }
+                   
+                   
+                   ?> 
+                   <?php 
+                   $date_not_over=$this->report_model->check_files_lastdate($this->report_model->get_eid_by_link($row['link']));
+                   if ($row['file1'] != NULL && $row['u_file1'] == NULL && $date_not_over){
+                     echo "<form action='pages/url_submitted' method='post'>";
+                     echo "<input type='hidden' name='link' value=".$row['link'].'  disabled/>';
+
+                     echo "<input type='text' name='f1' placeholder='". $row['file1']."' />";
+
                      if ($row['file2'] != NULL && $row['u_file2'] == NULL ){
-                      echo "<input type='text' placeholder=". $row['file2']." />";
+                      echo "<input type='text' name='f2' placeholder='". $row['file2']."' />";
                      }
+                    
                      echo "<input type='submit' >";
                     echo "</form>";
-                   }?>
+                    echo "<p class=\"text-danger\">Fill in the links to all required files and click submit. File links cannot be edited after submission</p>";
+                   }
+                   else
+                   {
+                     if(! $date_not_over)
+                     {
+                      echo "<p class=\"text-danger\">Last date to submit links over</p>";
+
+                     }
+                     if($row['u_file1']!=NULL)
+                     {
+                    echo "<form>";
+                    echo "<input type='text' value='". $row['u_file1']."' disabled/>";
+                    if($row['u_file2']!=NULL)
+                     {
+                    echo "<input type='text' value='". $row['u_file2']."' disabled/>";
+                     }
+                    echo "</form>";
+                     }
+                   }
+                   
+                 
+                    ?>
                </div>
 
-
+                   
       <?php
-
+                  
 
       }
 
