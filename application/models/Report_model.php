@@ -1,6 +1,4 @@
 
-application/x-httpd-php Report_model.php ( C++ source, ASCII text )
-
 <?php
 class Report_model extends CI_Model {
     public function __construct()
