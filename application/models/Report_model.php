@@ -14,6 +14,79 @@ class Report_model extends CI_Model {
         $query = $this->db->get ();
         return $query->result();
     }
+
+    public function get_regmail_by_membmail($email,$eid)
+    {
+        $this->db->select ( 'reg_email' );
+        $this->db->from ( 'registration' );
+        $array = array('member_email' =>$email , 'event_id' => $eid); 
+
+      $this->db->where ( $array );
+      $query = $this->db->get ();
+
+     return $query->result(){0}->reg_email;
+    }
+
+    public function check_files_submit($eid)
+    {
+        $this->db->select ( 'file1,file2' );
+        $this->db->from ( 'registration' );
+        $array = array('member_email' =>$_SESSION['email'] , 'event_id' => $eid);
+        $this->db->where ( $array );
+        $query = $this->db->get ();
+        $f1=$query->result(){0}->file1;
+        $f2=$query->result(){0}->file2;
+        if($this->check_files_lastdate($eid) && $f1===NULL && $f2===NULL)
+            return true;
+        else
+            return false;
+    }
+
+    public  function check_files_lastdate($eid)
+    {
+        $this->db->select ( 'file_last_date' );
+        $this->db->from ( 'events' );
+        $array = array( 'event_id' => $eid); 
+        $this->db->where ( $array );
+        $query = $this->db->get ();
+        if($query->result(){0}->file_last_date===NULL){
+
+            return true;
+        }
+        $fld=$query->result(){0}->file_last_date;
+        $now = time();
+        $target = strtotime($fld. "+1 days");
+        $diff = $now - $target;
+        if ( $diff > 0 ) {
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public function set_file_urls($f1,$evid,$f2 = NULL)
+    {
+        $this->db->set('file1', $f1);
+        $reg_mail=$this->get_regmail_by_membmail($_SESSION['email'],$evid);
+        print_r($reg_mail);
+        //exit();
+        $array = array('reg_email' =>$reg_mail , 'event_id' => $evid); 
+        $this->db->where($array);
+        $this->db->update('registration');
+        if(f2!== NULL)
+        {
+            $this->db->set('file2', $f2);
+            $this->db->where($array);
+            $this->db->update('registration');
+        }
+    }
+
+    public function get_eid_by_link($link)
+    {
+        $data['event']=$this->report_model->get_single_event($link);
+        return $data['event']->event_id;
+    }
     
     public function get_user_events($email=''){
         $this->db->select ( 'e.*,r.file1 as u_file1, r.file2 as u_file2' );
@@ -37,6 +110,7 @@ class Report_model extends CI_Model {
                 $row['time']=$query_time->result_array();
                 $data[] = $row;
         }
+
         return  $data;
     }
 
