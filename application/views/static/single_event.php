@@ -381,16 +381,22 @@
                                         $timerow = (array) $timerow; ?>
                                         <div style="padding-left: 15px;">
                                         <h5>
-                                            <?php if ($timerow['label'] != NULL) echo $timerow['label'].": ";
+                                            <?php
+                                            if ($timerow['label'] != NULL) echo $timerow['label'].": ";
                                             $start_time=date('d-M h:i A', strtotime($timerow['start_time']));
-                                            $end_time=date('d-M h:i A', strtotime($timerow['end_time']));
-                                            $dt_start=substr($start_time, 0, 5);
-                                            $dt_end=substr($end_time, 0, 5);
-                                            if ($dt_start == $dt_end) {
-                                                $end_time=date('h:i A', strtotime($timerow['end_time']));
+                                            if ($timerow['end_time'] == NULL) {
+                                                echo 'Starts by '.$start_time;
+                                            } else {
+                                                $end_time=date('d-M h:i A', strtotime($timerow['end_time']));
+                                                $dt_start=substr($start_time, 0, 5);
+                                                $dt_end=substr($end_time, 0, 5);
+                                                if ($dt_start == $dt_end) {
+                                                    $end_time=date('h:i A', strtotime($timerow['end_time']));
+                                                }
+                                                echo $start_time.' to '.$end_time;
                                             }
                                             ?>
-                                            <?=$start_time?> to <?=$end_time?></h5>
+                                            </h5>
                                         </div>
     
                                     <?php
