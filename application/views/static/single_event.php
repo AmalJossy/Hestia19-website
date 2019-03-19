@@ -382,8 +382,8 @@
                                         <div style="padding-left: 15px;">
                                         <h5>
                                             <?php if ($timerow['label'] != NULL) echo $timerow['label'].": ";
-                                            $start_time=date('d-m h:i A', strtotime($timerow['start_time']));
-                                            $end_time=date('d-m h:i A', strtotime($timerow['end_time']));
+                                            $start_time=date('d-M h:i A', strtotime($timerow['start_time']));
+                                            $end_time=date('d-M h:i A', strtotime($timerow['end_time']));
                                             $dt_start=substr($start_time, 0, 5);
                                             $dt_end=substr($end_time, 0, 5);
                                             if ($dt_start == $dt_end) {
