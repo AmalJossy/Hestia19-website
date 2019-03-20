@@ -32,6 +32,8 @@ class Admin_API extends REST_Controller {
                 $data['cat_id']=$_SESSION['cat_id'];
             elseif($_SESSION['type'] == 'event')
                 $data['event_id']=$_SESSION['event_id'];
+            else
+                $data['type']=$_SESSION['type'];
         }
         $this->response($data);
     }
