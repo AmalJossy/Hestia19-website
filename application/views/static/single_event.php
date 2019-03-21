@@ -368,7 +368,7 @@
                         }
                         if ($event->reg_fee !== NULL && $reg_end !== '') {
                             ?>
-                            <h5>Registration closes on: <?=$reg_end?></h5>
+                            <h5>Online Registration closes on: <?=$reg_end?></h5>
                     
                             <?php
                         }
