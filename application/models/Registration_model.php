@@ -4,8 +4,14 @@ class Registration_model extends CI_Model {
         if( $this->session->type != 'super' && $this->session->event_id != $id){
             return 401;
         }
-        $query = $this->db->get_where('registrations',array('event_id' => $id));
+        $this->db->select('reg_id, event_id, reg_email, member_email');
+
+        $this->db->where('event_id', $id );
+
+        $query = $this->db->get('registrations');
         return $query->result_array();
+        // $query = $this->db->get_where('registrations',array('event_id' => $id));
+        // return $query->result_array();
     }
     public function get_registrations($id){
         $this->db->select('reg_id, event_id, reg_email, member_email');
