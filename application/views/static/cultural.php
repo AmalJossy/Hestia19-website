@@ -184,7 +184,7 @@ something invincible, to build a masterpiece , to express. Showcase these apprec
 competitions hosted by Hestia’19.</p>
 <a href="<?=base_url("events/cultural-fine-arts")?>" class="details">MORE&nbsp;DETAILS</a>
 </div>
-<!-- <div class="col-12 listing1" style="padding-bottom: 20px;">
+<div class="col-12 listing1" style="padding-bottom: 20px;">
 <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">SPORTS</p>
 <p class="event-desc">“Kill them with success and bury them with a smile”, Usain Bolt has said it all. The true competition that 
 need to be handled with zest and strategies, sports is a promise that the body accomplishes what the heart presumes. Participate 
@@ -197,7 +197,12 @@ with gusto in the sports events of Hestia’19 , while the crowd cheers your vic
 literature replaced by no literature. Hestia’19 brings back the spirit of literature, for “words are, in my not-so-humble 
 opinion, our most inexhaustible source of magic”.</p>
 <a href="<?=base_url("events/cultural-literary")?>" class="details">MORE&nbsp;DETAILS</a>
-</div> -->
+</div>
+<div class="col-12 listing1" style="padding-bottom: 20px;">
+<p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">GAMING</p>
+<p class="event-desc">Come, get hooked to your screens! If you have an impeccable hand-eye coordination, exemplary decision making skills and an unwavering focus the arena is set for you! Grab your joysticks and head over for the ultimate gaming experience!</p>
+<a href="<?=base_url("events/cultural-games")?>" class="details">MORE&nbsp;DETAILS</a>
+</div>
 </div>
 </div>
 
