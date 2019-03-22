@@ -22,19 +22,27 @@ class Appapi_Model extends CI_Model {
         }
     }
 
-    public function insert_user_details(){
-        $data['email']=$this->security->xss_clean($this->input->post('email'));
+    public function insert_user_details($isupdate="N"){
+       $email=$this->security->xss_clean($this->input->post('email'));
         $data['fullname']=$this->security->xss_clean($this->input->post('fullname'));
         $data['college']=$this->security->xss_clean($this->input->post('college'));
         $data['phone']=$this->security->xss_clean($this->input->post('phone'));
-        if($data['email']){
-            $data['hashcode']=password_hash($data['email'], PASSWORD_BCRYPT);
-            return $this->db->insert('users', $data);
+        if($email){
+            if($isupdate=="N"){
+                $data['email']=$email;
+                $data['hashcode']=password_hash($email, PASSWORD_BCRYPT);
+                return $this->db->insert('users', $data);
+            }else{
+                $this->db->where('email', $email );
+                return $this->db->update('users', $data);
+            }
+
         }else{
             return "0";
         }
         
     }
+
     public function get_reg_events(){
         $email=$this->security->xss_clean($this->input->post('email'));
         $imgpath=base_url("assets/uploads/event_images/");

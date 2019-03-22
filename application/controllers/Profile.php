@@ -5,9 +5,9 @@ class Profile extends CI_Controller {
 		$this->load->model('user_model');
     }
     public function complete(){
-        if($this->user_model->is_registered($this->session->email) == TRUE OR $this->session->email == NULL) {
-            redirect(base_url());
-        }
+//        if($this->user_model->is_registered($this->session->email,"Y") == TRUE OR $this->session->email == NULL) {
+//            redirect(base_url());
+//        }
         $data['title'] = ucfirst('Complete Profile');
         $this->load->view('dashboard/complete',$data);
         if( $this->input->post('college') != NULL && $this->input->post('phone') != NULL ){

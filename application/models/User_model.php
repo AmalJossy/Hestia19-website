@@ -9,6 +9,7 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
     public function create($data){
+
         $this->db->insert('users', $data);
         return 201;
     }
@@ -25,6 +26,7 @@ class User_model extends CI_Model {
         $this->db->update('users');
         return 200;
     }
+
     public function delete($email){
         if( $this->session->type != 'super' && $this->session->email != $email ){
             return 401;
@@ -32,9 +34,14 @@ class User_model extends CI_Model {
         $this->db->delete('users', array('email' => $email));
         return 200;
     }
-    public function is_registered($email){
+    public function is_registered($email,$isnotnull="Y"){
+        if($isnotnull=="Y"){
+            $query = $this->db->get_where('users',"email='$email' and (phone is not null and college is not null)" );
 
-        $query = $this->db->get_where('users',"email='$email' and (phone is not null and college is not null)" );
+        }else{
+            $query = $this->db->get_where('users',"email='$email'" );
+
+        }
         if( $query->num_rows() == 1 ){
             return TRUE;
         }
@@ -43,11 +50,15 @@ class User_model extends CI_Model {
     public function complete_signin($data){
 
         $this->load->library('encryption');
-
-        $data['email'] = $this->session->email;
         $data['fullname'] = $this->session->name;
-        $data['hashcode'] =password_hash($data['email'],PASSWORD_BCRYPT);
-        $this->create($data);
+        if($this->is_registered($this->session->email,"N")==FALSE){
+            $data['email'] = $this->session->email;
+            $data['hashcode'] =password_hash($data['email'],PASSWORD_BCRYPT);
+            $this->create($data);
+        }else{
+            $this->modify($this->session->email,$data);
+        }
+
     }
 }
 ?>

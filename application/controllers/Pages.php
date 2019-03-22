@@ -9,7 +9,7 @@ class Pages extends CI_Controller {
         "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .  
         $_SERVER['REQUEST_URI']; 
    
-        if(isset($_SESSION['name']) && $this->user_model->is_registered($_SESSION['email'])==FALSE){
+        if(isset($_SESSION['name']) && $this->user_model->is_registered($_SESSION['email'],"Y")==FALSE){
             $_SESSION['back_url']=$link;
             redirect("Profile/complete");
         }

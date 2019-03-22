@@ -9,7 +9,13 @@ class App_Api extends CI_Controller {
 			$this->response($login_details);
 		}
 		function InsertNewUser(){
-			echo $this->appapi_Model->insert_user_details();
+            $this->load->model('user_model');
+            if($this->user_model->is_registered($_SESSION['email'],"N")==FALSE){
+                echo $this->appapi_Model->insert_user_details("N");
+            }else{
+                echo $this->appapi_Model->insert_user_details("Y");
+            }
+
 		}
 		
 		function GetUserEventsList(){
