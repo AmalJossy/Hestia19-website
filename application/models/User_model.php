@@ -33,7 +33,8 @@ class User_model extends CI_Model {
         return 200;
     }
     public function is_registered($email){
-        $query = $this->db->get_where('users', array('email' => $email));
+
+        $query = $this->db->get_where('users',"email='$email' and (phone is not null and college is not null)" );
         if( $query->num_rows() == 1 ){
             return TRUE;
         }
