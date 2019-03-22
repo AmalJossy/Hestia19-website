@@ -1,11 +1,26 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 require(APPPATH.'libraries/REST_Controller.php');
 use Restserver\Libraries\REST_Controller;
-class app_api extends REST_Controller {
+class App_api extends REST_Controller {
 	 function __construct() {
         parent::__construct();
 		$this->load->model('appapi_Model');
     }
+
+
+    function user_get()
+    {
+        $data = array('returned: '. $this->get('id'));
+        $this->response($data);
+        // respond with information about a user
+    }
+
+    function users_get()
+    {
+        // respond with information about several users
+    }
+
+
 		function login_get(){
 			$login_details = $this->appapi_Model->login_check($this->post('email'));
 			echo $login_details;
