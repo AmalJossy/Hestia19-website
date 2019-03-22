@@ -6,6 +6,19 @@ if(isset($_SESSION['preloginpg']))
     header('Location: '.$redurl);
     
 }
+if(isset($_COOKIE['redir']))
+{
+    setcookie("redir", "", time() - 3600);
+    
+    if($_COOKIE['redir']=='myevents')
+    {
+        $redurl="myevents";
+        header('Location: '.base_url().$redurl);
+
+    }
+    
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
