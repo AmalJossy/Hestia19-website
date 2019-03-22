@@ -60,6 +60,7 @@ $route['event/(.+)'] = 'Pages/SingleEvent/$1';
 $route['process/(.+)'] = 'Pages/ProcessUserRequest/$1';
 $route['bookticket'] = 'Pages/ProcessBooking';
 $route['myevents'] = 'Pages/UserEvents';
+$route['myprofile'] = 'Profile/update';
 
 
 

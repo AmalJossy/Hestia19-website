@@ -4,8 +4,8 @@ class Appapi_Model extends CI_Model {
     {
         $this->load->database();
     }
-    public function login_check(){
-        $gmailid=$this->security->xss_clean($this->input->post('email'));
+    public function login_check($email){
+        $gmailid=$this->security->xss_clean($email);
         $this->db->where('email',$gmailid);
         $query=$this->db->get('users');
         $num_rows=$query->num_rows();
@@ -16,10 +16,57 @@ class Appapi_Model extends CI_Model {
                 $this->db->where('email', $gmailid );
             }
             $query = $this->db->get('users');
-            return $query->result_array();
+            return $query->result_array()[0];
         }else{
             return "false";
         }
+    }
+    public function GetEventCurrentStatus($eid){
+        $event=$this->get_single_event($eid);
+        $eid=$event->event_id;
+        $today = date('Y-m-d');
+        $startdate=date('Y-m-d', strtotime($event->reg_start));
+        $enddate = date('Y-m-d', strtotime($event->reg_end));
+        $this->load->model('report_model');
+        $cnt=$this->report_model->get_event_reg_count($eid);
+
+        if (($today >= $startdate) && ($today <= $enddate)){
+
+            if($cnt<$event->seats || $event->seats == 0){
+                return 1;
+                $reg_end = date('d-m-Y', strtotime($event->reg_end));
+            }else{
+                //Sold Out
+                return 0;
+            }
+        }else{
+            if(($startdate  > $today)){
+                $dtstart = date_create($startdate);
+                //Not Started
+                return 0;
+
+            }
+            if(($today > $enddate)){
+
+                //closed
+                return 0;
+
+            }
+        }
+    }
+
+
+    public function get_single_event($eid){
+        $this->db->select ( '*' );
+        $this->db->from ( 'events' );
+
+        if( $eid != NULL ){
+            $this->db->where ('event_id',$eid);
+            $query = $this->db->get ();
+            return $query->row();
+        }
+
+
     }
 
     public function insert_user_details($isupdate="N"){

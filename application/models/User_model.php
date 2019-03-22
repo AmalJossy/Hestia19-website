@@ -2,11 +2,21 @@
 class User_model extends CI_Model {
     public function get_users($email){
         $this->db->select('fullname, email, client_id, phone, college, verified, banned');
-        if( $id != NULL ){
+        if( $email != NULL ){
             $this->db->where('email', $email );
         }
         $query = $this->db->get('users');
         return $query->result_array();
+    }
+    public function get_user_single($email){
+
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('email', $email);
+        $query=$this->db->get();
+        return $query->result_array()[0];
+
+
     }
     public function create($data){
 
@@ -47,6 +57,7 @@ class User_model extends CI_Model {
         }
         return FALSE;
     }
+
     public function complete_signin($data){
 
         $this->load->library('encryption');
@@ -57,6 +68,21 @@ class User_model extends CI_Model {
             $this->create($data);
         }else{
             $this->modify($this->session->email,$data);
+        }
+
+    }
+    public function update_profile($email,$data){
+
+        $fromser="";
+        if(isset($data['accommodation'])){
+            $fromser=$data['accommodation'];
+        }
+        $acc_cnt=$this->get_user_single($this->session->email)['accommodation'];
+
+        if(strlen($acc_cnt)==strlen($fromser)){
+
+            $this->db->where('email', $email);
+            return $this->db->update('users',$data);
         }
 
     }

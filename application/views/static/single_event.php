@@ -609,12 +609,16 @@ function checkBoxValidate(){
             email = {};
             email["email"] = $(this).val();
 
-            var email_regex = /^[a-zA-Z0-9._-]+@gmail.com$/i;
-            var mailid=$(this).val();
-            if(!email_regex.test(mailid)){
-          
-            e.preventDefault(); 
-            return false; 
+            if($(this).attr('id')!="email0"){
+                var email_regex = /^[a-zA-Z0-9._-]+@gmail.com$/i;
+                var mailid=$(this).val();
+                if(!email_regex.test(mailid)){
+
+                    e.preventDefault();
+                    return false;
+
+                }
+
             }
 
             
