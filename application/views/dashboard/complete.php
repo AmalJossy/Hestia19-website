@@ -1,4 +1,4 @@
-<html>complete_signin
+<html>
 <head>
 
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport">
@@ -22,7 +22,7 @@
 <h3 style="margin-bottom:30px">Complete your Profile</h3>
                     <form id="team_form" method="post">
                      <input class="form-control" type="text" id="" placeholder="College Name" name="college"><br/>
-                     <input class="form-control" type="phone" id="" placeholder="Phone Number" name="phone"><br/>
+                     <input class="form-control" type="phone"  onkeypress="return isNumber(event)"  id="" placeholder="Phone Number" name="phone" maxlength="10" minlength="10"><br/>
                      <button type="submit" class="btn btn-warning my-2 " name="save" id="">Save</button><br>
                     </form>
                     </div> 
@@ -31,4 +31,14 @@
                 </div>
 </div>
 </body>
+<script>
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+</script>
 </html>
