@@ -13,6 +13,14 @@ if(isset($_COOKIE['redir']))
     if($_COOKIE['redir']=='myevents')
     {
         $redurl="myevents";
+        setcookie("redir", "", time() - 3600);
+        header('Location: '.base_url().$redurl);
+
+    }
+        if($_COOKIE['redir']=='myprofile')
+    {
+        $redurl="myprofile";
+        setcookie("redir", "", time() - 3600);
         header('Location: '.base_url().$redurl);
 
     }
