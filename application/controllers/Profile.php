@@ -63,7 +63,7 @@ header('Location: '.$data['google_login_url']);
             }
 
 
-             $this->user_model->update_profile($this->session->email,$user)."dd";
+             $this->user_model->update_profile($this->session->email,$user);
 
             redirect(base_url());
 
