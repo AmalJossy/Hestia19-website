@@ -3,18 +3,31 @@ class Profile extends CI_Controller {
     function __construct() {
         parent::__construct();
 		$this->load->model('user_model');
+		        $this->load->library('Google');
     }
 
 
     public function update(){
-//        if($this->user_model->is_registered($this->session->email,"Y") == TRUE OR $this->session->email == NULL) {
-//            redirect(base_url());
-//        }
+        
+        if(isset($_SESSION['email'])){
+      //htodo  $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
         $data['title'] = ucfirst('Update Profile');
         $data['userinfo']=$this->user_model->get_user_single($this->session->email);
         //$data['userinfo']=$this->user_model->get_user_single($this->session->email);
         $this->load->view('dashboard/updateprofile',$data);
 
+    }else{
+                // set the expiration date to one hour ago
+                setcookie("redir", "myprofile", time() + 3600);
+               $data['google_login_url']=$this->google->get_login_url();
+header('Location: '.$data['google_login_url']);
+       exit('');//htodo
+//        if($this->user_model->is_registered($this->session->email,"Y") == TRUE OR $this->session->email == NULL) {
+//            redirect(base_url());
+//        }
+        
+
+    }
     }
 
     public function complete(){
@@ -50,7 +63,7 @@ class Profile extends CI_Controller {
             }
 
 
-             $this->user_model->update_profile($this->session->email,$user);
+             $this->user_model->update_profile($this->session->email,$user)."dd";
 
             redirect(base_url());
 
