@@ -77,7 +77,7 @@ left:10px;
 
       </div>
       <div class="col-md-2 col-sm-12 person">
-              <p class="name" style="font-weight: 700; font-size: 1.2em; text-align: center; ">PAUSHAL P A</p>
+              <p class="name" style="font-weight: 500; letter-spacing: 1px; font-size: 1.2em; text-align: center; ">PAUSHAL P A</p>
               <p class="text-center" style=" letter-spacing: 1px;  text-align: center; ">
               Arts Club Secretary<br>
               College Union<br>
@@ -86,7 +86,7 @@ left:10px;
           </p>
       </div>
       <div class="col-md-2 col-sm-12 person">
-        <p class="name" style="font-weight: 700; font-size: 1.2em; text-align: center; ">NICKSON BABY V M</p>
+        <p class="name" style="font-weight: 500; letter-spacing: 1px; font-size: 1.2em; text-align: center; ">NICKSON BABY V M</p>
               <p  class="text-center" style=" letter-spacing: 1px;  text-align: center; ">
               Marketing Head<br>
               HESTIA'19<br>
@@ -95,7 +95,7 @@ left:10px;
           </p>
       </div>
       <div class="col-md-2 col-sm-12 person">
-            <p class="name" style="font-weight: 700; font-size: 1.2em; text-align: center; ">ASHWIN P S</p>
+            <p class="name" style="font-weight: 500; letter-spacing: 1px; font-size: 1.2em; text-align: center; ">ASHWIN P S</p>
             <p class="text-center" style=" letter-spacing: 1px;  text-align: center; ">
               General Secretary<br>
               College Union<br>
@@ -103,8 +103,8 @@ left:10px;
               <a class="text-white"href="mailto:ashwinps@hestia.live">ashwinps@hestia.live</a><br>
           </p>
       </div>
-      <div class="col-md-3 col-sm-12 person">
-          <p class="name" style="font-weight: 700; font-size: 1.2em; text-align: center; ">MOHEMED ANSER PM</p>
+      <div class="col-md-2 col-sm-12 person">
+          <p class="name" style="font-weight: 500; letter-spacing: 1px; font-size: 1.2em; text-align: center; ">MOHEMED ANSER PM</p>
           <p class="text-center" style=" letter-spacing: 1px;  text-align: center; ">
               Chairman<br>
               College Union<br>
@@ -112,10 +112,44 @@ left:10px;
                 <a class="text-white"href="mailto:anser@hestia.live">anser@hestia.live</a><br>
           </p>
       </div>
-      <div class="col-md-1 col-sm-12">
+      <div class="col-md-2 col-sm-12">
 
       </div>
     </div>
+
+    <div class="row ">
+      <div class="col-md-2 col-sm-12">
+
+      </div>
+      <div class="col-md-2 col-sm-12">
+              
+      </div>
+      <div class="col-md-2 col-sm-12 person">
+      <p class="name" style="font-weight: 500; letter-spacing: 1px; font-size: 1.2em; text-align: center; ">MANU PRASAD</p>
+          <p class="text-center" style=" letter-spacing: 1px;  text-align: center; ">
+              Technical Head<br>
+              Hestia'19<br>
+              <a class="text-white"href="tel:+917736691635">+917736691635</a><br>
+                <!-- <a class="text-white"href="mailto:anser@hestia.live">anser@hestia.live</a><br> -->
+          </p>
+      </div>
+      <div class="col-md-2 col-sm-12 person">
+      <p class="name" style="font-weight: 500; letter-spacing: 1px; font-size: 1.2em; text-align: center; ">SREERAJ R</p>
+          <p class="text-center" style=" letter-spacing: 1px;  text-align: center; ">
+              Cultural Head<br>
+              Hestia'19<br>
+              <a class="text-white"href="tel:+917559964876">+917559964876</a><br>
+                <!-- <a class="text-white"href="mailto:anser@hestia.live">anser@hestia.live</a><br> -->
+          </p>
+      </div>
+      <div class="col-md-2 col-sm-12">
+          
+      </div>
+      <div class="col-md-2 col-sm-12">
+
+      </div>
+    </div>
+
     <div class="row mb-4 pt-3">
       <div class="col-md-4 col-sm-12"></div>
       <div class="col-md-4 col-sm-12" style=" letter-spacing: 2px; padding-top:5%;">
@@ -133,7 +167,7 @@ left:10px;
     <div class="row">
         <div class="col-md-4 col-sm-12"></div>
         <div class="col-md-4 col-sm-12" style=" letter-spacing: 2px;">
-          <p style="font-weight: 700; font-size: .75em; text-align: center;">Web-related queries? <a class="text-white" href="mailto:admin@hestia.live">admin@hestia.live</a></p>
+          <p style="font-weight: 600; font-size: .75em; text-align: center;">Web-related queries? <a class="text-white" href="mailto:admin@hestia.live">admin@hestia.live</a></p>
         </div>
         <div class="col-md-4 col-sm-12"></div>
       </div>
