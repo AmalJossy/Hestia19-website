@@ -24,6 +24,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <script>
+    $( document ).ready(function() {
+        
+        var name = "book" + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      if(c.substring(name.length, c.length)=="Clicked")
+      {
+          
+        document.cookie = "book=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        if(! $( ".btn-custom" ).hasClass( "disabled" ))
+          {$( ".btn-custom" ).trigger( "click" );}
+      }
+    }
+  }
+});
+
+    </script>
 
 <!---->
 <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
@@ -495,7 +520,10 @@ function checkBoxValidate(){
                 switch(array[0]){
                     case 505:{
                         if (typeof(Storage) !== "undefined") {
-                        localStorage.setItem("pre_login_url", window.location.href);
+                            localStorage.setItem("pre_login_url", window.location.href);
+                        
+                            document.cookie = "book=Clicked";
+
                         }
                       window.location="<?=$google_login_url?>";
                        
@@ -608,7 +636,7 @@ function checkBoxValidate(){
         $("input[type=email]").each(function() {
             email = {};
             email["email"] = $(this).val();
-
+           
             if($(this).attr('id')!="email0"){
                 var email_regex = /^[a-zA-Z0-9._-]+@gmail.com$/i;
                 var mailid=$(this).val();
