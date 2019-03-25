@@ -32,6 +32,14 @@ class Spot extends CI_Controller {
         echo json_encode($this->report_model->get_events($cat_id));
 
     }
+    public function get_reg_user_info($email){
+        echo json_encode($this->report_model->get_user_info($email));
+
+    }
+    public function get_reg_user_events($email){
+        echo $this->report_model->get_reguser_events($email);
+
+    }
     function ProcessUserRequest($eid){
         $islogged=false;
 

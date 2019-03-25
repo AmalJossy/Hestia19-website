@@ -112,6 +112,7 @@ class Appapi_Model extends CI_Model {
         return  json_encode($query->result());
 
     }
+
     public function get_event_count($catname){
 
         $query=$this->db->query("select * from events where cat_id in (select cat_id from categories where cat_name like '".$catname. "%')");

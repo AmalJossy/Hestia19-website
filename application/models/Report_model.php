@@ -150,6 +150,10 @@ class Report_model extends CI_Model {
 
         return  $data;
     }
+    public function get_reguser_events($email){
+        $query=$this->db->query("select e.event_id, e.title from events e, registration r where e.event_id=r.event_id and r.member_email='".$email."'");
+        return  json_encode($query->result());
+    }
 
     public function get_event_schedule($eid) {
         $this->db->select('*');
@@ -194,6 +198,10 @@ class Report_model extends CI_Model {
     public function get_user_accomodations($email){
         $cnt=$this->db->query("SELECT accommodation from users where email='".$email."'");
         return $cnt->row()->accommodation;
+    }
+    public function get_user_info($email){
+        $cnt=$this->db->query("SELECT * from users where email='".$email."'");
+        return $cnt->row();
     }
     public function get_book_status($eid){
         if(!isset($_SESSION['email']))return 0;
