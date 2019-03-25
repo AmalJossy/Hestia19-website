@@ -10,16 +10,12 @@ class Mapp_api extends REST_Controller {
 
 
 		function login_post(){
-			//$login_details = $this->appapi_Model->login_check($this->post('email'));
-			//echo $login_details;
-            //echo "false";
-			//$this->response($login_details);
       $r = $this->appapi_Model->login_check($this->post('email'));
       $this->response($r);
 
 		}
-		function currenteventstatus_get($eid){
-      $r = $this->appapi_Model->GetEventCurrentStatus($eid);
+		function currenteventstatus_get($eid, $email=NULL){
+      $r = $this->appapi_Model->GetEventCurrentStatus($eid, $email);
       $this->response($r);
 
 		}
