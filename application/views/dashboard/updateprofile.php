@@ -56,16 +56,16 @@ if($acc!=0){
                                     Accommodation for
                                 </label><br>
                                 <label class="checkbox-inline chk_ac_day">
-                                    <input type="checkbox" id="day_1" name="acc[]" value="1" <?php if (in_array("1", $acc_ar)) {echo "checked";} ?> >&nbsp;&nbsp;Day -1
+                                    <input type="checkbox" id="day_1" name="acc[]" value="1" <?php if (in_array("1", $acc_ar)) {echo "checked";} ?> >&nbsp;&nbsp;March 28
                                 </label>
                                 <label class="checkbox-inline chk_ac_day">
-                                    <input type="checkbox" id="day_2"  name="acc[]"  value="2"  <?php if (in_array("2", $acc_ar)) {echo "checked";} ?>  >&nbsp;&nbsp;Day -2
+                                    <input type="checkbox" id="day_2"  name="acc[]"  value="2"  <?php if (in_array("2", $acc_ar)) {echo "checked";} ?>  >&nbsp;&nbsp;March 29
                                 </label>
                                 <label class="checkbox-inline chk_ac_day">
-                                    <input type="checkbox" id="day_3"  name="acc[]"  value="3"  <?php if (in_array("3", $acc_ar)) {echo "checked";} ?>  >&nbsp;&nbsp;Day -3
+                                    <input type="checkbox" id="day_3"  name="acc[]"  value="3"  <?php if (in_array("3", $acc_ar)) {echo "checked";} ?>  >&nbsp;&nbsp;March 30
                                 </label>
                                 <label class="checkbox-inline chk_ac_day">
-                                    <input type="checkbox" id="day_4"  name="acc[]"  value="4"  <?php if (in_array("4", $acc_ar)) {echo "checked";} ?>  >&nbsp;&nbsp;Day -4
+                                    <input type="checkbox" id="day_4"  name="acc[]"  value="4"  <?php if (in_array("4", $acc_ar)) {echo "checked";} ?>  >&nbsp;&nbsp;March 31
                                 </label>
                                 <br>
                                 <label class="text-warning">Choose accommodation for <?=$acc_cnt?> days. </label>
