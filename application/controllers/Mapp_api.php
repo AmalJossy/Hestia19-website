@@ -24,5 +24,10 @@ class Mapp_api extends REST_Controller {
             $this->response($r);
 
 		}
+		function event_schedule_get($eid) {
+			$this->load->model('Report_model');
+			$s = $this->Report_model->get_event_schedule($eid);
+			$this->response($s);
+		}
 	
 }
