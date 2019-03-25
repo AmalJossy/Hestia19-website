@@ -4,12 +4,12 @@ if(isset($_SESSION['preloginpg']))
     $redurl=$_SESSION['preloginpg'];
     unset($_SESSION['preloginpg']);
     header('Location: '.$redurl);
-    
+
 }
 if(isset($_COOKIE['redir']))
 {
     setcookie("redir", "", time() - 3600);
-    
+
     if($_COOKIE['redir']=='myevents')
     {
         $redurl="myevents";
@@ -24,7 +24,7 @@ if(isset($_COOKIE['redir']))
         header('Location: '.base_url().$redurl);
 
     }
-    
+
 }
 
 ?>
@@ -46,7 +46,7 @@ if (typeof(Storage) !== "undefined") {
         localStorage.removeItem("pre_login_url");
         window.location.replace(redir_url);
     }
-} 
+}
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135958084-1"></script>
@@ -142,17 +142,17 @@ if (typeof(Storage) !== "undefined") {
             <?php
   if($this->session->userdata('sess_logged_in')==0){
     ?>
-    
+
 <?php
   }else{
 ?>
  &nbsp; &nbsp; &nbsp;
-             
+
     <?php
   }
 ?>
 
-             
+
             </li>
           </ul>
           <ul class="navbar-nav mx-auto">
@@ -160,7 +160,7 @@ if (typeof(Storage) !== "undefined") {
               <a href="#" class="nav-link event-click " id="events">EVENTS</a>
             </li>
             <li class="nav-item fade-in">
-              <a href="#" class="nav-link">SPONSORS</a>
+              <a href="<?=base_url()?>sponsors" class="nav-link">SPONSORS</a>
             </li>
             <li class="nav-item d-none d-lg-block">
               <a class="navbar-brand my-auto" href="#">
@@ -196,9 +196,9 @@ if (typeof(Storage) !== "undefined") {
         <img  src="<?=$_SESSION['profile_pic']?>" alt="DP" class="rounded-circle img-fluid">
         <small  class="mobile-show" style="margin-top:-2rem;margin-left:50px;position:absolute;min-width:150px;"><?=$_SESSION['name']?></small>
         </div>
-       
+
       </a>
-     
+
       <div class="dropdown-menu dropdown-menu-right">
         <h6 class="dropdown-header"><?=$_SESSION['name']?></h6>
 
@@ -218,7 +218,7 @@ if (typeof(Storage) !== "undefined") {
 
 
 
-          </ul> 
+          </ul>
         </div>
       </div>
     </nav>

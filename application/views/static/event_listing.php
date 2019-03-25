@@ -121,7 +121,7 @@ padding-right:10vh;
           </button>
         </div>
         <div class="collapse navbar-collapse">
-          
+
           <ul class="navbar-nav mx-auto">
             <li class="nav-item fade-in">
               <a href="#" class="nav-link event-click " id="events">
@@ -129,7 +129,7 @@ padding-right:10vh;
               </a>
             </li>
             <li class="nav-item fade-in">
-              <a href="#" class="nav-link">
+              <a href="<?=base_url()?>sponsors" class="nav-link">
                 SPONSORS
               </a>
             </li>
@@ -138,17 +138,17 @@ padding-right:10vh;
                 <img class="fade-in-top" style="max-height: 75px;margin-top: -20px;" src="<?=base_url();?>assets/front/img/logo.png" /></a>
             </li>
             <li class="nav-item fade-in">
-              <a href="../about/" class="nav-link">
+              <a href="<?=base_url()?>about" class="nav-link">
                 ABOUT
               </a>
             </li>
             <li class="nav-item fade-in">
-              <a href="../contact/" class="nav-link">
+              <a href="<?=base_url()?>contact" class="nav-link">
                 CONTACT
               </a>
             </li>
           </ul>
-         
+
         </div>
       </div>
     </nav>
@@ -221,7 +221,7 @@ padding-right:10vh;
 
     </div>
   </div>
- 
+
 
 
   <!--   Core JS Files   -->

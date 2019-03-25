@@ -120,7 +120,7 @@ padding-right:10vh;
           </button>
         </div>
         <div class="collapse navbar-collapse">
-          
+
           <ul class="navbar-nav mx-auto">
             <li class="nav-item fade-in">
               <a href="#" class="nav-link event-click " id="events">
@@ -128,7 +128,7 @@ padding-right:10vh;
               </a>
             </li>
             <li class="nav-item fade-in">
-              <a href="#" class="nav-link">
+              <a href="<?=base_url()?>sponsors" class="nav-link">
                 SPONSORS
               </a>
             </li>
@@ -148,7 +148,7 @@ padding-right:10vh;
             </li>
           </ul>
 
-         
+
         </div>
       </div>
     </nav>
@@ -157,71 +157,71 @@ padding-right:10vh;
 
     <div class="col-12 listing1" style="padding-bottom: 20px;">
               <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;">BIG{O} | CSE</p>
-              <p class="event-desc">The future is computing. And there's no stopping it. Big{O} is the next-gen techfest, with workshops, 
-              competitions and a plethora of technical events, all geared towards the future. The future is here, this is how we get ready 
+              <p class="event-desc">The future is computing. And there's no stopping it. Big{O} is the next-gen techfest, with workshops,
+              competitions and a plethora of technical events, all geared towards the future. The future is here, this is how we get ready
               to own it!</p>
               <a href="<?=base_url("events/technical-cs")?>" class="details">MORE&nbsp;DETAILS</a>
     </div>
 
     <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">COMCADRE | MCA</p>
-      <p class="event-desc">For those who love to walk through each and every line of code, for those who've mastered the art of 
-      coding and decoding logic through signals, for those who know the keywords that your fingers can just slide through the 
+      <p class="event-desc">For those who love to walk through each and every line of code, for those who've mastered the art of
+      coding and decoding logic through signals, for those who know the keywords that your fingers can just slide through the
       keyboard, this is for you. Come, for you, are the most extraordinary computer of all.</p>
       <a href="<?=base_url("events/technical-mca")?>" class="details">MORE&nbsp;DETAILS</a>
     </div>
 
       <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">ESTELLA | ECE</p>
-      <p class="event-desc">Drawn by those green shiny circuit boards? Don't cook up those fixed recipes , rather create your own 
-      realities here at Hestia '19. Estella is to make you perceive and learn new routes of technology, right from designing to 
+      <p class="event-desc">Drawn by those green shiny circuit boards? Don't cook up those fixed recipes , rather create your own
+      realities here at Hestia '19. Estella is to make you perceive and learn new routes of technology, right from designing to
       debugging. Step up your game.</p>
       <a href="<?=base_url("events/technical-ec")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
 
       <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">HIWAGA | ARCHITECTURE</p>
-      <p class="event-desc">Hiwaga is an architectural and cultural revelry that embarks to push the boundaries of art, architecture, 
-      music and photography. It is a wonderful mystery, which unwinds a glimpse into the ethereal and and skilful life of architects. 
+      <p class="event-desc">Hiwaga is an architectural and cultural revelry that embarks to push the boundaries of art, architecture,
+      music and photography. It is a wonderful mystery, which unwinds a glimpse into the ethereal and and skilful life of architects.
       It's here to sprint your minds over the manifold perspectives and the passion that desires to unearth one's creative potential.</p>
       <a href="<?=base_url("events/technical-arch")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
 
       <div class="col-12 listing1" style="padding-bottom: 20px;">
         <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">Konstruct | CIVIL</p>
-        <p class="event-desc">Every work is a series of experiments, a sequence of judicious applications of the results of previous 
+        <p class="event-desc">Every work is a series of experiments, a sequence of judicious applications of the results of previous
         experiences, a result of well laid out engineering organisation. Join us at Hestia '19, let's plan, build and create.</p>
         <a href="<?=base_url("events/technical-civil")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
 
       <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">MEXSYM | MECHANICAL</p>
-      <p class="event-desc">Workshops that break down the innovative discoveries of the present to their basics, competitions 
-      that test your ingenuity, events that push you to your limits, the arena is designed just for you. If thinking machines 
+      <p class="event-desc">Workshops that break down the innovative discoveries of the present to their basics, competitions
+      that test your ingenuity, events that push you to your limits, the arena is designed just for you. If thinking machines
       moves the gears and engines inside you, this is where you should be.</p>
       <a href="<?=base_url("events/technical-mech")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
 
     <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;color:white;text-align: left;">NEGATIVE | EEE</p>
-      <p class="event-desc">If flowing current interests you, if faulty connections make your heart ache, then Negative is where you 
-      should be. Negative has competitions and workshops the likes of which you’ve never seen before. Your time is here, take up your 
+      <p class="event-desc">If flowing current interests you, if faulty connections make your heart ache, then Negative is where you
+      should be. Negative has competitions and workshops the likes of which you’ve never seen before. Your time is here, take up your
       stead, race to the win.</p>
       <a href="<?=base_url("events/technical-eee")?>" class="details">MORE&nbsp;DETAILS</a>
     </div>
 
       <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">RAASA | CHEMICAL</p>
-      <p class="event-desc">This is where you find out the perfect chemical reaction, the perfect balance of all the 
-      solutions that can create the elixir of magic. 
+      <p class="event-desc">This is where you find out the perfect chemical reaction, the perfect balance of all the
+      solutions that can create the elixir of magic.
       Be a part of the solution, not the precipitate.</p>
       <a href="<?=base_url("events/technical-chem")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
-    
+
       <div class="col-12 listing1" style="padding-bottom: 20px;">
       <p class="event-name-text text-light" style="letter-spacing: 3px;text-align: left;">ROBOTICS</p>
-      <p class="event-desc">Artificial Intelligence, the pinnacle of all that the human brain has endeavoured into. Robotics, the 
-      masterpiece of steel and circuits the human hand has showed it's mastery on. There's a reason why robotics is the talk of the 
+      <p class="event-desc">Artificial Intelligence, the pinnacle of all that the human brain has endeavoured into. Robotics, the
+      masterpiece of steel and circuits the human hand has showed it's mastery on. There's a reason why robotics is the talk of the
       hour, come, discover it, be a part of it.</p>
       <a href="<?=base_url("events/technical-robotics")?>" class="details">MORE&nbsp;DETAILS</a>
       </div>
@@ -232,7 +232,7 @@ padding-right:10vh;
 
   </div>
 
-  
+
   <div class="container hider" style="padding-top: 115px;" id="overlay">
     <div class="overlay" id="darkbg"></div>
     <div class="owl-carousel owl-theme slide-in-bottom" id="carousel">
@@ -280,7 +280,7 @@ padding-right:10vh;
 
     </div>
   </div>
- 
+
 
 
   <!--   Core JS Files   -->

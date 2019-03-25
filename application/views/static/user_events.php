@@ -121,7 +121,7 @@ padding-right:10vh;
           </button>
         </div>
         <div class="collapse navbar-collapse">
-          
+
           <ul class="navbar-nav mx-auto">
             <li class="nav-item fade-in">
               <a href="#" class="nav-link event-click " id="events">
@@ -129,7 +129,7 @@ padding-right:10vh;
               </a>
             </li>
             <li class="nav-item fade-in">
-              <a href="#" class="nav-link">
+              <a href="<?=base_url()?>sponsors" class="nav-link">
                 SPONSORS
               </a>
             </li>
@@ -138,18 +138,18 @@ padding-right:10vh;
                 <img class="fade-in-top" style="max-height: 75px;margin-top: -20px;" src="<?=base_url();?>assets/front/img/logo.png" /></a>
             </li>
             <li class="nav-item fade-in">
-              <a href="../about/" class="nav-link">
+              <a href="<?=base_url()?>about" class="nav-link">
                 ABOUT
               </a>
             </li>
             <li class="nav-item fade-in">
-              <a href="../contact/" class="nav-link">
+              <a href="<?=base_url()?>contact" class="nav-link">
                 CONTACT
               </a>
             </li>
           </ul>
 
-         
+
         </div>
       </div>
     </nav>
@@ -162,11 +162,11 @@ padding-right:10vh;
            //print_r('hii222');
            //print_r($myevents[0]['link']);
            if (empty($myevents)) {
-               
+
                 echo '<div class="col-12 listing1" style="padding-bottom: 20px;">';
                 echo '<p class="event-name-text text-light" >It looks empty here..</p>';
                 echo '<p class="text-danger text-light" >You havent registered for any event. Checkout the events catalogue and register soon..</p>';
-                
+
 
      // list is empty.
             }
@@ -175,20 +175,20 @@ padding-right:10vh;
 
                <div class="col-12 listing1" style="padding-bottom: 20px;">
                    <p class="event-name-text text-light" onclick=<?php echo "'location.href =\"".base_url().'event/'.$row['link']."\"'"; ?> style="letter-spacing: 3px;color:white;text-align: left; cursor:pointer;"><?=$row['title']?></p>
-                   <p class="event-desc"><?php 
-                   if(strlen($row['venue'])!=0) 
-                   {echo 'Venue: '.$row['venue'];} 
+                   <p class="event-desc"><?php
+                   if(strlen($row['venue'])!=0)
+                   {echo 'Venue: '.$row['venue'];}
                    else
                    {
                     echo 'Check back later for more event details..';
                    }
                    ?></p>
                    <?php //schedule
-                   
+
                    if (count($row['time'])>0) {
                     ?>
                     <p class="event-desc">Schedule:</p>
-                    <?php 
+                    <?php
                         foreach($row['time'] as $timerow){
                             $timerow = (array) $timerow; ?>
                             <div style="padding-left: 15px;">
@@ -210,10 +210,10 @@ padding-right:10vh;
                         <?php
                         }
                 }
-                   
-                   
-                   ?> 
-                   <?php 
+
+
+                   ?>
+                   <?php
                       $date_not_over=$this->report_model->check_files_lastdate($this->report_model->get_eid_by_link($row['link']));
                    if ($row['file1'] != NULL && $row['u_file1'] == NULL && $date_not_over){
                      echo "<form  class='form-inline row'  action='pages/url_submitted' method='post'>";
@@ -224,16 +224,16 @@ padding-right:10vh;
                      if ($row['file2'] != NULL && $row['u_file2'] == NULL ){
                       echo "<div style='min-width:250px;'  class='form-group col-md-4 col-sm-12 file2'><input  class='form-control'  style='min-width:250px;' style='' type='text' name='f2' placeholder='". $row['file2']."' required /></div>";
                      }
-                    
+
                      echo "<div class='form-group col-md-4 col-sm-12'><button type='submit' style='margin-top:20px;' class='btn btn-default' >Submit</button></div>";
                     echo "</form>";
-                
+
                     echo "<p class=\"text-danger\">"?>
                     <?php
                     if($row['file_last_date']){
                       echo "Last Date for submission is ".date('d-M', strtotime($row['file_last_date']))."<br>";
                     }
-                    
+
                     ?>
                     <?php echo "Fill in the links to all required files and click submit. File links cannot be edited after submission</p>";
                    }
@@ -255,14 +255,14 @@ padding-right:10vh;
                     echo "</form>";
                      }
                    }
-                   
-                 
+
+
                     ?>
                </div>
 
-                   
+
       <?php
-                  
+
 
       }
 
@@ -278,7 +278,7 @@ padding-right:10vh;
 
   </div>
 
-  
+
   <div class="container hider" style="padding-top: 115px;" id="overlay">
     <div class="overlay" id="darkbg"></div>
     <div class="owl-carousel owl-theme slide-in-bottom" id="carousel">
@@ -326,7 +326,7 @@ padding-right:10vh;
 
     </div>
   </div>
- 
+
 
 
   <!--   Core JS Files   -->
