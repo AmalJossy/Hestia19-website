@@ -116,7 +116,7 @@
                             <?php
                             foreach ($categories as $row){
 
-                                echo "<option>".$row->."</option>";
+                                echo "<option>".$row->cat_name."</option>";
 
                             }
                             ?>
