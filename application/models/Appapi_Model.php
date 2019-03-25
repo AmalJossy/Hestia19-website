@@ -127,5 +127,43 @@ class Appapi_Model extends CI_Model {
         return json_encode($query->result_array());
     }
 
+
+    public function set_file_urls($mem_email,$f1,$evid,$f2 = NULL)
+    {
+        $this->db->set('file1', $f1);
+
+        $reg_mail=$this->get_regmail_by_membmail($mem_email,$evid);
+        if(!$reg_mail){
+            return 0;
+        }
+        $array = array('reg_email' =>$reg_mail , 'event_id' => $evid);
+        $this->db->where($array);
+        $ret=$this->db->update('registration');
+        if($f2!== NULL)
+        {
+            $this->db->set('file2', $f2);
+            $this->db->where($array);
+            $ret= $this->db->update('registration');
+        }
+        return $ret;
+    }
+    public function get_regmail_by_membmail($email,$eid)
+    {
+        $this->db->select ( 'reg_email' );
+        $this->db->from ( 'registration' );
+        $array = array('member_email' =>$email , 'event_id' => $eid);
+
+        $this->db->where ( $array );
+        $query = $this->db->get ();
+        if($query->num_rows()>0){
+            return $query->result()[0]->reg_email;
+
+        }else{
+            return false;
+        }
+    }
+
+
+
 }
 ?>

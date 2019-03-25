@@ -18,10 +18,34 @@ class Spot extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+    function __construct() {
+        parent::__construct();
+        $this->load->model('report_model');
+    }
     public function home()
     {
-        $this->load->mode('report_model');
+
         $data['categories']=$this->report_model->get_categories();
-        $this->load->view('spot_home');
+        $this->load->view('spot_home',$data);
+    }
+    public function get_events_list($cat_id){
+        echo json_encode($this->report_model->get_events($cat_id));
+
+    }
+    function ProcessUserRequest($eid){
+        $islogged=false;
+
+
+            $team_size=$this->report_model->get_team_size($eid);
+
+            if($team_size->min_memb==1  && $team_size->max_memb==1){
+                echo "[201,$team_size->min_memb,$team_size->max_memb]";
+            }else{
+                echo "[201,$team_size->min_memb,$team_size->max_memb]";
+            }
+
+
+
+
     }
 }

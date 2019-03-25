@@ -19,6 +19,16 @@ class App_Api extends CI_Controller {
 
     }
 
+    function UpdateFilesInReg(){
+        $ret=$this->appapi_Model->set_file_urls($this->input->post('email'),$this->input->post('file1'),$this->input->post('event_id'),$this->input->post('file2'));
+        if($ret){
+            echo "true";
+        }else{
+            echo "false";
+        }
+
+    }
+
     function GetUserEventsList(){
         echo $this->appapi_Model->get_reg_events();
     }

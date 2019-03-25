@@ -51,9 +51,9 @@
     }
 </style>
 
-<body>
+<body class="container-fluid">
     <div class="row">
-        <div class="col-5 p-5  ">
+        <div class="col-3 p-1  ">
             <h4 class="text-center my-3">Events Registered</h4>
             <div class=" style-1 eventsreg">
                     <div class="card mx-3 my-2">
@@ -106,17 +106,18 @@
                     </div>
             </div>
         </div>
-        <div class="col-7 p-5">
+        <div class="col-9 p-1">
                         <h4 class="text-center my-3">Spot Registration</h4>
                 <div class="eventsreg style-1">
                         
                 <div class="m-3">
                         <label for="selectcategory">Event Category: </label>
                         <select id="selectcategory" class="form-control">
+                            <option value="">Select</option>
                             <?php
                             foreach ($categories as $row){
 
-                                echo "<option>".$row->cat_name."</option>";
+                                echo "<option value='".$row->cat_name."'>".$row->cat_name."</option>";
 
                             }
                             ?>
@@ -125,11 +126,8 @@
                 </div>
                 <div class="m-3">
                         <label for="selectcategory">Event Name: </label>
-                        <select id="selectcategory" class="form-control">
-                                <option>Event 1</option>
-                                <option>Event 2</option>
-                                <option>Event 3</option>
-                                <option>Event 4</option>
+                        <select id="selectevent" class="form-control">
+
                         </select>
                         
                 </div>
@@ -140,9 +138,12 @@
         
                         <input type="hidden" id="json_data" name="json_data" hidden/>
                             <div class="row" style='margin-bottom:10px;'>
-                                <div class="col-md-8 col-sm-12" id="div_mail0"><input class="form-control" type="email" id="email0" placeholder="Email" value="vm23526@gmail.com"; readonly></div>
-                                <div class="col-md-4 col-sm-12" id="div_acm0"><label class="checkbox-inline chk_acommodation">
-                                            <input type="checkbox" class="chk_acm"  id="chk_acm0">&nbsp;&nbsp;Accommodation
+                                <div class="col-md-3 col-sm-12" id="div_mail0"><input class="form-control" type="email" id="email0" placeholder="Email"></div>
+                                <div class="col-md-3 col-sm-12" id="div_name0"><input class="form-control" type="email" id="name0" placeholder="Name" ></div>
+                                <div class="col-md-3 col-sm-12" id="div_college0"><input class="form-control" type="email" id="college0" placeholder="College"></div>
+                                <div class="col-md-2 col-sm-12" id="div_phone0"><input class="form-control" type="email" id="phone0" placeholder="Phone" ></div>
+                                <div class="col-md-1 col-sm-12" id="div_acm0"><label class="checkbox-inline chk_acommodation">
+                                            <input type="checkbox" class="chk_acm"  id="chk_acm0">
                                             </label></div>
                             </div> 
                             <div id="team_form_members">
@@ -258,11 +259,11 @@
                   $("#day_4").prop('checked',false);
                 }
     }
-        $('.btn-custom').click(function(){
+        function LoadEventMembers(event_id){
     
             $.ajax({
                 type:'post',
-                url:"//www.hestia.live/process/4",
+                url:"<?=base_url()?>Spot/ProcessUserRequest/"+event_id,
                 data:"",
                 async: false,
                 processData: false,
@@ -275,21 +276,11 @@
                 },
                 success:function(result){
     
-    
+
                     var array = JSON.parse(result);
     
                     switch(array[0]){
-                        case 505:{
-                            if (typeof(Storage) !== "undefined") {
-                                localStorage.setItem("pre_login_url", window.location.href);
-                            
-                                document.cookie = "book=Clicked";
-    
-                            }
-                          window.location="https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=online&client_id=917367370675-s4vebqfc42a9psh6244nncvq4ioolo1n.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fwww.hestia.live%2FAuth%2Foauth2callback&state&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&approval_prompt=auto";
-                           
-                            break;
-                        }
+
                         case 200:{
                             $('.chk_team').css('display','inline');
                             $('#team_form').css('display','block');
@@ -298,10 +289,8 @@
                             $('#div_acm0').css('display','none');
     
                             $('#div_mail0').addClass('col-md-12').removeClass('col-md-8');
-    
-                            
-                            $('.modal-title').text("Details");
-                            $('#myModal').show();
+                            $('#team_form_members').html("");
+
                                 $("#addmoreMembersBtn").css({
                                     "display": "none"
                                 });
@@ -332,25 +321,26 @@
                             var n=minmemb-1;
                             var html="";
                             while(n>0){
-                                html+=" <div class='row' style='margin-bottom:10px;'><div class='col-md-8 col-sm-12'><input class='form-control' type='email' id='email"+(minmemb-n)+"' placeholder='Email' required></div><div class='col-md-4 col-sm-12'><label class='checkbox-inline chk_acommodation'><input type='checkbox'  class='chk_acm'  id='chk_acm"+(minmemb-n)+"'>&nbsp;&nbsp;Accommodation</label></div></div>";
+                                html+=" <div class='row' style='margin-bottom:10px;'> <div class='col-md-3 col-sm-12' id='div_mail"+(minmemb-n)+"'><input class='form-control' type='email' id='email"+(minmemb-n)+"' placeholder='Email'></div> <div class='col-md-3 col-sm-12' id='div_name"+(minmemb-n)+"'><input class='form-control' type='email' id='name"+(minmemb-n)+"' placeholder='Name' ></div> <div class='col-md-3 col-sm-12' id='div_college"+(minmemb-n)+"'><input class='form-control' type='email' id='college"+(minmemb-n)+"' placeholder='College'></div> <div class='col-md-2 col-sm-12' id='div_phone"+(minmemb-n)+"'><input class='form-control' type='email' id='phone"+(minmemb-n)+"' placeholder='Phone' ></div> <div class='col-md-1 col-sm-12' id='div_acm"+(minmemb-n)+"'><label class='checkbox-inline chk_acommodation'> <input type='checkbox' class='chk_acm'  id='chk_acm"+(minmemb-n)+"'> </label></div> </div> ";
                                 n--;
                             }
                             $('#team_form_members').html(html);
                             $('#team_form').css('display','block');
-    
-                            $('.modal-title').text("Add Members");
-    
-                            $('#myModal').show();
+
+
                             if(rem_members<0){
                                 $("#addmoreMembersBtn").css({
                                     "display": "none"
     
                                 });
     
+                            }else{
+                                $("#addmoreMembersBtn").css({
+                                    "display": "inline"
+
+                                });
                             }
-                            $('.modal-footer').html("<button type='button' class='btn btn-success' name='team_form_submit' class='team_form_submit' onclick='team_form_sumbit()' >Submit&nbsp;<i class='fas fa-check-circle'></i></button>");
-    
-    
+
                             break;
                         }
                         }
@@ -364,7 +354,47 @@
     
     
     
+        }
+        $(function() {
+            $("#selectcategory").change(function () {
+                var cat_id = $('option:selected', this).val();
+                $.ajax({
+                    type: 'post',
+                    url: "<?=base_url()?>Spot/get_events_list/" + cat_id,
+                    data: "",
+                    async: false,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function () {
+                        // launchpreloader();
+                    },
+                    complete: function () {
+                        //  stopPreloader();
+                    },
+                    success: function (result) {
+                        $("#selectevent").empty();
+                        $("#selectevent").prepend("<option value=''>Select</option>");
+
+
+                        $.each($.parseJSON(result), function(idx, obj) {
+
+                            $("#selectevent").append("<option value='"+obj.event_id+"'>"+obj.title+"</option>");
+
+                        });
+
+
+                    }
+                });
+            });
         });
+
+        $(function() {
+            $("#selectevent").change(function () {
+                LoadEventMembers($('option:selected', this).val());
+
+            });
+        });
+
         $("#addmoreMembersBtn").click(function() {
             $('.close-href').hide();
             var old=$('#team_form_members_opt').html();
@@ -373,7 +403,7 @@
            // $('.close-href').show(); // Shows
              // hides
             if(cur_cnt<=rem_members){
-                var html=" <div class='row' style='margin-bottom:10px;' id='member_"+(minmemb+cur_cnt)+"'><div class='col-md-8 col-sm-12'><input class='form-control' type='email' id='email"+(minmemb+cur_cnt)+"' placeholder='Email' required> </div><div class='col-md-4 col-sm-12'><a id='member_"+(minmemb+cur_cnt)+"_close' class='close-href text-white' style='border: 0;float:left;position:absolute;left:-50px;' onclick='removeElement("+(minmemb+cur_cnt)+")'><button  class='btn btn-xs btn-danger'>X</button></a><label class='checkbox-inline chk_acommodation'><input type='checkbox'   class='chk_acm' id='chk_acm"+(minmemb+cur_cnt)+"'>&nbsp;&nbsp;Accommodation</label></div></div>";
+                var html="<div class='row' style='margin-bottom:10px;'><div class='col-md-3 col-sm-12' id='div_mail"+(minmemb+cur_cnt)+"'><input class='form-control' type='email' id='email"+(minmemb+cur_cnt)+"' placeholder='Email'></div> <div class='col-md-3 col-sm-12' id='div_name"+(minmemb+cur_cnt)+"'><input class='form-control' type='email' id='name"+(minmemb+cur_cnt)+"' placeholder='Name' ></div> <div class='col-md-3 col-sm-12' id='div_college"+(minmemb+cur_cnt)+"'><input class='form-control' type='email' id='college"+(minmemb+cur_cnt)+"' placeholder='College'></div> <div class='col-md-2 col-sm-12' id='div_phone"+(minmemb+cur_cnt)+"'><input class='form-control' type='email' id='phone"+(minmemb+cur_cnt)+"' placeholder='Phone' ></div> <div class='col-md-1 col-sm-12' id='div_acm"+(minmemb+cur_cnt)+"'><a id='member_"+(minmemb+cur_cnt)+"_close' class='close-href text-white' style='border: 0;float:left;position:absolute;left:-50px;' onclick='removeElement("+(minmemb+cur_cnt)+")'><button  class='btn btn-xs btn-danger'>X</button></a><label class='checkbox-inline chk_acommodation'> <input type='checkbox' class='chk_acm'  id='chk_acm"+(minmemb+cur_cnt)+"'> </label></div> </div> ";
                 $('#team_form_members_opt').html(old+html);
     
             }

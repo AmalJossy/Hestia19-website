@@ -166,6 +166,8 @@ header('Location: '.$data['google_login_url']);
         }
 
     }
+
+
     function ProcessBooking(){
         echo $this->input->post('json_data');
     }
