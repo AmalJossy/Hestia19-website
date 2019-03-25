@@ -33,24 +33,22 @@ class Appapi_Model extends CI_Model {
         if (($today >= $startdate) && ($today <= $enddate)){
 
             if($cnt<$event->seats || $event->seats == 0){
-                return 1;
-                $reg_end = date('d-m-Y', strtotime($event->reg_end));
+                return true;
+                //$reg_end = date('d-m-Y', strtotime($event->reg_end));
             }else{
                 //Sold Out
-                return 0;
+                return 'sold';
             }
         }else{
             if(($startdate  > $today)){
                 $dtstart = date_create($startdate);
                 //Not Started
-                return 0;
+                return $dtstart;
 
             }
             if(($today > $enddate)){
-
                 //closed
-                return 0;
-
+                return 'closed';
             }
         }
     }

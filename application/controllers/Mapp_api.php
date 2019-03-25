@@ -14,14 +14,13 @@ class Mapp_api extends REST_Controller {
 			//echo $login_details;
             //echo "false";
 			//$this->response($login_details);
-            $r = $this->appapi_Model->login_check($this->post('email'));
-            $this->response($r);
+      $r = $this->appapi_Model->login_check($this->post('email'));
+      $this->response($r);
 
 		}
-		function currenteventstatus_post(){
-
-            $r = $this->appapi_Model->GetEventCurrentStatus($this->post('event_id'));
-            $this->response($r);
+		function currenteventstatus_get($eid){
+      $r = $this->appapi_Model->GetEventCurrentStatus($eid);
+      $this->response($r);
 
 		}
 		function event_schedule_get($eid) {
