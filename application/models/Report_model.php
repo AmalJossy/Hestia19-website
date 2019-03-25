@@ -4,6 +4,37 @@ class Report_model extends CI_Model {
     {
         $this->load->database();
     }
+    public function login(){
+        $username = $this->security->xss_clean($this->input->post('username'));
+        $password = $this->security->xss_clean($this->input->post('password'));
+
+        $this->db->where('username',$username);
+
+        $query=$this->db->get('login_users');
+        //$num_rows=$this->db->count_all_results('userlogin');
+        $num_rows=$query->num_rows();
+
+        if($num_rows == 1)
+        {
+            $row = $query->row();
+            if (password_verify($password, $row->password)) {
+                $data = array(
+                    'lid' => $row->lid,
+                    'username' => $row->username,
+                    'validated' => true
+                );
+                $this->session->set_userdata($data);
+                return true;
+            } else {
+                return false;
+            }
+
+            return true;
+
+        }
+        return false;
+    }
+
     public function get_events($id){
         $this->db->select ( '*' );
         $this->db->from ( 'events' );
@@ -11,6 +42,12 @@ class Report_model extends CI_Model {
         if( $id != NULL ){
             $this->db->where ( 'categories.cat_name',$id);
         }
+        $query = $this->db->get ();
+        return $query->result();
+    }
+    public function get_categories(){
+        $this->db->select ( '*' );
+        $this->db->from ( 'categories');
         $query = $this->db->get ();
         return $query->result();
     }
