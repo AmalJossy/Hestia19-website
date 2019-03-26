@@ -10,7 +10,7 @@ class Registration_model extends CI_Model {
         if(!$eid){
             $eid=0;
         }
-        $query=$this->db->query("SELECT event_id,reg_email,member_email,fullname,phone,college,file1,file2 FROM registration a left join users b on  a.member_email=b.email  where   a.event_id=".$eid." and if(a.member_email=a.reg_email,1,0)=1 order by reg_id");
+        $query=$this->db->query("SELECT event_id,reg_email,member_email,fullname,phone,college,file1,file2 FROM registration a left join users b on  a.member_email=b.email where a.event_id=".$eid." and if(a.member_email=a.reg_email,1,0)=1 order by a.timestamp");
         $data = array();
         foreach($query->result() as $row1)
         {
