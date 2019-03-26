@@ -93,8 +93,22 @@ class Appapi_Model extends CI_Model {
             if($isupdate=="N"){
                 $data['email']=$email;
                 $data['hashcode']=password_hash($email, PASSWORD_BCRYPT);
+                //mail send
+                 $curl = curl_init();
+            // Set some options - we are passing in a useragent too here
+            curl_setopt_array($curl, [
+                CURLOPT_RETURNTRANSFER => 1,
+                CURLOPT_URL => 'https://www.hestia.live/payment/mail/usermail.php?email='.$data['email'].'',
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0"
+                ]);
+            // Send the request & save response to $resp
+                $resp = curl_exec($curl);
+            //echo $resp;
+            // Close request to clear up some resources
+                curl_close($curl);
                 return $this->db->insert('users', $data);
-            }else{
+                }else{
                 $this->db->where('email', $email );
                 return $this->db->update('users', $data);
             }
@@ -112,7 +126,6 @@ class Appapi_Model extends CI_Model {
         return  json_encode($query->result());
 
     }
-
     public function get_event_count($catname){
 
         $query=$this->db->query("select * from events where cat_id in (select cat_id from categories where cat_name like '".$catname. "%')");
