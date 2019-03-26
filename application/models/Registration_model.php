@@ -1,17 +1,31 @@
 <?php
 class Registration_model extends CI_Model {
-    public function get_event_registrations($id){
-        if( $this->session->type != 'super' && $this->session->event_id != $id){
+    public function get_event_registrations($eid){
+        $this->db->select('cat_id');
+        $this->db->where('event_id',$eid);
+        $cat_id=$this->db->get('events')->result_array()[0]['cat_id'];
+        if( $this->session->type != 'super' && $this->session->type != 'monitor' && $this->session->event_id != $eid && $this->session->cat_id != $cat_id ){
             return 401;
         }
-        $this->db->select('reg_id, event_id, reg_email, member_email');
-
-        $this->db->where('event_id', $id );
-
-        $query = $this->db->get('registrations');
-        return $query->result_array();
-        // $query = $this->db->get_where('registrations',array('event_id' => $id));
-        // return $query->result_array();
+        if(!$eid){
+            $eid=0;
+        }
+        $query=$this->db->query("SELECT event_id,reg_email,member_email,fullname,phone,college,file1,file2 FROM registration a left join users b on  a.member_email=b.email  where   a.event_id=".$eid." and if(a.member_email=a.reg_email,1,0)=1 order by reg_id");
+        $data = array();
+        foreach($query->result() as $row1)
+        {
+                $row = array();
+                $row['reg_email'] = $row1->reg_email;
+                $row['fullname'] = $row1->fullname;
+                $row['college'] = $row1->college;
+                $row['phone'] = $row1->phone;
+                $row['file1'] = $row1->file1;
+                $row['file2'] = $row1->file2;
+                $query_memb=$this->db->query("SELECT member_email,fullname,phone,college FROM registration a left join users b on  a.member_email=b.email  where   a.event_id=".$row1->event_id." and if(a.member_email=a.reg_email,1,0)=0 and a.reg_email='".$row1->reg_email."'  order by reg_id");
+                $row['members']=$query_memb->result_array();
+                $data[] = $row;
+        }
+        return  $data;
     }
     public function get_registrations($id){
         $this->db->select('reg_id, event_id, reg_email, member_email');

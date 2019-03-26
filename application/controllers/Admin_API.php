@@ -166,4 +166,9 @@ class Admin_API extends REST_Controller {
         $status =  $this->event_model->delete($id);
         $this->response($id,$status);
     }
+
+    function accommodation_post() {
+        $this->load->model('user_model');
+        $this->response($this->user_model->get_accommodations());
+    }
 }

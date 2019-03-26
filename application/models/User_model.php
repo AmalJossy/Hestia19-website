@@ -131,5 +131,24 @@ class User_model extends CI_Model {
         }
 
     }
+
+    public function get_us_rh_sh($email) {
+        $this->db->select('hashcode');
+        $this->db->from('users');
+        $this->db->where('email', $email);
+        $query=$this->db->get();
+        return $query->result_array()[0];
+    }
+
+    public function get_accommodations() {
+        if( $this->session->type != 'super' && $this->session->type != 'accommodation' ){
+            return 401;
+        }
+        $this->db->select('fullname, phone, email, college, accommodation');
+        $this->db->from('users');
+        $this->db->where('accommodation!=', NULL);
+        $query=$this->db->get();
+        return $query->result_array();
+    }
 }
 ?>

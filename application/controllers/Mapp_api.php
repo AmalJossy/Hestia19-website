@@ -4,19 +4,17 @@ use Restserver\Libraries\REST_Controller;
 class Mapp_api extends REST_Controller {
 	 function __construct() {
         parent::__construct();
-		$this->load->model('appapi_Model');
+			$this->load->model('appapi_Model');
     }
 
-
-
 		function login_post(){
-      $r = $this->appapi_Model->login_check($this->post('email'));
-      $this->response($r);
+			$r = $this->appapi_Model->login_check($this->post('email'));
+			$this->response($r);
 
 		}
 		function currenteventstatus_get($eid, $email=NULL){
-      $r = $this->appapi_Model->GetEventCurrentStatus($eid, $email);
-      $this->response($r);
+			$r = $this->appapi_Model->GetEventCurrentStatus($eid, $email);
+			$this->response($r);
 
 		}
 		function event_schedule_get($eid) {
@@ -25,11 +23,16 @@ class Mapp_api extends REST_Controller {
 			$this->response($s);
 		}
 		function event_count_get($cat_name=NULL) {
-	        if($cat_name!=NULL){
-                $s = $this->appapi_Model->get_event_count($cat_name);
-                $this->response($s);
-            }
-
+	      if($cat_name!=NULL){
+             $s = $this->appapi_Model->get_event_count($cat_name);
+             $this->response($s);
+         }
+		}
+		function ha_sh_post() {
+			$email = $this->post('email');
+			$this->load->model('User_model');
+         $s = $this->User_model->get_us_rh_sh($email);
+         $this->response($s);
 		}
 	
 }

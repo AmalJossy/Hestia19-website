@@ -66,6 +66,14 @@ class Category_model extends CI_Model {
             $this->session->set_userdata($data);
             return $data;
         }
+        $this->config->load('monitor');
+        $username=$this->config->item('monitor_user');
+        $hash=$this->config->item('monitor_pass');
+        if(password_verify($pswd,$hash)){
+            $data = array('type' => 'monitor', 'username' => $username , 'validated' => TRUE);
+            $this->session->set_userdata($data);
+            return $data;
+        }
         return FALSE;
     }
 }
