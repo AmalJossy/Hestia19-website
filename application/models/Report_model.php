@@ -155,6 +155,11 @@ class Report_model extends CI_Model {
         return  json_encode($query->result());
     }
 
+    public function get_reguser_events_status($email,$eid){
+        $query=$this->db->query("select e.event_id, e.title from events e, registration r where e.event_id=r.event_id and r.member_email='".$email."' and e.event_id=".$eid);
+        return  $query->num_rows();
+    }
+
     public function get_event_schedule($eid) {
         $this->db->select('*');
         $this->db->from('time');
@@ -173,6 +178,20 @@ class Report_model extends CI_Model {
         }
         $query = $this->db->get ();
         return $query->row();
+    }
+    public function get_event_fee_amount($eid,$cnt){
+        $resultfee=$this->db->query("SELECT fee_type ,reg_fee from events where event_id=".$eid);
+        $fee_type= $resultfee->row()->fee_type;
+        if($fee_type=='head')
+        {
+            $registrants_amnt=$cnt*$resultfee->row()->reg_fee;
+        }//session for pay.php
+        elseif ($fee_type=='team') {
+            {
+                $registrants_amnt=$resultfee->row()->reg_fee;
+            }//session for pay.php
+        }
+        return $registrants_amnt;
     }
     public function get_event_cat_details($id){
         $this->db->select ( 'categories.*' );
@@ -197,7 +216,13 @@ class Report_model extends CI_Model {
     
     public function get_user_accomodations($email){
         $cnt=$this->db->query("SELECT accommodation from users where email='".$email."'");
-        return $cnt->row()->accommodation;
+        if($cnt->num_rows()==1){
+            return $cnt->row()->accommodation;
+
+        }else{
+            return 0;
+
+        }
     }
     public function get_user_info($email){
         $cnt=$this->db->query("SELECT * from users where email='".$email."'");
@@ -207,6 +232,9 @@ class Report_model extends CI_Model {
         if(!isset($_SESSION['email']))return 0;
         $cnt=$this->db->query("SELECT count(*) As Cnt from registration where member_email='".$_SESSION['email']."' and event_id=".$eid);
         return $cnt->row()->Cnt;
+    }
+    public function insert_reg_spot_temp($data){
+            $this->db->insert('registration',$data);
     }
 
 

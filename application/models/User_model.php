@@ -36,6 +36,49 @@ class User_model extends CI_Model {
         $this->db->update('users');
         return 200;
     }
+    public function modify_w($email,$data){
+
+        foreach($data as $key => $value){
+            if($key=="accommodation"){
+
+
+                if( $value != NULL ){
+                    $query=$this->db->query("select accommodation from users where email='".$email."'");
+                    $acc_cur=$query->row()->accommodation;
+                    if($acc_cur){
+                        $splitted_cur = str_split($acc_cur);
+                        $splitted_in = str_split($value);
+
+                        foreach ($splitted_in as $single_day_in){
+                            if (in_array($single_day_in, $splitted_cur))
+                            {
+
+                            }
+                            else
+                            {
+                                array_push($splitted_cur,$single_day_in);
+
+                            }
+                        }
+
+                        $this->db->set('accommodation', implode($splitted_cur));
+                    }else{
+                        $this->db->set('accommodation', $value);
+
+                    }
+                }
+
+            }else{
+                if( $value != NULL ){
+                    $this->db->set($key, $value);
+                }
+            }
+
+        }
+        $this->db->where('email', $email);
+        return $this->db->update('users');
+
+    }
 
     public function delete($email){
         if( $this->session->type != 'super' && $this->session->email != $email ){

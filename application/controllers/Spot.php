@@ -21,6 +21,12 @@ class Spot extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('report_model');
+
+            if(!$this->session->userdata('username')) {
+                redirect('login');
+            }
+
+
     }
     public function home()
     {
@@ -32,8 +38,17 @@ class Spot extends CI_Controller {
         echo json_encode($this->report_model->get_events($cat_id));
 
     }
-    public function get_reg_user_info($email){
+    public function get_reg_user_info($email,$eid=NULL){
+if($eid!=NULL){
+    if($this->report_model->get_reguser_events_status($email,$eid)>0){
+        echo "none";
+    }else{
         echo json_encode($this->report_model->get_user_info($email));
+
+    }
+}else{
+    echo json_encode($this->report_model->get_user_info($email));
+}
 
     }
     public function get_reg_user_events($email){
@@ -56,4 +71,128 @@ class Spot extends CI_Controller {
 
 
     }
+    function insert_spot_reg()
+    {
+        $jsondata=json_decode($this->input->post('json_data1'));
+        $members=$jsondata->emails;
+        $this->load->model('user_model');
+        $totalacc=0;
+        foreach ($members as $row){
+            $data=array();
+            $data['fullname']=$row->fullname;
+            $data['phone']=$row->phone;
+            $data['college']=$row->college;
+            if($row->acc=="Y"){
+                $data['accommodation']=$jsondata->accommodation_days;
+              //  $data_reg['acc']=$jsondata->accommodation_days;
+                $splitted_in = str_split($jsondata->accommodation_days);
+                $current_mem_acc=count($splitted_in);
+                if($this->report_model->get_user_accomodations($row->email)){
+                    $current_acc=$this->report_model->get_user_accomodations($row->email);
+
+                }else{
+                    $current_acc=0;
+                }
+                $current_acc_split = str_split($current_acc);
+                foreach ($splitted_in as $single_day_in){
+                    if (in_array($single_day_in, $current_acc_split))
+                    {
+                        $current_mem_acc--;
+                    }
+                }
+                $totalacc=$totalacc+$current_mem_acc;
+                $data_reg['event_id']=$jsondata->event_id;
+                $data_reg['reg_email']=$jsondata->reg_email;
+                $data_reg['member_email']=$row->email;
+                if($data_reg['member_email']==$data_reg['reg_email']){
+                    $data_reg['fee_amnt']=$this->input->post('fee_hid');
+
+                }else{
+                    $data_reg['fee_amnt']=NULL;
+                }
+                $data_reg['referral_code']=$jsondata->referral_code;
+                $this->report_model->insert_reg_spot_temp($data_reg);
+            }else{
+                $data['accommodation']=NULL;
+            }
+
+            if($this->user_model->is_registered($row->email,"N")){
+                 $this->user_model->modify_w($row->email,$data);
+            }else{
+                $data['email']=$row->email;
+                $data['hashcode'] =password_hash($data['email'],PASSWORD_BCRYPT);
+                $this->user_model->create($data);
+                //insert
+            }
+        }
+        redirect("Spot/home");
+
+    }
+
+
+    function get_spot_fee_total()
+    {
+        $jsondata=json_decode($this->input->post('json_data'));
+        $members=$jsondata->emails;
+
+
+        $this->load->model('user_model');
+        $totalacc=0;
+        foreach ($members as $row){
+            $data=array();
+            $data['fullname']=$row->fullname;
+            $data['phone']=$row->phone;
+            $data['college']=$row->college;
+            if($row->acc=="Y"){
+                $data['accommodation']=$jsondata->accommodation_days;
+                $data_reg['acc']=$jsondata->accommodation_days;
+
+
+                $splitted_in = str_split($data_reg['acc']);
+                $current_mem_acc=count($splitted_in);
+                if($this->report_model->get_user_accomodations($row->email)){
+                    $current_acc=$this->report_model->get_user_accomodations($row->email);
+
+                }else{
+                    $current_acc=0;
+                }
+                $current_acc_split = str_split($current_acc);
+                foreach ($splitted_in as $single_day_in){
+                    if (in_array($single_day_in, $current_acc_split))
+                    {
+                        $current_mem_acc--;
+                    }
+
+                }
+                $totalacc=$totalacc+$current_mem_acc;
+                $data_reg['reg_key']=$row->email.microtime(true);
+                $_SESSION['reg_key']=$data_reg['reg_key'];
+                $data_reg['event_id']=$jsondata->event_id;
+                $data_reg['reg_email']=$jsondata->reg_email;
+                $data_reg['member_email']=$row->email;
+                $data_reg['member_email']=$row->email;
+                $data_reg['referral_code']=$jsondata->referral_code;
+                //$this->report_model->insert_reg_spot_temp($data_reg);
+            }else{
+                $data['accommodation']=NULL;
+            }
+
+            if($this->user_model->is_registered($row->email,"N")){
+                //$this->user_model->modify_w($row->email,$data);
+            }else{
+                $data['email']=$row->email;
+                $data['hashcode'] =password_hash($data['email'],PASSWORD_BCRYPT);
+                //$this->user_model->create($data);
+                //insert
+            }
+        }
+        $feeamoun=$this->report_model->get_event_fee_amount($jsondata->event_id,count($members));
+
+
+        $data_ret['event_fee']=$feeamoun;
+        $data_ret['acc_fee']=($totalacc*150);
+        $data_ret['total_fee']=($totalacc*150)+$feeamoun;
+        echo "<center><h1>₹ ".$data_ret['total_fee']." </h1><h5>Event Registration :   ₹ ".$data_ret['event_fee']." </h5><h5>Accommodation Charge  :   ₹ ".$data_ret['acc_fee']." </h5></center><input type='hidden' name='fee_hid' value='".$data_ret['total_fee']."'>";
+    }
+
 }

@@ -31,7 +31,7 @@
     }
     .style-1::-webkit-scrollbar
       {
-        width: 5px;
+        width: 15px;
         background-color: #F5F5F5;
         border-radius: 10px;
       }
@@ -52,10 +52,48 @@
 </style>
 
 <body class="container-fluid">
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Payment Confirmation</h4>
+                <button type="button" class="close modal-close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" style="max-height: calc(100vh - 200px);overflow-y: auto;">
+
+
+                <form id="amnt_form12" method="post" action="<?=base_url("Spot/insert_spot_reg")?>" name="team_form1" style="">
+
+                    <input type="hidden" id="json_data1" name="json_data1" hidden/>
+
+
+                    <div id="amnt_form1">
+
+
+
+
+
+                    </div>
+                    <button type="submit" style="display: none;" id="confirm_pay"></button>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary modal-redirect" data-dismiss="modal" onclick="pay_submit()">Confirm Payment</button>
+            </div>
+
+        </div>
+    </div>
+</div>
     <div class="row">
         <div class="col-3 p-1  ">
             <h4 class="text-center my-3">Events Registered</h4>
-            <div class=" style-1 eventsreg">
+            <div class=" style-1 eventsreg eventsreg_div">
 
 
             </div>
@@ -88,7 +126,7 @@
                 <div class="modal-body">
 
 
-                        <form id="team_form" method="post" action="#" name="team_form" >
+                        <form id="team_form" method="post" action="<?=base_url("Spot/insert_missing_users")?>" name="team_form" >
         
                         <input type="hidden" id="json_data" name="json_data" hidden/>
                             <div class="row" style='margin-bottom:10px;'>
@@ -171,9 +209,7 @@
             $('#myModal').hide();
         });
     
-        $('.modal-redirect').click(function(){
-            window.location.href="//www.hestia.live/";
-        });
+
     
             jQuery('.modal-body').on('change','.chk_acm',
         function(){ 
@@ -227,7 +263,8 @@
                     //  stopPreloader();
                 },
                 success:function(result){
-    
+                $('#myModal').hide();
+
 
                     var array = JSON.parse(result);
     
@@ -294,7 +331,8 @@
                             }
 
                             break;
-                        }
+                        }            $('#myModal').hide();
+
                         }
     
     
@@ -364,8 +402,8 @@
             if(cur_cnt>=rem_members){
                 $("#addmoreMembersBtn").prop("disabled",true);
             }
-    
-    
+
+
             });
         function loadUserInfo(elem){
             var id=$(elem).attr('id').replace("email","");
@@ -385,13 +423,13 @@
                         //  stopPreloader();
                     },
                     success: function (result) {
-                        $(".eventsreg").html();
+                        $(".eventsreg_div").html();
                         if(result!="null"){
                             $.each($.parseJSON(result), function(idx, obj) {
-                                $(".eventsreg").append("<div class='card mx-3 my-2'><div class='card-body'><h5 class='card-title'>"+obj.title+"</h5><p class='card-text'></p></div></div>")
+                                $(".eventsreg_div").append("<div class='card mx-3 my-2'><div class='card-body'><h5 class='card-title'>"+obj.title+"</h5><p class='card-text'></p></div></div>")
                             });
                         }else{
-                            $(".eventsreg").append("<div class='card mx-3 my-2'><div class='card-body'><h5 class='card-title'>No events registered</h5><p class='card-text'></p></div></div>")
+                            $(".eventsreg_div").append("<div class='card mx-3 my-2'><div class='card-body'><h5 class='card-title'>No events registered</h5><p class='card-text'></p></div></div>")
 
                         }
                     }
@@ -400,7 +438,7 @@
             var mail=$(elem).val();
             $.ajax({
                 type: 'post',
-                url: "<?=base_url()?>Spot/get_reg_user_info/" + mail,
+                url: "<?=base_url()?>Spot/get_reg_user_info/" + mail+"/"+$("#selectevent").val(),
                 data: "",
                 async: false,
                 processData: false,
@@ -414,6 +452,10 @@
                 success: function (result) {
                     if(result!="null"){
 
+                        if(result=="none"){
+                            alert("Event already registered by the user.");
+                            return;
+                        }
                         var array = JSON.parse(result);
                         var nameid="#name"+ id;
                         var collegeid="#college"+ id;
@@ -442,22 +484,27 @@
             });
 
         }
+        function pay_submit(){
+
+             $('#confirm_pay').click();
+
+        }
         function  removeElement(_id){
 
                 $("#member_"+_id).remove();
             $("#member_"+(_id-1)+"_close").css('display','block');
-    
+
             $("#addmoreMembersBtn").prop("disabled",false);
             checkBoxValidate();
         }
         function team_form_sumbit(){
-    
-          
+
+
             emails_josn = [];
             $("input[type=email]").each(function() {
                 email = {};
                 email["email"] = $(this).val();
-               
+
                 if($(this).attr('id')!="email0"){
                     var email_regex = /^[a-zA-Z0-9._-]+@gmail.com$/i;
                     var mailid=$(this).val();
@@ -469,8 +516,8 @@
                     }
 
                 }
-    
-                
+
+
                 var chkid=$(this).attr('id');
                 chkid=chkid.replace("email","chk_acm");
                 var plainid=chkid.replace("chk_acm","");
@@ -492,7 +539,7 @@
             });
             var days_cm="";
             for(var i=1;i<=4;i++){
-    
+
                 if($("#day_"+i).is(":checked")==true && $("#day_"+i).is(':enabled')){
                     if(days_cm==""){
                         days_cm=$("#day_"+i).val();
@@ -508,17 +555,50 @@
             item = {};
             item ["event_id"] =$("#selectevent").val();
 
-            item ["reg_email"] = $("email0").val();
+            item ["reg_email"] = $("#email0").val();
+            item ["referral_code"] = "spot_<?php
+                    if(isset($_SESSION['username'])){
+                    echo $_SESSION['username'];
+                }
+                ?>";
             item ["accommodation_days"] = days_cm;
             item ["emails"] = emails_josn;
             jsonObj.push(item);
             $('#json_data').val(JSON.stringify(item));
-    
-    alert(JSON.stringify(item));
-            
-            $('#team_form_hid_btn').click();
-    
-    
+            $('#json_data1').val(JSON.stringify(item));
+
+   // alert(JSON.stringify(item));
+            calcualtefee();
+           // $('#team_form_hid_btn').click();
+
+
+        }
+        function calcualtefee() {
+
+            var a = new FormData(document.getElementById("team_form"));
+
+            $.ajax({
+                    type: 'post',
+                    url: "<?=base_url()?>Spot/get_spot_fee_total/",
+                    data: a,
+                    async: false,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function () {
+                        // launchpreloader();
+                    },
+                    complete: function () {
+                        //  stopPreloader();
+                    },
+                    success: function (result) {
+                       // alert(result);
+                        $("#amnt_form1").html(result);
+                        $('#myModal').show();
+
+
+                    }
+                });
+
         }
     
     
