@@ -103,25 +103,25 @@
       </div>
 
       <div class="row pt-5 c1">
-        <h2 class="text-white listing3 mb-5">Choreonite partner</h2>
+        <h2 class="text-white listing3 mb-2">Choreonite partner</h2>
         <a href="http://www.wentona.com/" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/wentona.png" height="50px" alt=""></a>
         <h3 class="text-white listing3">Wentona academy</h3>
       </div>
 
       <div class="row pt-5 c1">
-        <h2 class="text-white listing3 mb-5">Pronite partner</h2>
+        <h2 class="text-white listing3 mb-2">Pronite partner</h2>
         <a href="https://www.pokerbaazi.com/" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/pokerbaazi.png" height="100px" alt=""></a>
         <h3 class="text-white listing3">pokerbaazi</h3>
       </div>
 
       <div class="row pt-5 c1">
-        <h2 class="text-white listing3 mb-5">Audio partner</h2>
+        <h2 class="text-white listing3 mb-2">Audio partner</h2>
         <a href="https://zebronics.com/" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/zebronics.png" height="100px" alt=""></a>
         <h3 class="text-white listing3">Zebronics</h3>
       </div>
 
       <div class="row pt-5 c1 ">
-        <h2 class="text-white listing3 mb-5  ">Beverage partner</h2><br><br>
+        <h2 class="text-white listing3 mb-1 ">Beverage partner</h2><br><br>
         <div class="inline  col-md-3  ">
           <a href="http://kcmmf.in/" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/milma.jpg" height="100px" alt=""></a>
           <h3 class="text-white listing3">Milma</h3>
@@ -133,7 +133,7 @@
       </div>
 
       <div class="row pt-5 c1 ">
-        <h2 class="text-white listing3 mb-5">Event partner</h2>
+        <h2 class="text-white listing3 mb-2">Event partner</h2>
         <a><img src="<?=base_url();?>assets/front/img/sponsors/promaa.png" height="100px" width="300px" alt=""></a>
         <h3 class="text-white listing3">Promaa Engineers</h3>
       </div>
