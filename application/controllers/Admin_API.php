@@ -167,7 +167,7 @@ class Admin_API extends REST_Controller {
         $this->response($id,$status);
     }
 
-    function accommodation_post() {
+    function accommodation_get() {
         $this->load->model('user_model');
         $this->response($this->user_model->get_accommodations());
     }
