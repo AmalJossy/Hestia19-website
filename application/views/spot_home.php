@@ -99,6 +99,8 @@
             </div>
         </div>
         <div class="col-9 p-1">
+            <div style="float: right;">Logged in as <?=$_SESSION['loginname']?> <a href="<?=base_url("Login/logout")?>"><button class="btn btn-sm btn-danger">Logout</button></a></li>
+               </div>
                         <h4 class="text-center my-3">Spot Registration</h4>
                 <div class="eventsreg style-1">
                         

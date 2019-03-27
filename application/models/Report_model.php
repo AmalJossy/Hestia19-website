@@ -21,6 +21,7 @@ class Report_model extends CI_Model {
                 $data = array(
                     'lid' => $row->lid,
                     'username' => $row->username,
+                    'loginname' => $row->name,
                     'validated' => true
                 );
                 $this->session->set_userdata($data);

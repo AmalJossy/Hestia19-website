@@ -61,7 +61,7 @@ $route['process/(.+)'] = 'Pages/ProcessUserRequest/$1';
 $route['bookticket'] = 'Pages/ProcessBooking';
 $route['myevents'] = 'Pages/UserEvents';
 $route['myprofile'] = 'Profile/update';
-$route['login'] = 'Login/index';
+$route['spot_login'] = 'Login/index';
 
 
 

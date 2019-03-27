@@ -193,7 +193,7 @@ if (typeof(Storage) !== "undefined") {
     <li class="dropdown nav-item">
       <a href="#pablo" style="max-width:50px;" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown">
         <div class="profile-photo-small" >
-        <img  src="<?=$_SESSION['profile_pic']?>" alt="DP" class="rounded-circle img-fluid">
+        <img  src="<?=$_SESSION['profile_pic']?>" alt="DP" style="border: 3px solid white;" class="rounded-circle img-fluid">
         <small  class="mobile-show" style="margin-top:-2rem;margin-left:50px;position:absolute;min-width:150px;"><?=$_SESSION['name']?></small>
         </div>
 
