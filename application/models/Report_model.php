@@ -74,7 +74,7 @@ class Report_model extends CI_Model {
         $query = $this->db->get ();
         $f1=$query->result()[0]->file1;
         $f2=$query->result()[0]->file2;
-        if($this->check_files_lastdate($eid) && $f1===NULL && $f2===NULL)
+        if($this->check_files_lastdate($eid) && $f1==NULL && $f2==NULL)
             return true;
         else
             return false;
@@ -95,12 +95,7 @@ class Report_model extends CI_Model {
         $now = time();
         $target = strtotime($fld. "+1 days");
         $diff = $now - $target;
-        if ( $diff > 0 ) {
-            return false;
-        }
-        else{
-            return true;
-        }
+        return $diff <= 0;
     }
 
     public function set_file_urls($f1,$evid,$f2 = NULL)
