@@ -126,7 +126,7 @@
                 <div class="modal-body">
 
 
-                        <form id="team_form" method="post" action="<?=base_url("Spot/insert_missing_users")?>" name="team_form" >
+                        <form id="team_form" method="post" action="#" name="team_form" >
         
                         <input type="hidden" id="json_data" name="json_data" hidden/>
                             <div class="row" style='margin-bottom:10px;'>

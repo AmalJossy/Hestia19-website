@@ -92,6 +92,11 @@
         margin-left: 40%;
         margin-bottom: 10px;
     }
+    .btn-result{
+        color: white;
+        margin-left: 40%;
+        margin-bottom: 10px;
+    }
     .btn-custom:hover{
         color: grey;
     }
@@ -437,6 +442,7 @@
 
                     </p>
 <?=$btn?>
+
                 </div>
             </div>
 
@@ -600,6 +606,20 @@ function checkBoxValidate(){
             }
         });
 
+
+
+
+    });
+    $('.btn-result').click(function(){
+
+        $('.modal-title').text("Winners");
+        $('.modal-body').html("<?php
+            echo $result;
+            ?>");
+
+
+        $('.modal-redirect').remove();
+        $('#myModal').show();
 
 
 

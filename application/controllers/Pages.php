@@ -110,35 +110,50 @@ header('Location: '.$data['google_login_url']);
         $cnt=$this->report_model->get_event_reg_count($eid);
         $reg_fee=$data['event']->reg_fee;
         $reg_end = '';
-        if($reg_fee !== NULL){
-            if($isbooked>=1) {
-                $btn="<a href='#' class='btn btn-warning btn-custom disabled'>Booked &nbsp;<i class='fas fa-ticket-alt'></i></a>";
-            } else {
-                if (($today >= $startdate) && ($today <= $enddate)){
+        $resulthtml="";
+        $results=$this->report_model->get_event_status_result($eid);
+        $btn = "";
+        if(count($results)>0){
+            $btn="<a href='#' class='btn btn-success btn-result'>Result &nbsp;<i class='fas fa-trophy'></i></a>";
+            $resulthtml="<table class='table table-striped'>";
+            foreach ($results as $rowresult){
+                $resulthtml=$resulthtml."<tr><td>".$rowresult['label']."</td><td>".$rowresult['fullname']."</td><td>".$rowresult['college']."</td></tr>";
+            }
+            $resulthtml=$resulthtml."</table>";
 
-                    if($cnt<$data['event']->seats || $data['event']->seats == 0){
-                        $btn="<a href='#' class='btn btn-custom btn-primary'>BUY TICKET&nbsp;<i class='fas fa-shopping-cart'></i></a>";
-                        $reg_end = date('d-m-Y', strtotime($data['event']->reg_end));
+        }else{
+            if($reg_fee !== NULL){
+                if($isbooked>=1) {
+                    $btn="<a href='#' class='btn btn-warning btn-custom disabled'>Booked &nbsp;<i class='fas fa-ticket-alt'></i></a>";
+                } else {
+                    if (($today >= $startdate) && ($today <= $enddate)){
+
+                        if($cnt<$data['event']->seats || $data['event']->seats == 0){
+                            $btn="<a href='#' class='btn btn-custom btn-primary'>BUY TICKET&nbsp;<i class='fas fa-shopping-cart'></i></a>";
+                            $reg_end = date('d-m-Y', strtotime($data['event']->reg_end));
+                        }else{
+                            $btn="<a href='#' class='btn btn-custom btn-danger disabled'>Sold Out&nbsp;<i class='fas fa-shopping-cart'></i></a>";
+                        }
                     }else{
-                        $btn="<a href='#' class='btn btn-custom btn-danger disabled'>Sold Out&nbsp;<i class='fas fa-shopping-cart'></i></a>";
-                    }
-                }else{
-                    if(($startdate  > $today)){
-                        $dtstart = date_create($startdate);
-                        $btn="<a href='#' class='btn btn-warning btn-custom disabled'>Registration Starts on ".date_format($dtstart, 'd-m-Y')."&nbsp;<i class='fas fa-clock'></i></a>";
+                        if(($startdate  > $today)){
+                            $dtstart = date_create($startdate);
+                            $btn="<a href='#' class='btn btn-warning btn-custom disabled'>Registration Starts on ".date_format($dtstart, 'd-m-Y')."&nbsp;<i class='fas fa-clock'></i></a>";
 
-                    }
-                    if(($today > $enddate)){
-                        $btn="<a href='#' class='btn btn-danger btn-custom disabled'>Registration Closed&nbsp;<i class='fas fa-shopping-cart'></i></a>";
+                        }
+                        if(($today > $enddate)){
+                            $btn="<a href='#' class='btn btn-danger btn-custom disabled'>Registration Closed&nbsp;<i class='fas fa-shopping-cart'></i></a>";
 
+                        }
                     }
                 }
+            }else{
+
             }
-        }else{
-            $btn = "";
+
         }
 
         //$data['islogged']=false; //#TODO
+        $data['result']=$resulthtml;
        $data['btn']=$btn;
        $data['reg_end']=$reg_end;
 
