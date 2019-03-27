@@ -133,9 +133,31 @@
       </div>
 
       <div class="row pt-5 c1 ">
-        <h2 class="text-white listing3 mb-2">Event partner</h2>
-        <a><img src="<?=base_url();?>assets/front/img/sponsors/promaa.png" height="100px" width="300px" alt=""></a>
-        <h3 class="text-white listing3">Promaa Engineers</h3>
+        <h2 class="text-white listing3 mb-4">Event partner</h2>
+        <div class="inline  col-md-3  ">
+          <a><img src="<?=base_url();?>assets/front/img/sponsors/promaa.png" height="100px" width="300px" alt=""></a>
+          <h3 class="text-white listing3">Promaa Engineers</h3>
+        </div>
+        <div class="inline col-md-3">
+          <a><img src="<?=base_url();?>assets/front/img/sponsors/tcs.png" height="100px" alt=""></a>
+          <h3 class="text-white listing3">TCS</h3>
+        </div>
+      </div>
+
+      <div class="row pt-5 c1 ">
+        <h2 class="text-white listing3 mb-4">Other partner</h2>
+        <div class="inline  col-md-3  ">
+          <a><img src="<?=base_url();?>assets/front/img/sponsors/bpcl.png" height="100px"  alt=""></a>
+          <h3 class="text-white listing3">BPCL</h3>
+        </div>
+        <div class="inline col-md-3">
+          <a><img src="<?=base_url();?>assets/front/img/sponsors/hp.png" height="100px" alt=""></a>
+          <h3 class="text-white listing3">HP</h3>
+        </div>
+        <div class="inline col-md-3">
+          <a><img src="<?=base_url();?>assets/front/img/sponsors/irel.jpg" height="100px" alt=""></a>
+          <h3 class="text-white listing3">IREL</h3>
+        </div>
       </div>
 
     </div>

@@ -275,7 +275,7 @@
                         case 200:{
                             $('.chk_team').css('display','inline');
                             $('#team_form').css('display','block');
-                            $('#chk_acm0').prop('checked','true');
+
                             $('.chk_acommodation').css('display','none');
                             $('#div_acm0').css('display','none');
     
@@ -469,13 +469,11 @@
                         $(collegeid).val(array.college);
                         $(collegeid).val(array.college);
                         $(phoneid).val(array.phone);
-                        if(array.accommodation!=null){
-                            $(checkid).prop("checked",true);
-                        }else{
+
                             $(checkid).prop("checked",false);
 
 
-                        }
+
                         checkBoxValidate();
                     }
 
