@@ -500,8 +500,31 @@
                         $(collegeid).val(array.college);
                         $(collegeid).val(array.college);
                         $(phoneid).val(array.phone);
+                        if(id=="0" && maxmemb==1 && minmemb==1) {
+                            if (array.accommodation != null) {
 
-                            $(checkid).prop("checked",false);
+                                $("#day_1").prop(checkid,false);
+                                $("#day_2").prop(checkid,false);
+                                $("#day_3").prop(checkid,false);
+                                $("#day_4").prop(checkid,false);
+
+
+                                $(checkid).prop("checked", true);
+                                var str = array.accommodation;
+                                var res = str.split("");
+                                $.each( res, function( index, value ) {
+                                   var idx="#day_"+value;
+                                   $(idx).prop("checked",true);
+
+
+
+
+                                });
+                            } else {
+                                $(checkid).prop("checked", false);
+                            }
+                        }
+
 
 
 
@@ -530,7 +553,7 @@
         }
         function team_form_sumbit(){
 
-
+            var isvalid=true;
             emails_josn = [];
             $("input[type=email]").each(function() {
                 email = {};
@@ -540,9 +563,9 @@
                     var email_regex = /^[a-zA-Z0-9._-]+@gmail.com$/i;
                     var mailid=$(this).val();
                     if(!email_regex.test(mailid)){
-
+                        isvalid=false;
                         alert("Enter valid mail id");
-                        return;
+
 
                     }
 
@@ -598,8 +621,10 @@
             $('#json_data').val(JSON.stringify(item));
             $('#json_data1').val(JSON.stringify(item));
 
+if(isvalid==true){
+    calcualtefee();
 
-            calcualtefee();
+}
            // $('#team_form_hid_btn').click();
 
 
