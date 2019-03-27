@@ -30,12 +30,11 @@ class Spot extends CI_Controller {
     }
     public function home()
     {
-
         $data['categories']=$this->report_model->get_categories();
         $this->load->view('spot_home',$data);
     }
     public function get_events_list($cat_id){
-        echo json_encode($this->report_model->get_events_available($cat_id));
+        echo json_encode($this->report_model->get_events($cat_id));
 
     }
     public function get_reg_user_info($email,$eid=NULL){
