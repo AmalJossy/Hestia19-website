@@ -22,9 +22,9 @@ class Spot extends CI_Controller {
         parent::__construct();
         $this->load->model('report_model');
 
-            if(!$this->session->userdata('username')) {
-                redirect('login');
-            }
+        if(!$this->session->userdata('username')) {
+            redirect('login');
+        }
 
 
     }
@@ -39,16 +39,16 @@ class Spot extends CI_Controller {
 
     }
     public function get_reg_user_info($email,$eid=NULL){
-if($eid!=NULL){
-    if($this->report_model->get_reguser_events_status($email,$eid)>0){
-        echo "none";
-    }else{
-        echo json_encode($this->report_model->get_user_info($email));
+        if($eid!=NULL){
+            if($this->report_model->get_reguser_events_status($email,$eid)>0){
+                echo "none";
+            }else{
+                echo json_encode($this->report_model->get_user_info($email));
 
-    }
-}else{
-    echo json_encode($this->report_model->get_user_info($email));
-}
+            }
+        }else{
+            echo json_encode($this->report_model->get_user_info($email));
+        }
 
     }
     public function get_reg_user_events($email){
@@ -59,13 +59,13 @@ if($eid!=NULL){
         $islogged=false;
 
 
-            $team_size=$this->report_model->get_team_size($eid);
+        $team_size=$this->report_model->get_team_size($eid);
 
-            if($team_size->min_memb==1  && $team_size->max_memb==1){
-                echo "[201,$team_size->min_memb,$team_size->max_memb]";
-            }else{
-                echo "[201,$team_size->min_memb,$team_size->max_memb]";
-            }
+        if($team_size->min_memb==1  && $team_size->max_memb==1){
+            echo "[201,$team_size->min_memb,$team_size->max_memb]";
+        }else{
+            echo "[201,$team_size->min_memb,$team_size->max_memb]";
+        }
 
 
 
@@ -78,14 +78,16 @@ if($eid!=NULL){
         $this->load->model('user_model');
         $totalacc=0;
         $retcntr=0;
+
         foreach ($members as $row){
+
             $data=array();
             $data['fullname']=$row->fullname;
             $data['phone']=$row->phone;
             $data['college']=$row->college;
             if($row->acc=="Y"){
                 $data['accommodation']=$jsondata->accommodation_days;
-              //  $data_reg['acc']=$jsondata->accommodation_days;
+                //  $data_reg['acc']=$jsondata->accommodation_days;
                 $splitted_in = str_split($jsondata->accommodation_days);
                 $current_mem_acc=count($splitted_in);
                 if($this->report_model->get_user_accomodations($row->email)){
@@ -102,37 +104,43 @@ if($eid!=NULL){
                     }
                 }
                 $totalacc=$totalacc+$current_mem_acc;
-                $data_reg['event_id']=$jsondata->event_id;
-                $data_reg['reg_email']=$jsondata->reg_email;
-                $data_reg['member_email']=$row->email;
-                if($data_reg['member_email']==$data_reg['reg_email']){
-                    $data_reg['fee_amnt']=$this->input->post('fee_hid');
-
-                }else{
-                    $data_reg['fee_amnt']=NULL;
-                }
-                if($this->user_model->is_registered($row->email,"N")){
-                    $this->user_model->modify_w($row->email,$data);
-                }else{
-                    $data['email']=$row->email;
-                    $data['hashcode'] =password_hash($data['email'],PASSWORD_BCRYPT);
-                    $this->user_model->create($data);
-                    //insert
-                }
-                $data_reg['referral_code']=$jsondata->referral_code;
-                $tempret=$this->report_model->insert_reg_spot_temp($data_reg);
-                $retcntr=$retcntr+$tempret;
             }else{
                 $data['accommodation']=NULL;
             }
+            $data_reg['event_id']=$jsondata->event_id;
+            $data_reg['reg_email']=$jsondata->reg_email;
+            $data_reg['member_email']=$row->email;
+            if($data_reg['member_email']==$data_reg['reg_email']){
+                $data_reg['fee_amnt']=$this->input->post('fee_hid');
+
+            }else{
+                $data_reg['fee_amnt']=NULL;
+            }
+            if($this->user_model->is_registered($row->email,"N")){
+                $this->user_model->modify_w($row->email,$data);
+            }else{
+                $data['email']=$row->email;
+                $data['hashcode'] =password_hash($data['email'],PASSWORD_BCRYPT);
+                $this->user_model->create($data);
+                //insert
+            }
+            $data_reg['referral_code']=$jsondata->referral_code;
+            $tempret=$this->report_model->insert_reg_spot_temp($data_reg);
+
+            $retcntr=$retcntr+$tempret;
+
 
 
         }
+        $backurl=base_url("Spot/home");
         if($retcntr>0){
-            redirect("Spot/home");
+
+            echo '<meta http-equiv="refresh" content="2;url='.$backurl.'" /><center><h1 style="color:green;"><br><br>'.$retcntr.' Nos. Successfully Registered. <br></h1></center>';
+
 
         }else{
-            echo "<h1>Error Occurred. <a href='".base_url("Spot/home")."'>Go Back</a></h1>";
+
+            echo '<meta http-equiv="refresh" content="2;url='.$backurl.'" /><center><h1 style="color:red;"><br><br>Error Occurred <br></h1></center>';
         }
 
     }

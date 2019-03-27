@@ -93,7 +93,7 @@ class Report_model extends CI_Model {
         }
         $fld=$query->result()[0]->file_last_date;
         $now = time();
-        $target = strtotime($fld. "+1 days");
+        $target = strtotime($fld. "+1 days -5 hours -30 minutes");
         $diff = $now - $target;
         return $diff <= 0;
     }
