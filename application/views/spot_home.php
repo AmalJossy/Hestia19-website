@@ -188,8 +188,8 @@
                     </div>
         
         
-                <div style="margin-left: 40%;">
-                    <button class="btn btn-outline-danger custom-button" onclick="team_form_sumbit()"><i class="fas fa-plus-square"></i>&nbsp;Add</button>
+                <div style="margin-left: 40%;" id="btn_add_div">
+
                 </div>
         
                 </div>
@@ -347,6 +347,8 @@
     
     
         }
+
+
         $(function() {
             $("#selectcategory").change(function () {
                 var cat_id = $('option:selected', this).val();
@@ -382,7 +384,34 @@
 
         $(function() {
             $("#selectevent").change(function () {
+
                 $('#team_form_members_opt').html("");
+                var id=$('option:selected', this).val();
+                if(id!="") {
+                    $.ajax({
+                        type: 'post',
+                        url: "<?=base_url()?>Spot/event_current_status_get/" + id,
+                        data: "",
+                        async: false,
+                        processData: false,
+                        contentType: false,
+                        beforeSend: function () {
+                            // launchpreloader();
+                        },
+                        complete: function () {
+                            //  stopPreloader();
+                        },
+                        success: function (result) {
+                           switch (result) {
+                               case "1":{$("#btn_add_div").html("<button class='btn btn-outline-danger custom-button' onclick='team_form_sumbit()'><i class='fas fa-plus-square'></i>&nbsp;Add</button>");break;}
+                               case "sold":{$("#btn_add_div").html("<button class='btn btn-outline-warning custom-button' onclick='team_form_sumbit()'><i class='fas fa-plus-square'></i>&nbsp;Sold Out</button>");break;}
+                               case "default":{$("#btn_add_div").html("<button class='btn btn-outline-danger custom-button' onclick='team_form_sumbit()'><i class='fas fa-plus-square'></i>&nbsp;Add</button>");break;}
+
+                           }
+                        }
+                    });
+                }
+
                 LoadEventMembers($('option:selected', this).val());
 
             });

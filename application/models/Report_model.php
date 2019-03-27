@@ -239,9 +239,12 @@ class Report_model extends CI_Model {
         $cnt=$this->db->query("SELECT count(*) As Cnt from registration where member_email='".$_SESSION['email']."' and event_id=".$eid);
         return $cnt->row()->Cnt;
     }
-    public function get_event_status_result($eid){
+    public function get_event_status_result($eid,$typ=""){
 
         $cnt=$this->db->query("SELECT * from result r left join users u on r.email=u.email where event_id=".$eid);
+       if ($typ=="AR"){
+           return $cnt->result();
+       }
         return $cnt->result_array();
     }
     public function insert_reg_spot_temp($data){

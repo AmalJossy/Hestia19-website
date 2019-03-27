@@ -77,6 +77,7 @@ class Appapi_Model extends CI_Model {
 
         if (($today >= $startdate) && ($today <= $enddate)){
 
+
             if($cnt<$event->seats || $event->seats == 0){
                 // available
                 return true;
@@ -84,6 +85,7 @@ class Appapi_Model extends CI_Model {
                 //Sold Out
                 return 'sold';
             }
+
         }else{
             if(($startdate  > $today)){
                 $dtstart = date_create($startdate);

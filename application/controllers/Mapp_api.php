@@ -33,6 +33,12 @@ class Mapp_api extends REST_Controller {
              $this->response($s);
          }
 		}
+		function event_result_get($cat_name=NULL) {
+	      if($cat_name!=NULL){
+             $s = $this->report_model->get_event_status_result($cat_name,"AR");
+             $this->response($s);
+         }
+		}
 		function ha_sh_post() {
 			$email = $this->post('email');
 			$this->load->model('User_model');
