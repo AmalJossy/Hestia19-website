@@ -110,7 +110,7 @@
                             <option value="">Select</option>
                             <?php
                             foreach ($categories as $row){
-
+                                if($row->cat_name!='online')
                                 echo "<option value='".$row->cat_name."'>".$row->cat_name."</option>";
 
                             }
@@ -188,8 +188,8 @@
                     </div>
         
         
-                <div style="margin-left: 40%;">
-                    <button class="btn btn-outline-danger custom-button" onclick="team_form_sumbit()"><i class="fas fa-plus-square"></i>&nbsp;Add</button>
+                <div style="margin-left: 40%;" id="btn_add_div">
+
                 </div>
         
                 </div>
@@ -347,6 +347,8 @@
     
     
         }
+
+
         $(function() {
             $("#selectcategory").change(function () {
                 var cat_id = $('option:selected', this).val();
@@ -382,7 +384,34 @@
 
         $(function() {
             $("#selectevent").change(function () {
+
                 $('#team_form_members_opt').html("");
+                var id=$('option:selected', this).val();
+                if(id!="") {
+                    $.ajax({
+                        type: 'post',
+                        url: "<?=base_url()?>Spot/event_current_status_get/" + id,
+                        data: "",
+                        async: false,
+                        processData: false,
+                        contentType: false,
+                        beforeSend: function () {
+                            // launchpreloader();
+                        },
+                        complete: function () {
+                            //  stopPreloader();
+                        },
+                        success: function (result) {
+                           switch (result) {
+                               case "1":{$("#btn_add_div").html("<button class='btn btn-outline-danger custom-button' onclick='team_form_sumbit()'><i class='fas fa-plus-square'></i>&nbsp;Add</button>");break;}
+                               case "sold":{$("#btn_add_div").html("<button class='btn btn-outline-warning custom-button'><i class='fas fa-plus-square'></i>&nbsp;Sold Out</button>");break;}
+                               case "default":{$("#btn_add_div").html("<button class='btn btn-outline-danger custom-button' onclick='team_form_sumbit()'><i class='fas fa-plus-square'></i>&nbsp;Add</button>");break;}
+
+                           }
+                        }
+                    });
+                }
+
                 LoadEventMembers($('option:selected', this).val());
 
             });
@@ -428,7 +457,9 @@
                         $(".eventsreg_div").html();
                         if(result!="null"){
                             $.each($.parseJSON(result), function(idx, obj) {
-                                $(".eventsreg_div").append("<div class='card mx-3 my-2'><div class='card-body'><h5 class='card-title'>"+obj.title+"</h5><p class='card-text'></p></div></div>")
+                                if(obj.title!="accommodation"){
+                                    $(".eventsreg_div").append("<div class='card mx-3 my-2'><div class='card-body'><h5 class='card-title'>"+obj.title+"</h5><p class='card-text'></p></div></div>")
+                                }
                             });
                         }else{
                             $(".eventsreg_div").append("<div class='card mx-3 my-2'><div class='card-body'><h5 class='card-title'>No events registered</h5><p class='card-text'></p></div></div>")
@@ -469,8 +500,31 @@
                         $(collegeid).val(array.college);
                         $(collegeid).val(array.college);
                         $(phoneid).val(array.phone);
+                        if(id=="0" && maxmemb==1 && minmemb==1) {
+                            if (array.accommodation != null) {
 
-                            $(checkid).prop("checked",false);
+                                $("#day_1").prop(checkid,false);
+                                $("#day_2").prop(checkid,false);
+                                $("#day_3").prop(checkid,false);
+                                $("#day_4").prop(checkid,false);
+
+
+                                $(checkid).prop("checked", true);
+                                var str = array.accommodation;
+                                var res = str.split("");
+                                $.each( res, function( index, value ) {
+                                   var idx="#day_"+value;
+                                   $(idx).prop("checked",true);
+
+
+
+
+                                });
+                            } else {
+                                $(checkid).prop("checked", false);
+                            }
+                        }
+
 
 
 
@@ -499,7 +553,7 @@
         }
         function team_form_sumbit(){
 
-
+            var isvalid=true;
             emails_josn = [];
             $("input[type=email]").each(function() {
                 email = {};
@@ -509,7 +563,7 @@
                     var email_regex = /^[a-zA-Z0-9._-]+@gmail.com$/i;
                     var mailid=$(this).val();
                     if(!email_regex.test(mailid)){
-
+                        isvalid=false;
                         alert("Enter valid mail id");
 
 
@@ -546,7 +600,7 @@
                     }else{
                         days_cm=days_cm+""+$("#day_"+i).val();
                     }
-                    email["acc"] = "Y";
+
 
 
                 }
@@ -567,8 +621,10 @@
             $('#json_data').val(JSON.stringify(item));
             $('#json_data1').val(JSON.stringify(item));
 
-   // alert(JSON.stringify(item));
-            calcualtefee();
+if(isvalid==true){
+    calcualtefee();
+
+}
            // $('#team_form_hid_btn').click();
 
 

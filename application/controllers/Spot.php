@@ -23,16 +23,19 @@ class Spot extends CI_Controller {
         $this->load->model('report_model');
 
         if(!$this->session->userdata('username')) {
-            redirect('login');
+            redirect('spot_login');
         }
 
 
     }
     public function home()
     {
-
         $data['categories']=$this->report_model->get_categories();
         $this->load->view('spot_home',$data);
+    }
+    public function event_current_status_get($eid){
+        $this->load->model('Appapi_Model');
+        echo $this->Appapi_Model->GetEventCurrentStatus($eid);
     }
     public function get_events_list($cat_id){
         echo json_encode($this->report_model->get_events($cat_id));
@@ -86,6 +89,7 @@ class Spot extends CI_Controller {
             $data['phone']=$row->phone;
             $data['college']=$row->college;
             if($row->acc=="Y"){
+
                 $data['accommodation']=$jsondata->accommodation_days;
                 //  $data_reg['acc']=$jsondata->accommodation_days;
                 $splitted_in = str_split($jsondata->accommodation_days);
@@ -159,7 +163,7 @@ class Spot extends CI_Controller {
             $data['fullname']=$row->fullname;
             $data['phone']=$row->phone;
             $data['college']=$row->college;
-            if($row->acc=="Y"){
+            if($row->acc=="Y" && $jsondata->accommodation_days!=""){
                 $data['accommodation']=$jsondata->accommodation_days;
                 $data_reg['acc']=$jsondata->accommodation_days;
 
