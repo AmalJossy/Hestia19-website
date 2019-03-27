@@ -77,6 +77,7 @@ if($eid!=NULL){
         $members=$jsondata->emails;
         $this->load->model('user_model');
         $totalacc=0;
+        $retcntr=0;
         foreach ($members as $row){
             $data=array();
             $data['fullname']=$row->fullname;
@@ -110,22 +111,29 @@ if($eid!=NULL){
                 }else{
                     $data_reg['fee_amnt']=NULL;
                 }
+                if($this->user_model->is_registered($row->email,"N")){
+                    $this->user_model->modify_w($row->email,$data);
+                }else{
+                    $data['email']=$row->email;
+                    $data['hashcode'] =password_hash($data['email'],PASSWORD_BCRYPT);
+                    $this->user_model->create($data);
+                    //insert
+                }
                 $data_reg['referral_code']=$jsondata->referral_code;
-                $this->report_model->insert_reg_spot_temp($data_reg);
+                $tempret=$this->report_model->insert_reg_spot_temp($data_reg);
+                $retcntr=$retcntr+$tempret;
             }else{
                 $data['accommodation']=NULL;
             }
 
-            if($this->user_model->is_registered($row->email,"N")){
-                 $this->user_model->modify_w($row->email,$data);
-            }else{
-                $data['email']=$row->email;
-                $data['hashcode'] =password_hash($data['email'],PASSWORD_BCRYPT);
-                $this->user_model->create($data);
-                //insert
-            }
+
         }
-        redirect("Spot/home");
+        if($retcntr>0){
+            redirect("Spot/home");
+
+        }else{
+            echo "<h1>Error Occurred. <a href='".base_url("Spot/home")."'>Go Back</a></h1>";
+        }
 
     }
 

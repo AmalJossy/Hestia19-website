@@ -21,6 +21,23 @@ class Appapi_Model extends CI_Model {
             return "false";
         }
     }
+    public function get_user_full_info($hash){
+        $gmailid=$this->security->xss_clean($email);
+        $this->db->where('email',$gmailid);
+        $query=$this->db->get('users');
+        $num_rows=$query->num_rows();
+        if($num_rows == 1)
+        {
+            $this->db->select('email, fullname, phone, college, accommodation');
+            if( $gmailid != NULL ){
+                $this->db->where('email', $gmailid );
+            }
+            $query = $this->db->get('users');
+            return $query->result_array()[0];
+        }else{
+            return "false";
+        }
+    }
     public function GetEventCurrentStatus($eid, $email = NULL){
         $event=$this->get_single_event($eid);
         $eid=$event->event_id;
