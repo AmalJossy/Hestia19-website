@@ -110,7 +110,7 @@
                             <option value="">Select</option>
                             <?php
                             foreach ($categories as $row){
-
+                                if($row->cat_name!='online')
                                 echo "<option value='".$row->cat_name."'>".$row->cat_name."</option>";
 
                             }
@@ -428,7 +428,9 @@
                         $(".eventsreg_div").html();
                         if(result!="null"){
                             $.each($.parseJSON(result), function(idx, obj) {
-                                $(".eventsreg_div").append("<div class='card mx-3 my-2'><div class='card-body'><h5 class='card-title'>"+obj.title+"</h5><p class='card-text'></p></div></div>")
+                                if(obj.title!="accommodation"){
+                                    $(".eventsreg_div").append("<div class='card mx-3 my-2'><div class='card-body'><h5 class='card-title'>"+obj.title+"</h5><p class='card-text'></p></div></div>")
+                                }
                             });
                         }else{
                             $(".eventsreg_div").append("<div class='card mx-3 my-2'><div class='card-body'><h5 class='card-title'>No events registered</h5><p class='card-text'></p></div></div>")
@@ -511,7 +513,7 @@
                     if(!email_regex.test(mailid)){
 
                         alert("Enter valid mail id");
-
+                        return;
 
                     }
 
@@ -546,7 +548,7 @@
                     }else{
                         days_cm=days_cm+""+$("#day_"+i).val();
                     }
-                    email["acc"] = "Y";
+
 
 
                 }
@@ -567,7 +569,7 @@
             $('#json_data').val(JSON.stringify(item));
             $('#json_data1').val(JSON.stringify(item));
 
-   // alert(JSON.stringify(item));
+
             calcualtefee();
            // $('#team_form_hid_btn').click();
 

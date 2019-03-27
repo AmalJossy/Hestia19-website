@@ -46,6 +46,11 @@ class Report_model extends CI_Model {
         $query = $this->db->get ();
         return $query->result();
     }
+    public function get_events_available($id){
+        $sql="SELECT e.* FROM events e left join (select event_id as reg_eid,count(*) as cur_cnt from registration group by event_id ) r on e.event_id=r.reg_eid where ifnull(r.cur_cnt,0)<e.seats and e.cat_id in(select cat_id from categories where cat_name='".$id."')";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
     public function get_categories(){
         $this->db->select ( '*' );
         $this->db->from ( 'categories');

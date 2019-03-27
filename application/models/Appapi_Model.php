@@ -22,18 +22,29 @@ class Appapi_Model extends CI_Model {
         }
     }
     public function get_user_full_info($hash){
-        $gmailid=$this->security->xss_clean($email);
-        $this->db->where('email',$gmailid);
+        $hash=$this->security->xss_clean($hash);
+        $this->db->where('hashcode',$hash);
         $query=$this->db->get('users');
         $num_rows=$query->num_rows();
+
         if($num_rows == 1)
         {
-            $this->db->select('email, fullname, phone, college, accommodation');
-            if( $gmailid != NULL ){
-                $this->db->where('email', $gmailid );
+
+            $emailid=$query->row()->email;
+            $this->db->select ( 'title,link' );
+            $this->db->from ( 'events' );
+            $this->db->join ( 'registration', 'registration.event_id = events.event_id' , 'inner' );
+            if( $emailid != NULL ){
+                $this->db->where ( 'registration.member_email',$emailid);
+                $queryx = $this->db->get ();
+                $data['email']=$query->row()->fullname;
+                $data['college']=$query->row()->college;
+                $data['fullname']=$query->row()->fullname;
+                $data['phone']=$query->row()->phone;
+                $data['events']=$queryx->result_array();
+                return $data;
             }
-            $query = $this->db->get('users');
-            return $query->result_array()[0];
+
         }else{
             return "false";
         }

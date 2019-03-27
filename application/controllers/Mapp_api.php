@@ -22,8 +22,8 @@ class Mapp_api extends REST_Controller {
 			$s = $this->Report_model->get_event_schedule($eid);
 			$this->response($s);
 		}
-		function user_full_info($has) {
-			$this->load->model('Report_model');
+		function member_info_full_post() {
+
 			$s = $this->appapi_Model->get_user_full_info($this->post('hash'));
 			$this->response($s);
 		}
