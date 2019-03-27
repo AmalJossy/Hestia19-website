@@ -240,7 +240,7 @@ class Report_model extends CI_Model {
         return $cnt->result_array();
     }
     public function insert_reg_spot_temp($data){
-            $this->db->insert('registration',$data);
+            return $this->db->insert('registration',$data);
     }
 
 
