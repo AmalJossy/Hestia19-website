@@ -203,7 +203,14 @@ padding-right:10vh;
                                     $end_time=date('h:i A', strtotime($timerow['end_time']));
                                 }
                                 ?>
-                                <?=$start_time?> to <?=$end_time?>
+                                <?php
+                                 if ($timerow['end_time'] == NULL) {
+                                                echo 'Starts on '.$start_time;
+                                 }
+                                else
+                                    echo $start_time.' to '.$end_time;
+                                 
+                                 ?>
                                 </p>
                             </div>
 
