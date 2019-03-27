@@ -21,19 +21,7 @@ class User_model extends CI_Model {
     public function create($data){
 
         $this->db->insert('users', $data);
-        $curl = curl_init();
-            // Set some options - we are passing in a useragent too here
-            curl_setopt_array($curl, [
-                CURLOPT_RETURNTRANSFER => 1,
-                CURLOPT_URL => 'https://www.hestia.live/payment/mail/usermail.php?email='.$data['email'].'',
-                CURLOPT_CUSTOMREQUEST => "GET",
-                CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0"
-            ]);
-            // Send the request & save response to $resp
-            $resp = curl_exec($curl);
-            //echo $resp;
-            // Close request to clear up some resources
-            curl_close($curl);
+    
 
         return 201;
     }
@@ -123,6 +111,19 @@ class User_model extends CI_Model {
             $data['email'] = $this->session->email;
             $data['hashcode'] =password_hash($data['email'],PASSWORD_BCRYPT);
             $this->create($data);
+                $curl = curl_init();
+            // Set some options - we are passing in a useragent too here
+            curl_setopt_array($curl, [
+                CURLOPT_RETURNTRANSFER => 1,
+                CURLOPT_URL => 'https://www.hestia.live/payment/mail/usermail.php?email='.$data['email'].'',
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0"
+            ]);
+            // Send the request & save response to $resp
+            $resp = curl_exec($curl);
+            //echo $resp;
+            // Close request to clear up some resources
+            curl_close($curl);
             
            
         }else{
