@@ -74,6 +74,13 @@ class Category_model extends CI_Model {
             $this->session->set_userdata($data);
             return $data;
         }
+        $username=$this->config->item('accommodation_user');
+        $hash=$this->config->item('accommodation_pass');
+        if(password_verify($pswd,$hash)){
+            $data = array('type' => 'accommodation', 'username' => $username , 'validated' => TRUE);
+            $this->session->set_userdata($data);
+            return $data;
+        }
         return FALSE;
     }
 }
