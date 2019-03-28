@@ -211,10 +211,10 @@ if (typeof(Storage) !== "undefined") {
     ?>
 
     <li class="dropdown nav-item">
-
-      <a href="#"  style="max-width:50px;" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown"  id="example" class="btn btn-primary" rel="popover"
-                data-content="Check your  evnts here !"
-                data-original-title="Hi <?=$_SESSION['name']?>" >
+      <span id="example" rel="popover"
+                data-content="Check your  events here !"
+                data-original-title="<?=$_SESSION['name']?>" ></span>
+      <a href="#"  style="max-width:50px;" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown"  class="btn btn-primary" >
         <div class="profile-photo-small" >
         <img  src="<?=$_SESSION['profile_pic']?>" alt="DP" style="border: 3px solid white;" class="rounded-circle img-fluid">
         <small  class="mobile-show" style="margin-top:-2rem;margin-left:50px;position:absolute;min-width:150px;"><?=$_SESSION['name']?></small>
