@@ -11,7 +11,7 @@
   <meta name="description" content="Hestia 19 - National level Techno Cultural fest organized by TKM College of Engineering. March 28-31">
 <meta name="keywords" content="hestia,hestia19,tkmce,hestiatkm,hestiatkmce,conjura,fest,event,technical,cultural,technocultural">
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="<?=base_url();?>assets/front/img/sponsors/https://www.googletagmanager.com/gtag/js?id=UA-135958084-1"></script>
+<script async src="<?=base_url();?>assets/uploads/sponsors/https://www.googletagmanager.com/gtag/js?id=UA-135958084-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -108,7 +108,7 @@
           foreach($sponsors2 as $row){
          ?>
         <div class="inline  col-sm-3 mb-3 ">
-            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="50px"  alt=""></a>
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/uploads/sponsors/<?=$row['s_logo']?>" height="50px"  alt=""></a>
             <h3 class="text-white listing3"><?=$row['s_name']?></h3>
           </div>
         <?php } ?>
@@ -120,7 +120,7 @@
           foreach($sponsors3 as $row){
          ?>
         <div class="inline  col-sm-3 mb-3 ">
-            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/uploads/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
             <h3 class="text-white listing3"><?=$row['s_name']?></h3>
           </div>
         <?php } ?>
@@ -132,7 +132,7 @@
           foreach($sponsors7 as $row){
          ?>
         <div class="inline  col-sm-3 mb-3 ">
-            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/uploads/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
             <h3 class="text-white listing3"><?=$row['s_name']?></h3>
           </div>
         <?php } ?>
@@ -144,7 +144,7 @@
           foreach($sponsors4 as $row){
          ?>
         <div class="inline  col-sm-3 mb-3 ">
-            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/uploads/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
             <h3 class="text-white listing3"><?=$row['s_name']?></h3>
           </div>
         <?php } ?>
@@ -156,7 +156,7 @@
           foreach($sponsors5 as $row){
          ?>
         <div class="inline  col-sm-3 mb-3 ">
-            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/uploads/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
             <h3 class="text-white listing3"><?=$row['s_name']?></h3>
           </div>
         <?php } ?>
@@ -168,7 +168,7 @@
           foreach($sponsors6 as $row){
          ?>
           <div class="inline  col-sm-3 mb-3 ">
-            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/uploads/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
             <h3 class="text-white listing3"><?=$row['s_name']?></h3>
           </div>
           <?php } ?>
@@ -180,7 +180,7 @@
           foreach($sponsors1 as $row){
          ?>
           <div class="inline  col-sm-3 mb-3 ">
-            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/uploads/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
             <h3 class="text-white listing3"><?=$row['s_name']?></h3>
           </div>
           <?php } ?>
