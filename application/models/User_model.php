@@ -162,6 +162,7 @@ class User_model extends CI_Model {
         $this->db->select('fullname, phone, email, college, accommodation');
         $this->db->from('users');
         $this->db->where('accommodation!=', NULL);
+        $this->db->order_by("timestamp", "asc");
         $query=$this->db->get();
         return $query->result_array();
     }
