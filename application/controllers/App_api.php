@@ -51,7 +51,9 @@ class App_Api extends CI_Controller {
         echo $this->appapi_Model->get_event_details();
     }
 
-
+    function getSchedule() {
+        echo $this->appapi_Model->get_schedule();
+    }
 
 
 }

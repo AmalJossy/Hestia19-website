@@ -211,7 +211,10 @@ class Appapi_Model extends CI_Model {
         }
     }
 
-
+    public function get_schedule() {
+        $query=$this->db->query("select e.title, t.label, t.start_time, t.end_time from events e, time t where e.event_id=t.event_id order by t.start_time");
+        return json_encode($query->result());
+    }
 
 }
 ?>
