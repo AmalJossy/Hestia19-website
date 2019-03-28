@@ -22,6 +22,9 @@ class Appapi_Model extends CI_Model {
         }
     }
     public function get_user_full_info($hash){
+        if( $this->session->type != 'super' && $this->session->type != 'monitor' && $this->session->type != 'volunteer' && $this->session->event_id == NULL && $this->session->cat_id == NULL ){
+            return 401;
+        }
         $hash=$this->security->xss_clean($hash);
         $this->db->where('hashcode',$hash);
         $query=$this->db->get('users');
@@ -41,6 +44,7 @@ class Appapi_Model extends CI_Model {
                 $data['college']=$query->row()->college;
                 $data['fullname']=$query->row()->fullname;
                 $data['phone']=$query->row()->phone;
+                $data['accommodation']=$query->row()->accommodation;
                 $data['events']=$queryx->result_array();
                 return $data;
             }

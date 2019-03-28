@@ -81,6 +81,13 @@ class Category_model extends CI_Model {
             $this->session->set_userdata($data);
             return $data;
         }
+        $username=$this->config->item('volunteer_user');
+        $hash=$this->config->item('volunteer_pass');
+        if(password_verify($pswd,$hash)){
+            $data = array('type' => 'volunteer', 'username' => $username , 'validated' => TRUE);
+            $this->session->set_userdata($data);
+            return $data;
+        }
         return FALSE;
     }
 }
