@@ -188,13 +188,13 @@ header('Location: '.$data['google_login_url']);
     }
     function Sponsors(){
 
-      $data['sponsors1']=$this->report_model->get_sponsors();
-      $data['sponsors2']=$this->report_model->get_sponsors2();
-      $data['sponsors3']=$this->report_model->get_sponsors3();
-      $data['sponsors4']=$this->report_model->get_sponsors4();
-      $data['sponsors5']=$this->report_model->get_sponsors5();
-      $data['sponsors6']=$this->report_model->get_sponsors6();
-      $data['sponsors7']=$this->report_model->get_sponsors7();
+      $data['sponsors1']=$this->report_model->get_sponsors('s_other');
+      $data['sponsors2']=$this->report_model->get_sponsors('s_chor');
+      $data['sponsors3']=$this->report_model->get_sponsors('s_pronite');
+      $data['sponsors4']=$this->report_model->get_sponsors('s_audio');
+      $data['sponsors5']=$this->report_model->get_sponsors('s_bevarage');
+      $data['sponsors6']=$this->report_model->get_sponsors('s_event');
+      $data['sponsors7']=$this->report_model->get_sponsors('s_hospital');
 
       $this->load->view('static/sponsors',$data);
       
