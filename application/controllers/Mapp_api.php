@@ -35,6 +35,7 @@ class Mapp_api extends REST_Controller {
 		}
 		function event_result_get($cat_name=NULL) {
 	      if($cat_name!=NULL){
+						$this->load->model('report_model');
              $s = $this->report_model->get_event_status_result($cat_name,"AR");
              $this->response($s);
          }
