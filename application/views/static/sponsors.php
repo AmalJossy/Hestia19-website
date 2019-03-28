@@ -104,60 +104,89 @@
 
       <div class="row pt-5 c1">
         <h2 class="text-white listing3 mb-2">Choreonite partner</h2>
-        <a href="http://www.wentona.com/" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/wentona.png" height="50px" alt=""></a>
-        <h3 class="text-white listing3">Wentona academy</h3>
+        <?php
+          foreach($sponsors2 as $row){
+         ?>
+        <div class="inline  col-sm-3 mb-3 ">
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="50px"  alt=""></a>
+            <h3 class="text-white listing3"><?=$row['s_name']?></h3>
+          </div>
+        <?php } ?>
       </div>
 
       <div class="row pt-5 c1">
         <h2 class="text-white listing3 mb-2">Pronite partner</h2>
-        <a href="https://www.pokerbaazi.com/" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/pokerbaazi.png" height="100px" alt=""></a>
-        <h3 class="text-white listing3">pokerbaazi</h3>
+        <?php
+          foreach($sponsors3 as $row){
+         ?>
+        <div class="inline  col-sm-3 mb-3 ">
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
+            <h3 class="text-white listing3"><?=$row['s_name']?></h3>
+          </div>
+        <?php } ?>
+      </div>
+
+      <div class="row pt-5 c1">
+        <h2 class="text-white listing3 mb-2">Hospitality partner</h2>
+        <?php
+          foreach($sponsors7 as $row){
+         ?>
+        <div class="inline  col-sm-3 mb-3 ">
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
+            <h3 class="text-white listing3"><?=$row['s_name']?></h3>
+          </div>
+        <?php } ?>
       </div>
 
       <div class="row pt-5 c1">
         <h2 class="text-white listing3 mb-2">Audio partner</h2>
-        <a href="https://zebronics.com/" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/zebronics.png" height="100px" alt=""></a>
-        <h3 class="text-white listing3">Zebronics</h3>
+        <?php
+          foreach($sponsors4 as $row){
+         ?>
+        <div class="inline  col-sm-3 mb-3 ">
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
+            <h3 class="text-white listing3"><?=$row['s_name']?></h3>
+          </div>
+        <?php } ?>
       </div>
 
       <div class="row pt-5 c1 ">
         <h2 class="text-white listing3 mb-1 ">Beverage partner</h2><br><br>
-        <div class="inline  col-md-3  ">
-          <a href="http://kcmmf.in/" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/milma.jpg" height="100px" alt=""></a>
-          <h3 class="text-white listing3">Milma</h3>
-        </div>
-        <div class="inline col-md-3">
-          <a><img src="<?=base_url();?>assets/front/img/sponsors/opengrill.png" height="100px" alt=""></a>
-          <h3 class="text-white listing3">Open Grill restaurant</h3>
-        </div>
+        <?php
+          foreach($sponsors5 as $row){
+         ?>
+        <div class="inline  col-sm-3 mb-3 ">
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
+            <h3 class="text-white listing3"><?=$row['s_name']?></h3>
+          </div>
+        <?php } ?>
       </div>
 
       <div class="row pt-5 c1 ">
         <h2 class="text-white listing3 mb-4">Event partner</h2>
-        <div class="inline  col-md-3  ">
-          <a><img src="<?=base_url();?>assets/front/img/sponsors/promaa.png" height="100px" width="300px" alt=""></a>
-          <h3 class="text-white listing3">Promaa Engineers</h3>
-        </div>
-        <div class="inline col-md-3">
-          <a><img src="<?=base_url();?>assets/front/img/sponsors/tcs.png" height="100px" alt=""></a>
-          <h3 class="text-white listing3">TCS</h3>
-        </div>
+        <?php
+          foreach($sponsors6 as $row){
+         ?>
+          <div class="inline  col-sm-3 mb-3 ">
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
+            <h3 class="text-white listing3"><?=$row['s_name']?></h3>
+          </div>
+          <?php } ?>
       </div>
 
       <div class="row pt-5 c1 ">
         <h2 class="text-white listing3 mb-4">Other partner</h2>
-        <div class="inline  col-md-3  ">
-          <a><img src="<?=base_url();?>assets/front/img/sponsors/bpcl.png" height="100px"  alt=""></a>
-          <h3 class="text-white listing3">BPCL</h3>
-        </div>
-        <div class="inline col-md-3">
-          <a><img src="<?=base_url();?>assets/front/img/sponsors/hp.png" height="100px" alt=""></a>
-          <h3 class="text-white listing3">HP</h3>
-        </div>
-        <div class="inline col-md-3">
-          <a><img src="<?=base_url();?>assets/front/img/sponsors/irel.jpg" height="100px" alt=""></a>
-          <h3 class="text-white listing3">IREL</h3>
-        </div>
+         <?php
+          foreach($sponsors1 as $row){
+         ?>
+          <div class="inline  col-sm-3 mb-3 ">
+            <a href="<?=$row['s_link']?>" target="_blank"><img src="<?=base_url();?>assets/front/img/sponsors/<?=$row['s_logo']?>" height="100px"  alt=""></a>
+            <h3 class="text-white listing3"><?=$row['s_name']?></h3>
+          </div>
+          <?php } ?>
+
+      </div>
+
       </div>
 
     </div>
