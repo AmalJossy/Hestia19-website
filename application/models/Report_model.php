@@ -102,7 +102,41 @@ class Report_model extends CI_Model {
         $diff = $now - $target;
         return $diff <= 0;
     }
+    public function get_single_event_spot($eid){
+        $this->db->select ( '*' );
+        $this->db->from ( 'events' );
 
+        if( $eid != NULL ){
+            $this->db->where ('event_id',$eid);
+            $query = $this->db->get ();
+            return $query->row();
+        }
+
+
+    }
+    public function GetEventCurrentStatus_Spot($eid){
+        $event=$this->get_single_event_spot($eid);
+        $eid=$event->event_id;
+        $today = date('Y-m-d');
+        $startdate=date('Y-m-d', strtotime($event->reg_start));
+        $enddate = date('Y-m-d', strtotime($event->reg_end));
+        $this->load->model('report_model');
+        $cnt=$this->report_model->get_event_reg_count($eid);
+
+
+
+
+
+            if($cnt<$event->seats || $event->seats == 0){
+                // available
+                return true;
+            }else{
+                //Sold Out
+                return 'sold';
+            }
+
+
+    }
     public function set_file_urls($f1,$evid,$f2 = NULL)
     {
         $this->db->set('file1', $f1);

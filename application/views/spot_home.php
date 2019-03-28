@@ -402,10 +402,10 @@
                             //  stopPreloader();
                         },
                         success: function (result) {
+
                            switch (result) {
                                case "1":{$("#btn_add_div").html("<button class='btn btn-outline-danger custom-button' onclick='team_form_sumbit()'><i class='fas fa-plus-square'></i>&nbsp;Add</button>");break;}
                                case "sold":{$("#btn_add_div").html("<button class='btn btn-outline-warning custom-button'><i class='fas fa-plus-square'></i>&nbsp;Sold Out</button>");break;}
-                               case "default":{$("#btn_add_div").html("<button class='btn btn-outline-danger custom-button' onclick='team_form_sumbit()'><i class='fas fa-plus-square'></i>&nbsp;Add</button>");break;}
 
                            }
                         }

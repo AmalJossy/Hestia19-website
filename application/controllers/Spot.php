@@ -34,8 +34,8 @@ class Spot extends CI_Controller {
         $this->load->view('spot_home',$data);
     }
     public function event_current_status_get($eid){
-        $this->load->model('Appapi_Model');
-        echo $this->Appapi_Model->GetEventCurrentStatus($eid);
+
+        echo $this->report_model->GetEventCurrentStatus_Spot($eid);
     }
     public function get_events_list($cat_id){
         echo json_encode($this->report_model->get_events($cat_id));
