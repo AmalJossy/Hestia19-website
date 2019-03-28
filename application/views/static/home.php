@@ -87,7 +87,22 @@ if (typeof(Storage) !== "undefined") {
       var x = document.getElementById("pcmask");
      x.setAttribute("src", "<?=base_url();?>assets/front/img/mobile_phone_front_end.png");
     }
-}
+  }
+  </script>
+  <script>
+ var x=true;
+      $(function() {
+
+          $("#example").popover('show');
+    });
+    setTimeout(function(){
+
+      $("#example").popover('hide');
+      $("#example").removeAttr("data-content");
+      $("#example").removeAttr("data-original-title");
+      $(".popover-body").css("display","none");
+     }, 3000);
+    x=false;
    </script>
 
 
@@ -97,6 +112,10 @@ if (typeof(Storage) !== "undefined") {
     .profile-photo-small {
     margin-left:15px;
     margin-rigt:15px;
+
+  }
+  #example{
+    display: none;
   }
 
 }
@@ -172,9 +191,10 @@ if (typeof(Storage) !== "undefined") {
             <li class="nav-item fade-in">
               <a href="<?=base_url()?>contact" class="nav-link">CONTACT</a>
             </li>
+
           </ul>
        <ul class="navbar-nav">
-<?php
+ <?php
 
 
   if($this->session->userdata('sess_logged_in')==0){
@@ -191,25 +211,25 @@ if (typeof(Storage) !== "undefined") {
     ?>
 
     <li class="dropdown nav-item">
-      <a href="#pablo" style="max-width:50px;" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown">
+
+      <a href="#"  style="max-width:50px;" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown"  id="example" class="btn btn-primary" rel="popover"
+                data-content="Check your  evnts here !"
+                data-original-title="Hi <?=$_SESSION['name']?>" >
         <div class="profile-photo-small" >
         <img  src="<?=$_SESSION['profile_pic']?>" alt="DP" style="border: 3px solid white;" class="rounded-circle img-fluid">
         <small  class="mobile-show" style="margin-top:-2rem;margin-left:50px;position:absolute;min-width:150px;"><?=$_SESSION['name']?></small>
         </div>
-
       </a>
 
       <div class="dropdown-menu dropdown-menu-right">
         <h6 class="dropdown-header"><?=$_SESSION['name']?></h6>
-
         <a href="<?=base_url();?>myprofile" class="dropdown-item">My Profile</a>
         <a href="<?=base_url();?>myevents" class="dropdown-item">My Events</a>
-
         <a href="<?=base_url();?>auth/logout" class="dropdown-item">Sign out</a>
       </div>
     </li>
 
-    <?php
+     <?php
    }
   }
 ?>
