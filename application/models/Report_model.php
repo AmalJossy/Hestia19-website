@@ -280,40 +280,10 @@ class Report_model extends CI_Model {
             return $this->db->insert('registration',$data);
     }
 
-    public function get_sponsors(){
+    public function get_sponsors($s_type){
 
-          $query = $this->db->get_where('sponsors',array('s_type' => 's_other'));
+          $query = $this->db->get_where('sponsors',array('s_type' => $s_type));
           return $query->result_array();
       }
-    public function get_sponsors2(){
-
-          $query = $this->db->get_where('sponsors',array('s_type' => 's_chor'));
-          return $query->result_array();
-    }
-    public function get_sponsors3(){
-
-              $query = $this->db->get_where('sponsors',array('s_type' => 's_pronite'));
-              return $query->result_array();
-        }
-     public function get_sponsors4(){
-
-              $query = $this->db->get_where('sponsors',array('s_type' => 's_audio'));
-              return $query->result_array();
-        }
-    public function get_sponsors5(){
-
-              $query = $this->db->get_where('sponsors',array('s_type' => 's_bevarage'));
-              return $query->result_array();
-        }
-    public function get_sponsors6(){
-
-              $query = $this->db->get_where('sponsors',array('s_type' => 's_event'));
-              return $query->result_array();
-        }    
-     public function get_sponsors7(){
-
-              $query = $this->db->get_where('sponsors',array('s_type' => 's_hospital'));
-              return $query->result_array();
-        }       
 }
 ?>
