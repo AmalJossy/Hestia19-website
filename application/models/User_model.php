@@ -136,11 +136,17 @@ class User_model extends CI_Model {
         $fromser="";
         if(isset($data['accommodation'])){
             $fromser=$data['accommodation'];
+        
+            $acc_cnt=$this->get_user_single($this->session->email)['accommodation'];
+
+            if(strlen($acc_cnt)==strlen($fromser)){
+
+            $this->db->where('email', $email);
+            return $this->db->update('users',$data);
+            }
         }
-        $acc_cnt=$this->get_user_single($this->session->email)['accommodation'];
-
-        if(strlen($acc_cnt)==strlen($fromser)){
-
+        else
+        {
             $this->db->where('email', $email);
             return $this->db->update('users',$data);
         }
