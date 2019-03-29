@@ -59,6 +59,7 @@ if (typeof(Storage) !== "undefined") {
 </script>
 
 
+
   <title>
     Hestia 19 - National Level Techno-Cultural Fest of TKM
   </title>
@@ -114,11 +115,26 @@ if (typeof(Storage) !== "undefined") {
     margin-rigt:15px;
 
   }
+
   #example{
     display: none;
   }
+  
 
 }
+@media only screen and (min-width: 1000px) {
+  #openapp{
+    display: none;
+  }
+  }
+  .openapp{
+
+    background-color: #ff3333;
+    opacity: 1;
+    width:100%;
+    height: 50px;
+  }
+  
 </style>
 </head>
 <div id="preloader">
@@ -296,7 +312,10 @@ if (typeof(Storage) !== "undefined") {
     </div>
   </div>
 
+<div id="openapp"class="fixed-bottom ">
+  <button class="openapp text-white" style="border: 0px;" onclick="window.open('https://play.google.com/store/apps/details?id=live.hestia.app&hl=en&showAllReviews=true')">Open in app</button>
 
+</div>
 
   <!--   Core JS Files   -->
 
