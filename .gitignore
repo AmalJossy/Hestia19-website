@@ -34,5 +34,6 @@ user_guide/
 application/config/production/
 application/config/development/
 third_party/
+assets/front/img/sponsors/
 
 assets/uploads/*
