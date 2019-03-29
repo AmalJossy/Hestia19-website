@@ -161,16 +161,16 @@
                                                 Accommodation for
                                             </label>
                                             <label class="checkbox-inline chk_ac_day">
-                                            <input type="checkbox" id="day_1" value="1" >&nbsp;&nbsp;Day -1
+                                            <input type="checkbox" id="day_1" value="1" >&nbsp;&nbsp;March 28
                                             </label>
                                             <label class="checkbox-inline chk_ac_day">
-                                            <input type="checkbox" id="day_2" value="2" >&nbsp;&nbsp;Day -2
+                                            <input type="checkbox" id="day_2" value="2" >&nbsp;&nbsp;March 29
                                             </label>
                                             <label class="checkbox-inline chk_ac_day">
-                                            <input type="checkbox" id="day_3" value="3" >&nbsp;&nbsp;Day -3
+                                            <input type="checkbox" id="day_3" value="3" >&nbsp;&nbsp;March 30
                                             </label>
                                             <label class="checkbox-inline chk_ac_day">
-                                            <input type="checkbox" id="day_4" value="4" >&nbsp;&nbsp;Day -4
+                                            <input type="checkbox" id="day_4" value="4" >&nbsp;&nbsp;March 31
                                             </label>
                                         </div>
                                        
