@@ -1,0 +1,1 @@
+SELECT * FROM `registration` where event_id=112 and member_email in(select email from users where accommodation is null) ORDER BY `registration`.`event_id` DESC 
