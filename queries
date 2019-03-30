@@ -3,3 +3,7 @@ SELECT * FROM `registration` where event_id=112 and member_email in(select email
 
 //duplicate event for same user
 SELECT `member_email`,`event_id`,count(*) FROM `registration` group by `member_email`,`event_id` having count(*)>1 ORDER BY `count(*)` DESC 
+
+//get duplicate event mails
+
+select * from registration where (`member_email`,`event_id`) in (SELECT `member_email`,`event_id`FROM `registration` group by `member_email`,`event_id` having count(*)>1  )
