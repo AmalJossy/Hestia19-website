@@ -129,20 +129,30 @@ class Spot extends CI_Controller {
                 //insert
             }
             $data_reg['referral_code']=$jsondata->referral_code;
-            $tempret=$this->report_model->insert_reg_spot_temp($data_reg);
+            $alreadyregistered=0;
+            if($this->report_model->get_reguser_events_status($data_reg['member_email'],$data_reg['event_id'])==0) {
+                $tempret=$this->report_model->insert_reg_spot_temp($data_reg);
 
-            $retcntr=$retcntr+$tempret;
+                $retcntr=$retcntr+$tempret;
+
+            }else{
+                $alreadyregistered++;
+            }
 
 
 
         }
         $backurl=base_url("Spot/home");
-        if($retcntr>0){
+        if($retcntr>0 && $alreadyregistered==0){
 
             echo '<meta http-equiv="refresh" content="2;url='.$backurl.'" /><center><h1 style="color:green;"><br><br>'.$retcntr.' Nos. Successfully Registered. <br></h1></center>';
 
 
-        }else{
+        }elseif($alreadyregistered>0){
+            echo '<meta http-equiv="refresh" content="3;url='.$backurl.'" /><center><h1 style="color:red;"><br><br>'.$retcntr.' Nos. Successfully Registered.  <br> '.$alreadyregistered.' Nos. already registered for the same event.</h1></center>';
+
+        }
+        else{
 
             echo '<meta http-equiv="refresh" content="2;url='.$backurl.'" /><center><h1 style="color:red;"><br><br>Error Occurred <br></h1></center>';
         }
