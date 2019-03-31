@@ -7,3 +7,7 @@ SELECT `member_email`,`event_id`,count(*) FROM `registration` group by `member_e
 //get duplicate event mails
 
 select * from registration where (`member_email`,`event_id`) in (SELECT `member_email`,`event_id`FROM `registration` group by `member_email`,`event_id` having count(*)>1  )
+
+//referral code event wise
+
+SELECT e.title,r.referral_code,count(*) FROM `registration` r,events e where r.event_id=e.event_id  and r.referral_code!=''  group by e.title,r.referral_code order by e.titlea
