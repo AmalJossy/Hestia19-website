@@ -171,6 +171,7 @@ class Report_model extends CI_Model {
         {
                 $row = array();
                 $row['file1'] = $row1->file1;
+                $row['event_id'] = $row1->event_id;
                 $row['u_file1']=$row1->u_file1;
                 $row['title'] = $row1->title;
                 $row['venue'] = $row1->venue;
@@ -178,6 +179,19 @@ class Report_model extends CI_Model {
                 $row['file2'] = $row1->file2;
                 $row['u_file2'] = $row1->u_file2;
                 $row['file_last_date'] = $row1->file_last_date;
+            $results=$this->get_event_status_result($row1->event_id);
+                if(count($results)>0){
+                    $row['result'] =true;
+                    $resulthtml="<table class='table table-striped'>";
+                    foreach ($results as $rowresult){
+                        $resulthtml=$resulthtml."<tr><td>".$rowresult['label']."</td><td>".$rowresult['fullname']."</td><td>".$rowresult['college']."</td></tr>";
+                    }
+                    $resulthtml=$resulthtml."</table>";
+                    $row['resulthtml']=$resulthtml;
+                }else{
+                    $row['result'] =false;
+
+                }
                 $query_time=$this->db->query("SELECT * FROM time where event_id=".$row1->event_id."  order by start_time");
                 $row['time']=$query_time->result_array();
                 $data[] = $row;
@@ -190,6 +204,15 @@ class Report_model extends CI_Model {
         return  json_encode($query->result());
     }
 
+    public function get_all_registrations_certificate(){
+        $query=$this->db->query("select e.event_id, e.title ,u.fullname ,r.certificate_no from events e, registration r,users u where e.event_id=r.event_id and r.member_email=u.email");
+        return  $query->result();
+    }
+    public function get_single_certificate($certificateno){
+        $certificateno = $this->security->xss_clean($certificateno);
+        $query=$this->db->query("select e.event_id, e.title ,u.fullname ,r.certificate_no from events e, registration r,users u where e.event_id=r.event_id and r.member_email=u.email and r.certificate_no='".$certificateno."'");
+        return  $query->row();
+    }
     public function get_reguser_events_status($email,$eid){
         $query=$this->db->query("select e.event_id, e.title from events e, registration r where e.event_id=r.event_id and r.member_email='".$email."' and e.event_id=".$eid);
         return  $query->num_rows();
