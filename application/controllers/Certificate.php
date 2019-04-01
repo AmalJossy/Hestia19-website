@@ -16,7 +16,7 @@ class ZNW_PDF extends TCPDF {
         // disable auto-page-break
         $this->SetAutoPageBreak(false, 0);
         // set background image
-        $img_file = 'assets/uploads/cert.png';
+        $img_file = 'assets/certificate/participation.jpg';
         $this->Image($img_file, 0, 0,  297,210, '', '', '', false, 300, '', false, false, 0);
         // restore auto-page-break status
         $this->SetAutoPageBreak($auto_page_break, $bMargin);
@@ -73,9 +73,9 @@ class Certificate extends CI_Controller {
         $pdf->SetLeftMargin(100);
         $pdf->SetTopMargin(80);
         $style = array(
-            'border' => 2,
+            'border' => 1,
             'padding' => 'auto',
-            'fgcolor' => array(0,0,255),
+            'fgcolor' =>  array(0,0,0),
             'bgcolor' => array(255,255,255)
         );
 
@@ -85,14 +85,20 @@ class Certificate extends CI_Controller {
 //        $pdf->Image($img_file, 10, 10, 210, 297, '', '', '', false, 300, '', false, false, 0);
         foreach ($records as $row){
             $pdf->AddPage('L');
-            $pdf->SetXY(0, 100);
+            $pdf->SetXY(0, 89);
+            $html1="";
+            $html="<h3>$row->fullname</h3>";
+            $htmlcollege="<h4>$row->college</h4>";
+            $htmlevent="<h3>$row->title</h3>";
+           $html1="<h3>H/19/$row->certificate_no</h3>";
+          //  $pdf->writeHTML($html, true, false, true, false, '');
+            $pdf->writeHTMLCell(200, 10, 150, 89, $html, 0, 1, 0, true, '', true);
+            $pdf->writeHTMLCell(74, 10, 52, 99, $htmlcollege, 0, 1, 0, true, '', true);
+            $pdf->writeHTMLCell(200, 10, 180, 99, $htmlevent, 0, 1, 0, true, '', true);
 
-            $html="<h3>$row->fullname</h3><h3>$row->title</h3>";
-            $html1="<h3>Certificate No : H/19/$row->certificate_no</h3>";
-            $pdf->writeHTML($html, true, false, true, false, '');
-            $pdf->writeHTMLCell(200, 10, 50, 153, $html1, 0, 1, 0, true, '', true);
-            $pdf->SetXY(0, 100);
-            $pdf->write2DBarcode(base_url("certificate/".$row->certificate_no), 'QRCODE,L', 20, 100, 30, 30, $style, 'N');
+            $pdf->writeHTMLCell(200, 10, 23, 151, $html1, 0, 1, 0, true, '', true);
+
+            $pdf->write2DBarcode("www.hestia.live/certificate/".$row->certificate_no, 'QRCODE,L', 20, 158, 30, 30, $style, 'N');
 
         }
 

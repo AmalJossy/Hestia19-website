@@ -187,7 +187,7 @@ class Report_model extends CI_Model {
                         $resulthtml=$resulthtml."<tr><td>".$rowresult['label']."</td><td>".$rowresult['fullname']."</td><td>".$rowresult['college']."</td></tr>";
                     }
                     $resulthtml=$resulthtml."</table>";
-                    $row['resulthtml']=$resulthtml;
+                    $row['get_all_registrations_certificate']=$resulthtml;
                 }else{
                     $row['result'] =false;
 
@@ -205,7 +205,7 @@ class Report_model extends CI_Model {
     }
 
     public function get_all_registrations_certificate(){
-        $query=$this->db->query("select e.event_id, e.title ,u.fullname ,r.certificate_no from events e, registration r,users u where e.event_id=r.event_id and r.member_email=u.email");
+        $query=$this->db->query("select upper(e.event_id) event_id, upper(e.title) title ,upper(u.fullname) fullname ,r.certificate_no,upper(u.college) college from events e, registration r,users u where e.event_id=r.event_id and r.member_email=u.email");
         return  $query->result();
     }
     public function get_single_certificate($certificateno){
