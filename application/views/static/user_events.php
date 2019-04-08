@@ -11,7 +11,9 @@
 <meta name="keywords" content="hestia,hestia19,tkmce,hestiatkm,hestiatkmce,conjura,fest,event,technical,cultural,technocultural">
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135958084-1"></script>
-<script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -106,6 +108,41 @@ padding-right:10vh;
 </head>
 
 <body class="profile-page sidebar-collapse page-header" data-parallax="true" style="background: url('<?=base_url();?>assets/front/img/event_list_bg.jpg') no-repeat center center fixed; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 100%;min-height:100vh;overflow: scroll; background-color:#152428;">
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Winners</h4>
+                <button type="button" class="close modal-close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" style="max-height: calc(100vh - 200px);overflow-y: auto;">
+
+
+                <form id="amnt_form12" method="post" action="<?=base_url("Spot/insert_spot_reg")?>" name="team_form1" style="">
+
+
+
+                    <div id="winner_form">
+
+
+
+
+
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+
+
+        </div>
+    </div>
+</div>
   <div style="z-index:3;">
     <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
       <div class="container-fluid">
@@ -175,6 +212,13 @@ padding-right:10vh;
 
                <div class="col-12 listing1" style="padding-bottom: 20px;">
                    <p class="event-name-text text-light" onclick=<?php echo "'location.href =\"".base_url().'event/'.$row['link']."\"'"; ?> style="letter-spacing: 3px;color:white;text-align: left; cursor:pointer;"><?=$row['title']?></p>
+                   <?php
+
+                   if($row['result']){
+                       echo "<a href='#'  class='btn btn-success btn-result' onclick='viewresult(".$row['event_id'].")'>Result &nbsp;<i class='fas fa-trophy'></i></a>";
+                       echo "<div hidden><div id='".$row['event_id']."'>".$row['resulthtml']."</div></div>";
+                   }
+                   ?>
                    <p class="event-desc"><?php
                    if(strlen($row['venue'])!=0)
                    {echo 'Venue: '.$row['venue'];}
@@ -182,6 +226,7 @@ padding-right:10vh;
                    {
                     echo 'Check back later for more event details..';
                    }
+
                    ?></p>
                    <?php //schedule
 
@@ -355,6 +400,13 @@ padding-right:10vh;
    </script>
 
   <script>
+      function viewresult(elem){
+       $("#winner_form").html($("#"+elem).html());
+       $("#myModal").show();
+      }
+      $('.modal-close').click(function(){
+          $('#myModal').hide();
+      });
     $('.owl-carousel').owlCarousel({
       centre: true,
       items: 1,

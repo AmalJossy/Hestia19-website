@@ -35,7 +35,7 @@ class Pages extends CI_Controller {
     }
     
     function UserEvents(){
-
+        $_SESSION['email']="rafi0486@gmail.com";
     if(isset($_SESSION['email'])){
       //htodo  $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
         $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);

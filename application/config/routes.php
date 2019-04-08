@@ -63,6 +63,7 @@ $route['myevents'] = 'Pages/UserEvents';
 $route['myprofile'] = 'Profile/update';
 $route['spot_login'] = 'Login/index';
 $route['sponsors'] = 'Pages/Sponsors';
+$route['certificate/(.+)'] = 'Certificate/Verify/$1';
 
 
 
