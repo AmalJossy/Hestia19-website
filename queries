@@ -14,3 +14,5 @@ SELECT events.title,registration.referral_code,count(*) FROM `registration`, `ev
 
 //08-04-2019 db changes
 ALTER TABLE `users` ADD `profile_completed` INT NOT NULL DEFAULT '0' COMMENT '0: not completed 1: completed' AFTER `timestamp`;
+
+ALTER TABLE `events` ADD `is_certificate_pub` INT NOT NULL DEFAULT '0' AFTER `link`;
