@@ -10,3 +10,9 @@ select * from registration where (`member_email`,`event_id`) in (SELECT `member_
 
 //referral code event wise
 SELECT events.title,registration.referral_code,count(*) FROM `registration`, `events` where registration.event_id=events.event_id and registration.referral_code!='' and registration.referral_code like '%@%' and registration.referral_code not like 'spot%' and registration.referral_code like '%@%'group by events.title,registration.referral_code order by events.title,registration.referral_code 
+
+
+//08-04-2019 db changes
+ALTER TABLE `users` ADD `profile_completed` INT NOT NULL DEFAULT '0' COMMENT '0: not completed 1: completed' AFTER `timestamp`;
+
+ALTER TABLE `events` ADD `is_certificate_pub` INT NOT NULL DEFAULT '0' AFTER `link`;
