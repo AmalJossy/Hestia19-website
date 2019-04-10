@@ -13,8 +13,14 @@ class Profile extends CI_Controller {
       //htodo  $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
         $data['title'] = ucfirst('Update Profile');
         $data['userinfo']=$this->user_model->get_user_single($this->session->email);
+       if($data['userinfo']['profile_completed']==0){
+           $this->load->view('dashboard/updateprofile',$data);
+       }else{
+           redirect(base_url());
+       }
+
         //$data['userinfo']=$this->user_model->get_user_single($this->session->email);
-        $this->load->view('dashboard/updateprofile',$data);
+
 
     }else{
                 // set the expiration date to one hour ago
@@ -57,6 +63,7 @@ header('Location: '.$data['google_login_url']);
             $user['college'] = $this->input->post('college');
             $user['phone'] = $this->input->post('phone');
             $user['fullname'] = $this->input->post('fullname');
+            $user['profile_completed'] = 1;
             if($this->input->post('acc')){
                 $acc=substr(implode('', $this->input->post('acc')), 0);
                 $user['accommodation'] = $acc;

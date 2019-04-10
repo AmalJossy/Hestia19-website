@@ -160,7 +160,7 @@ class Report_model extends CI_Model {
     }
     
     public function get_user_events($email=''){
-        $this->db->select ( 'e.*,r.file1 as u_file1, r.file2 as u_file2' );
+        $this->db->select ( 'e.*,r.file1 as u_file1, r.file2 as u_file2,e.is_certificate_pub' );
         $this->db->from ( 'events as e' );
         $this->db->join ( 'registration  as r', 'r.event_id = e.event_id' , 'inner' );
       $this->db->where ( 'r.member_email',$email);
@@ -187,11 +187,22 @@ class Report_model extends CI_Model {
                         $resulthtml=$resulthtml."<tr><td>".$rowresult['label']."</td><td>".$rowresult['fullname']."</td><td>".$rowresult['college']."</td></tr>";
                     }
                     $resulthtml=$resulthtml."</table>";
-                    $row['get_all_registrations_certificate']=$resulthtml;
+                    $row['resulthtml']=$resulthtml;
+
                 }else{
                     $row['result'] =false;
 
                 }
+                if($row1->is_certificate_pub==1 ){
+
+                    $row['certificate']=$this->get_event_status_cert($row1->event_id,$email);
+
+                }else{
+                    $row['certificate']=-2;
+
+                }
+
+
                 $query_time=$this->db->query("SELECT * FROM time where event_id=".$row1->event_id."  order by start_time");
                 $row['time']=$query_time->result_array();
                 $data[] = $row;
@@ -204,9 +215,12 @@ class Report_model extends CI_Model {
         return  json_encode($query->result());
     }
 
-    public function get_all_registrations_certificate(){
-        $query=$this->db->query("select upper(e.event_id) event_id, upper(e.title) title ,upper(u.fullname) fullname ,r.certificate_no,upper(u.college) college from events e, registration r,users u where e.event_id=r.event_id and r.member_email=u.email");
-        return  $query->result();
+    public function get_all_registrations_certificate($mail="",$eid=""){
+       if($mail!="" && $eid!=""){
+           $query=$this->db->query("select upper(e.event_id) event_id, upper(e.title) title ,upper(u.fullname) fullname ,r.certificate_no,upper(u.college) college from events e, registration r,users u where e.event_id=r.event_id and r.member_email=u.email and u.email='".$mail."' and u.profile_completed=1 and  r.event_id=".$eid);
+           return  $query->result();
+       }
+
     }
     public function get_single_certificate($certificateno){
         $certificateno = $this->security->xss_clean($certificateno);
@@ -298,6 +312,24 @@ class Report_model extends CI_Model {
            return $cnt->result();
        }
         return $cnt->result_array();
+    }
+    public function get_event_status_cert($eid,$mail=""){
+
+        $cnt=$this->db->query("SELECT * from result r, users u where r.email=u.email and  event_id=".$eid." and u.email='".$mail."' ");
+        if($cnt->num_rows()>=1){
+            return -1;
+        }else{
+            $iscomplete=$this->db->query("SELECT * from  users u where  u.email='".$mail."' and profile_completed=0 ");
+if($iscomplete->num_rows()==1){
+    return 0;
+}else{
+    return 1;
+}
+
+        }
+
+
+        return $cnt->num_rows();
     }
     public function insert_reg_spot_temp($data){
             return $this->db->insert('registration',$data);

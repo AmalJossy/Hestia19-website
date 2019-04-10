@@ -21,12 +21,17 @@
                     <div class="col-md-3 col-sm-12" style="background: #fff;width:90%;border: grey; border-radius:5px; padding: 20px; position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
 <h3 style="margin-bottom:30px">Update Profile</h3>
                     <form id="team_form" method="post" action="<?=base_url("Profile/updateprofile")?>">
-                        <div class="form-group">
+                        <div class="form-group" hidden>
                             <img  src="https://www.qrcoder.co.uk/api/v1/?text=<?php
                             echo $userinfo['hashcode'];
                             ?>">
 
-                        </div> <div class="form-group">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-danger">Unable to update name after submission</label>
+
+                        </div>
+                        <div class="form-group">
                             <label>Full Name</label>
                             <input class="form-control" type="text" id="" value="<?=$userinfo['fullname']?>" placeholder="Name" name="fullname">
 

@@ -37,6 +37,7 @@ class Certificate extends CI_Controller {
     public function Verify($certificateno=""){
         $this->load->model('report_model');
         $data['record']=$this->report_model->get_single_certificate($certificateno);
+
         if($data['record']){
             $this->load->view("dashboard/certificate_verify",$data);
 
@@ -46,7 +47,7 @@ class Certificate extends CI_Controller {
         //echo "this certificate belongs to ".$record->fullname;
     }
 
-    public function Generate()
+    public function Get($eventid=-1)
     {
 
         //  header('Content-Type: application/pdf');
@@ -69,9 +70,14 @@ class Certificate extends CI_Controller {
 //        $pdf->SetCreator(PDF_CREATOR);
 //        $pdf->SetTitle('Application Form');
         $this->load->model('report_model');
-        $records=$this->report_model->get_all_registrations_certificate();
+        $records=$this->report_model->get_all_registrations_certificate($_SESSION['email'], $eventid);
+       if(!$records){
+           return;
+       }
         $pdf->SetLeftMargin(100);
         $pdf->SetTopMargin(80);
+        $pdf->SetProtection(array('modify'));
+
         $style = array(
             'border' => 1,
             'padding' => 'auto',
@@ -88,17 +94,17 @@ class Certificate extends CI_Controller {
             $pdf->SetXY(0, 89);
             $html1="";
             $html="<h3>$row->fullname</h3>";
-            $htmlcollege="<h4>$row->college</h4>";
+            $htmlcollege="<h3>$row->college</h3>";
             $htmlevent="<h3>$row->title</h3>";
            $html1="<h3>H/19/$row->certificate_no</h3>";
           //  $pdf->writeHTML($html, true, false, true, false, '');
-            $pdf->writeHTMLCell(200, 10, 150, 89, $html, 0, 1, 0, true, '', true);
-            $pdf->writeHTMLCell(74, 10, 52, 99, $htmlcollege, 0, 1, 0, true, '', true);
-            $pdf->writeHTMLCell(200, 10, 180, 99, $htmlevent, 0, 1, 0, true, '', true);
+            $pdf->writeHTMLCell(200, 10, 142, 83, $html, 0, 1, 0, true, '', true);
+            $pdf->writeHTMLCell(74, 10, 62, 93, $htmlcollege, 0, 1, 0, true, '', true);
+            $pdf->writeHTMLCell(200, 10, 110, 103, $htmlevent, 0, 1, 0, true, '', true);
 
-            $pdf->writeHTMLCell(200, 10, 23, 151, $html1, 0, 1, 0, true, '', true);
+            $pdf->writeHTMLCell(200, 10, 22, 178, $html1, 0, 1, 0, true, '', true);
 
-            $pdf->write2DBarcode("www.hestia.live/certificate/".$row->certificate_no, 'QRCODE,L', 20, 158, 30, 30, $style, 'N');
+            //$pdf->write2DBarcode("www.hestia.live/certificate/".$row->certificate_no, 'QRCODE,L', 20, 158, 30, 30, $style, 'N');
 
         }
 

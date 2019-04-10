@@ -35,9 +35,10 @@ class Pages extends CI_Controller {
     }
     
     function UserEvents(){
-        $_SESSION['email']="rafi0486@gmail.com";
+
     if(isset($_SESSION['email'])){
       //htodo  $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
+
         $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
 
     }else{
@@ -48,6 +49,8 @@ header('Location: '.$data['google_login_url']);
        exit('');//htodo
 
     }
+
+        $data['certificate']="";
         
      $this->load->view('static/user_events',$data);
 
@@ -154,6 +157,7 @@ header('Location: '.$data['google_login_url']);
 
         //$data['islogged']=false; //#TODO
         $data['result']=$resulthtml;
+        $data['certificate']="";
        $data['btn']=$btn;
        $data['reg_end']=$reg_end;
 

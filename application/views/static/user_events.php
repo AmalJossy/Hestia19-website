@@ -218,6 +218,13 @@ padding-right:10vh;
                        echo "<a href='#'  class='btn btn-success btn-result' onclick='viewresult(".$row['event_id'].")'>Result &nbsp;<i class='fas fa-trophy'></i></a>";
                        echo "<div hidden><div id='".$row['event_id']."'>".$row['resulthtml']."</div></div>";
                    }
+
+                   if($row['certificate']==1){
+                       echo "<a href='#'  class='btn btn-success btn-result' onclick='viewcertificate(".$row['event_id'].")'>Certificate &nbsp;<i class='fas fa-download'></i></a>";
+
+                   }else if($row['certificate']==0)
+                       echo "<a href='".base_url("myprofile")."'  class='btn btn-warning btn-result'>Verify Profile To Download Certificate &nbsp;<i class='fas fa-check'></i></a>";
+
                    ?>
                    <p class="event-desc"><?php
                    if(strlen($row['venue'])!=0)
@@ -400,6 +407,12 @@ padding-right:10vh;
    </script>
 
   <script>
+      function viewcertificate(elem){
+
+          var url="<?=base_url()?>";
+          url=url+"Certificate/Get/"+elem;
+          window.location=url;
+      }
       function viewresult(elem){
        $("#winner_form").html($("#"+elem).html());
        $("#myModal").show();

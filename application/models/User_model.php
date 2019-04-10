@@ -35,6 +35,7 @@ class User_model extends CI_Model {
             }
         }
         $this->db->where('email', $email);
+
         $this->db->update('users');
         return 200;
     }
@@ -109,6 +110,7 @@ class User_model extends CI_Model {
         $data['fullname'] = $this->session->name;
         if($this->is_registered($this->session->email,"N")==FALSE){
             $data['email'] = $this->session->email;
+
             $data['hashcode'] =password_hash($data['email'],PASSWORD_BCRYPT);
             $this->create($data);
                 $curl = curl_init();
