@@ -28,7 +28,7 @@
 
                         </div>
                         <div class="form-group">
-                            <label class="text-danger">Unable to update name after submission</label>
+                            <label class="text-danger">No further changes can be made after submission.</label>
 
                         </div>
                         <div class="form-group">

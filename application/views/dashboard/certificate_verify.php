@@ -1,79 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Login V5</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="<?=base_url("assets/certificate/")?>images/icons/favicon.ico"/>
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?=base_url("assets/certificate/")?>vendor/bootstrap/css/bootstrap.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?=base_url("assets/certificate/")?>fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?=base_url("assets/certificate/")?>fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?=base_url("assets/certificate/")?>vendor/animate/animate.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?=base_url("assets/certificate/")?>vendor/css-hamburgers/hamburgers.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?=base_url("assets/certificate/")?>vendor/animsition/css/animsition.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?=base_url("assets/certificate/")?>vendor/select2/select2.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?=base_url("assets/certificate/")?>vendor/daterangepicker/daterangepicker.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?=base_url("assets/certificate/")?>css/util.css">
-    <link rel="stylesheet" type="text/css" href="<?=base_url("assets/certificate/")?>css/main.css">
-    <!--===============================================================================================-->
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link href="https://fonts.googleapis.com/css?family=Pathway+Gothic+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Verify Certificate | Hestia'19</title>
 </head>
-<body>
+<body style="background: lightgrey no-repeat center center fixed ; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;height: 100%;min-height:100vh;">
+<div class="container">
 
-<div class="limiter">
-    <div class="container-login100" style="background-image: url('<?=base_url("assets/certificate/")?>images/bg-01.jpg');">
-        <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-            <form class="login100-form validate-form flex-sb flex-w">
-					<span class="login100-form-title p-b-53">
-						Hestia'19 Certificate
-					</span>
-                <span class="p-b-53">
-						<h3>Participant : <?=$record->fullname?></h3><br>
-<h3>Event : <?=$record->title?></h3>
-					</span>
+    <div class="row" style="padding:10px;">
 
+        <div class="col-md-5 col-sm-12"></div>
+        <div class="col-md-3 col-sm-12" style="background: #fff;width:90%;border: grey; border-radius:5px; padding: 20px; position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
+            <h3 style="margin-bottom:30px">Verify Certificate</h3>
+            <form id="team_form" action="<?=base_url("verify")?>" method="post">
+<?=$msg;?>
+                <div class="input-group">
+                    <span style="margin-top: 9px;margin-right:10px;" class="input-group-addon">H/19/</span>
+                    <input class="form-control" type="text"  onkeypress="return isNumber(event)"  id="" placeholder="Certificate Number" name="cert_no" maxlength="6" minlength="4"><br/>
+                </div>
 
+<br>
 
-
-
-
-
-
-
-
+                <button type="submit" class="btn btn-warning my-2 " name="save" id="">View</button><br>
             </form>
         </div>
+
+        <div class="col-md-6 col-sm-12"> </div>
     </div>
 </div>
-
-
-<div id="dropDownSelect1"></div>
-
-<!--===============================================================================================-->
-<script src="<?=base_url("assets/certificate/")?>vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-<script src="<?=base_url("assets/certificate/")?>vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-<script src="<?=base_url("assets/certificate/")?>vendor/bootstrap/js/popper.js"></script>
-<script src="<?=base_url("assets/certificate/")?>vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-<script src="<?=base_url("assets/certificate/")?>vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-<script src="<?=base_url("assets/certificate/")?>vendor/daterangepicker/moment.min.js"></script>
-<script src="<?=base_url("assets/certificate/")?>vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-<script src="<?=base_url("assets/certificate/")?>vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-<script src="<?=base_url("assets/certificate/")?>js/main.js"></script>
-
 </body>
+<script>
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+</script>
 </html>

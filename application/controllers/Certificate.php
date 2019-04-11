@@ -34,15 +34,24 @@ class ZNW_PDF extends TCPDF {
 
 class Certificate extends CI_Controller {
 
-    public function Verify($certificateno=""){
+    public function Verify(){
         $this->load->model('report_model');
-        $data['record']=$this->report_model->get_single_certificate($certificateno);
-
-        if($data['record']){
+$data['msg']="";
+        if(!$this->input->post('cert_no')){
             $this->load->view("dashboard/certificate_verify",$data);
 
         }else{
-            echo "Invalid Certificate No";
+            $data['record']=$this->report_model->get_single_certificate($this->input->post('cert_no'));
+
+            if($data['record']){
+    $this->load->view("dashboard/certificate_view",$data);
+
+}else{
+    $data['msg']="Invalid Certificate No";
+    $this->load->view("dashboard/certificate_verify",$data);
+
+}
+
         }
         //echo "this certificate belongs to ".$record->fullname;
     }
@@ -96,18 +105,18 @@ class Certificate extends CI_Controller {
             $html="<h3>$row->fullname</h3>";
             $htmlcollege="<h3>$row->college</h3>";
             $htmlevent="<h3>$row->title</h3>";
-           $html1="<h3>H/19/$row->certificate_no</h3>";
+           $html1="<h3>H/19/$row->reg_id</h3>";
           //  $pdf->writeHTML($html, true, false, true, false, '');
-            $pdf->writeHTMLCell(200, 10, 142, 83, $html, 0, 1, 0, true, '', true);
-            $pdf->writeHTMLCell(74, 10, 62, 93, $htmlcollege, 0, 1, 0, true, '', true);
-            $pdf->writeHTMLCell(200, 10, 110, 103, $htmlevent, 0, 1, 0, true, '', true);
+            $pdf->writeHTMLCell(300, 10, 142, 83, $html, 0, 1, 0, true, '', true);
+            $pdf->writeHTMLCell(300, 10, 62, 93, $htmlcollege, 0, 1, 0, true, '', true);
+            $pdf->writeHTMLCell(300, 10, 110, 103, $htmlevent, 0, 1, 0, true, '', true);
 
-            $pdf->writeHTMLCell(200, 10, 22, 178, $html1, 0, 1, 0, true, '', true);
+            $pdf->writeHTMLCell(300, 10, 223, 67, $html1, 0, 1, 0, true, '', true);
 
             //$pdf->write2DBarcode("www.hestia.live/certificate/".$row->certificate_no, 'QRCODE,L', 20, 158, 30, 30, $style, 'N');
 
         }
 
-        $pdf->Output('Certificate.pdf', 'I');
+        $pdf->Output('Certificate.pdf', 'D');
     }
 }

@@ -51,7 +51,7 @@ header('Location: '.$data['google_login_url']);
                 unset($_SESSION['back_url']);
                 redirect($link);
             }else{
-                redirect(base_url());
+                redirect(base_url("myevents"));
             }
             
         }

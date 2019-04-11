@@ -63,11 +63,7 @@ $route['myevents'] = 'Pages/UserEvents';
 $route['myprofile'] = 'Profile/update';
 $route['spot_login'] = 'Login/index';
 $route['sponsors'] = 'Pages/Sponsors';
-$route['certificate/(.+)'] = 'Certificate/Verify/$1';
-
-
-
-
+$route['verify'] = 'Certificate/Verify';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
