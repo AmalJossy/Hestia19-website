@@ -167,6 +167,14 @@ class Admin_API extends REST_Controller {
         $status = $this->event_model->enable_certificate($id);
         $this->response($id,$status);
     }
+    function participation_put() {
+        $this->load->model('registration_model');
+        $id=$this->put('event_id');
+        $reg_email=$this->put('reg_email');
+        $participation=$this->put('participation');
+        $status = $this->registration_model->set_participation($id, $reg_email, $participation);
+        $this->response($id,$status);
+    }
     function event_delete( $id = NULL ){
         $this->load->model('event_model');
         $status =  $this->event_model->delete($id);
