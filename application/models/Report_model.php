@@ -217,7 +217,7 @@ class Report_model extends CI_Model {
 
     public function get_all_registrations_certificate($mail="",$eid=""){
        if($mail!="" && $eid!=""){
-           $query=$this->db->query("select upper(e.event_id) event_id, upper(e.title) title ,upper(u.fullname) fullname ,r.reg_id,upper(u.college) college from events e, registration r,users u where e.event_id=r.event_id and r.member_email=u.email and u.email='".$mail."' and u.profile_completed=1 and u.participated=1 and  r.event_id=".$eid);
+           $query=$this->db->query("select upper(e.event_id) event_id, upper(e.title) title ,upper(u.fullname) fullname ,r.reg_id,upper(u.college) college from events e, registration r,users u where e.event_id=r.event_id and r.member_email=u.email and u.email='".$mail."' and u.profile_completed=1 and r.participated=1 and  r.event_id=".$eid);
            return  $query->result();
        }
 
@@ -314,28 +314,25 @@ class Report_model extends CI_Model {
         return $cnt->result_array();
     }
     public function get_event_status_cert($eid,$mail=""){
-
         $cnt=$this->db->query("SELECT * from result r, users u where r.email=u.email and  event_id=".$eid." and u.email='".$mail."' ");
         if($cnt->num_rows()>=1){
             return -1;
         }else{
             $iscomplete=$this->db->query("SELECT * from  users u where  u.email='".$mail."' and profile_completed=0 ");
-if($iscomplete->num_rows()==1){
-    return 0;
-}else{
+            if($iscomplete->num_rows()==1){
+                return 0;
+            }else{
 
-    $ispart=$this->db->query("SELECT * from  users u where  u.email='".$mail."' and u.participated=1 ");
+                $ispart=$this->db->query("SELECT * from registration where event_id='".$eid."' and member_email='".$mail."' and participated=1 ");
 
-    if($ispart->num_rows()==1){
-        return 1;
-    }else {
-        return -2;
-    }
-}
+                if($ispart->num_rows()==1){
+                    return 1;
+                }else {
+                    return -2;
+                }
+            }
 
         }
-
-
         return $cnt->num_rows();
     }
     public function insert_reg_spot_temp($data){
