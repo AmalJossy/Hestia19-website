@@ -107,9 +107,9 @@ $data['msg']="";
             $htmlevent="<h3>$row->title</h3>";
            $html1="<h3>H/19/$row->reg_id</h3>";
           //  $pdf->writeHTML($html, true, false, true, false, '');
-            $pdf->writeHTMLCell(300, 10, 142, 83, $html, 0, 1, 0, true, '', true);
-            $pdf->writeHTMLCell(300, 10, 62, 93, $htmlcollege, 0, 1, 0, true, '', true);
-            $pdf->writeHTMLCell(300, 10, 110, 103, $htmlevent, 0, 1, 0, true, '', true);
+            $pdf->writeHTMLCell(380, 10, 142, 83, $html, 0, 1, 0, true, '', true);
+            $pdf->writeHTMLCell(380, 10, 62, 93, $htmlcollege, 0, 1, 0, true, '', true);
+            $pdf->writeHTMLCell(380, 10, 110, 103, $htmlevent, 0, 1, 0, true, '', true);
 
             $pdf->writeHTMLCell(300, 10, 223, 67, $html1, 0, 1, 0, true, '', true);
 
