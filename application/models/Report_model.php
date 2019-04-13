@@ -315,7 +315,7 @@ class Report_model extends CI_Model {
     }
     public function get_event_status_cert($eid,$mail=""){
 
-        $cnt=$this->db->query("SELECT * from result r, users u where r.email=u.email and  event_id=".$eid." and u.email='".$mail."' ");
+        $cnt=$this->db->query(" SELECT * from result r,registration s where s.event_id=r.event_id and  r.email=s.reg_email  and  r.event_id=".$eid." and s.member_email='".$mail."' ");
         if($cnt->num_rows()>=1){
             return -1;
         }else{
