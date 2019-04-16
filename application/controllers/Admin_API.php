@@ -165,6 +165,17 @@ class Admin_API extends REST_Controller {
         $this->load->model('event_model');
         $id=$this->put('event_id');
         $status = $this->event_model->enable_certificate($id);
+        
+        $mail = file_get_contents('https://www.hestia.live/payment/mail/eventcertmail.php?eid='.$id);
+        
+        $this->response($id,$status);
+    }
+    function participation_put() {
+        $this->load->model('registration_model');
+        $id=$this->put('event_id');
+        $reg_email=$this->put('reg_email');
+        $participation=$this->put('participation');
+        $status = $this->registration_model->set_participation($id, $reg_email, $participation);
         $this->response($id,$status);
     }
     function event_delete( $id = NULL ){
