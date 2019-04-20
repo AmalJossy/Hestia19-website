@@ -10,7 +10,7 @@ class Registration_model extends CI_Model {
         if(!$eid){
             $eid=0;
         }
-        $query=$this->db->query("SELECT event_id,reg_email,member_email,fullname,phone,college,file1,file2 FROM registration a left join users b on  a.member_email=b.email where a.event_id=".$eid." and if(a.member_email=a.reg_email,1,0)=1 order by a.timestamp");
+        $query=$this->db->query("SELECT event_id,reg_email,member_email,fullname,phone,college,file1,file2,participated FROM registration a left join users b on  a.member_email=b.email where a.event_id=".$eid." and if(a.member_email=a.reg_email,1,0)=1 order by a.timestamp");
         $data = array();
         foreach($query->result() as $row1)
         {
@@ -21,7 +21,8 @@ class Registration_model extends CI_Model {
                 $row['phone'] = $row1->phone;
                 $row['file1'] = $row1->file1;
                 $row['file2'] = $row1->file2;
-                $query_memb=$this->db->query("SELECT member_email,fullname,phone,college FROM registration a left join users b on  a.member_email=b.email  where   a.event_id=".$row1->event_id." and if(a.member_email=a.reg_email,1,0)=0 and a.reg_email='".$row1->reg_email."'  order by reg_id");
+                $row['participated'] = $row1->participated;
+                $query_memb=$this->db->query("SELECT member_email,fullname,phone,college FROM registration a left join users b on  a.member_email=b.email where a.event_id=".$row1->event_id." and if(a.member_email=a.reg_email,1,0)=0 and a.reg_email='".$row1->reg_email."'  order by reg_id");
                 $row['members']=$query_memb->result_array();
                 $data[] = $row;
         }
@@ -54,6 +55,16 @@ class Registration_model extends CI_Model {
         }
         $this->db->where('reg_id', $id);
         $this->db->update('registrations');
+        return 200;
+    }
+    public function set_participation($eid, $reg_email, $participation) {
+        if( $this->session->type != 'super' && $this->session->event_id != $eid){
+            return 401;
+        }
+        $this->db->set('participated', $participation);
+        $whr = array('event_id' => $eid, 'reg_email' => $reg_email);
+        $this->db->where($whr);
+        $this->db->update('registration');
         return 200;
     }
     public function delete($id){
