@@ -7,8 +7,9 @@ class Pages extends CI_Controller {
         $this->load->model('user_model');
         $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 
         "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .  
-        $_SERVER['REQUEST_URI']; 
-   
+        $_SERVER['REQUEST_URI'];
+        $_SESSION['email']="danilathulya@gmail.com";
+
         if(isset($_SESSION['name']) && $this->user_model->is_registered($_SESSION['email'],"Y")==FALSE){
             $_SESSION['back_url']=$link;
             redirect("Profile/complete");
@@ -38,7 +39,6 @@ class Pages extends CI_Controller {
 
     if(isset($_SESSION['email'])){
       //htodo  $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
-
         $data['myevents']=$this->report_model->get_user_events($_SESSION['email']);
 
     }else{

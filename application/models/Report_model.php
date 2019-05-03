@@ -164,7 +164,8 @@ class Report_model extends CI_Model {
         $this->db->from ( 'events as e' );
         $this->db->join ( 'registration  as r', 'r.event_id = e.event_id' , 'inner' );
       $this->db->where ( 'r.member_email',$email);
-        
+      $this->db->where ( 'e.event_id!=',"112");
+
         $query = $this->db->get ();
         $data = array();
         foreach($query->result() as $row1)

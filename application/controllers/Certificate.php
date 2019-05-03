@@ -79,6 +79,11 @@ $data['msg']="";
 //        $pdf->SetCreator(PDF_CREATOR);
 //        $pdf->SetTitle('Application Form');
         $this->load->model('report_model');
+        if(isset($_SESSION['email'])){
+
+        }else{
+            return;
+        }
         $records=$this->report_model->get_all_registrations_certificate($_SESSION['email'], $eventid);
        if(!$records){
            return;
