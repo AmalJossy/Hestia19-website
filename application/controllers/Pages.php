@@ -8,7 +8,7 @@ class Pages extends CI_Controller {
         $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 
         "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .  
         $_SERVER['REQUEST_URI'];
-        $_SESSION['email']="danilathulya@gmail.com";
+
 
         if(isset($_SESSION['name']) && $this->user_model->is_registered($_SESSION['email'],"Y")==FALSE){
             $_SESSION['back_url']=$link;
